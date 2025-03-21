@@ -17,18 +17,143 @@
   
   <!-- AOS Animation Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GPRHZRNEZF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GPRHZRNEZF');
-</script>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYRB58PLKJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SYRB58PLKJ');
+  </script>
   
   <style>
+      /* Enhanced Skills Section Styles */
+  .skills-overview {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  
+  /* Additional Skills Tags */
+  .additional-skills {
+    margin-top: 3rem;
+  }
+  
+  .additional-skills-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    position: relative;
+  }
+  
+  .additional-skills-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+    margin: 10px auto 0;
+  }
+  
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+  
+  .skill-tag {
+    background-color: rgba(0, 121, 107, 0.08);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 121, 107, 0.2);
+  }
+  
+  .skill-tag:hover {
+    background-color: var(--accent);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+  
+  /* Technical Skills */
+  .technical-skills {
+    margin-top: 3rem;
+  }
+  
+  .technical-skills-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    position: relative;
+  }
+  
+  .technical-skills-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+    margin: 10px auto 0;
+  }
+  
+  .tech-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .tech-category {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  
+  .tech-category-title {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 121, 107, 0.2);
+  }
+  
+  .tech-list {
+    list-style: none;
+  }
+  
+  .tech-list li {
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .tech-list li i {
+    color: var(--accent);
+    margin-right: 10px;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .tech-skills-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .skill-tag {
+      font-size: 0.85rem;
+    }
+  }
     /* === Core Variables === */
     :root {
       --primary: #22223B;          /* Deep navy */
@@ -54,9 +179,7 @@
     }
 
     /* === Reset & Base Styles === */
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -64,7 +187,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 70px; /* Account for fixed header */
+      scroll-padding-top: 70px;
     }
 
     body {
@@ -195,7 +318,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1.25rem;
-      color: var(--primary);
+      color: var (--primary);
     }
 
     .navbar-menu {
@@ -245,7 +368,7 @@
 
     /* === Hero Section === */
     .hero {
-      background-color: var(--primary);
+      background-color: var (--primary);
       color: var(--white);
       padding: calc(4rem + 70px) 0 4rem;
       position: relative;
@@ -300,7 +423,7 @@
       flex-wrap: wrap;
     }
 
-    /* Updated CTA to include Contact and Call buttons */
+    /* Updated CTA to include Email and Phone buttons */
     .hero-cta a.btn {
       flex: 1;
       text-align: center;
@@ -339,7 +462,7 @@
     .stat-number {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--accent-light);
+      color: var (--accent-light);
       margin-bottom: 0.25rem;
     }
 
@@ -376,58 +499,96 @@
       font-weight: bold;
     }
 
-    /* Experience Timeline */
-    .timeline-container {
-      max-width: 800px;
-      margin: 3rem auto 0;
-      position: relative;
+    /* === Skills Section === */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
-    
-    .timeline-item {
-      display: flex;
+
+    .skill-category {
       margin-bottom: 2rem;
+    }
+
+    .skill-category-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
       position: relative;
+      padding-bottom: 0.5rem;
+      color: var(--text-dark);
+      border-bottom: 2px solid var(--accent);
     }
-    
-    .timeline-year {
-      min-width: 90px;
-      font-weight: 600;
-      color: var(--accent);
-      text-align: right;
-      padding-right: 1.5rem;
-      padding-top: 0.25rem;
+
+    .skill-item {
+      margin-bottom: 1.5rem;
     }
-    
-    .timeline-content {
-      position: relative;
-      padding-left: 1.5rem;
-      border-left: 2px solid var(--accent-light);
-    }
-    
-    .timeline-content::before {
-      content: '';
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background-color: var(--accent);
-      border-radius: 50%;
-      left: -7px;
-      top: 6px;
-    }
-    
-    .timeline-role {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    
-    .timeline-company {
-      color: var(--text-light);
-      font-size: 0.95rem;
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
       margin-bottom: 0.5rem;
     }
-    
-    .timeline-description {
-      font-size: 0.9rem;
+
+    .skill-name {
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .skill-percentage {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .skill-bar {
+      height: 8px;
+      background-color: var(--form-bg);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background-color: var(--accent);
+      border-radius: 4px;
+      width: 0;
+      transition: width 1.5s ease;
+    }
+
+    /* === Work Experience Section === */
+    .experience-container {
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+
+    .experience-item {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      background-color: var(--white);
+      border-left: 4px solid var(--accent);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .experience-item h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .experience-item h4 {
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .experience-item ul {
+      list-style: disc inside;
+      margin-left: 1rem;
+    }
+
+    .experience-item ul li {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
     }
 
     /* === Portfolio Section === */
@@ -448,8 +609,10 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      height: 280px;
+      height: auto;
       transition: var(--transition);
+      background-color: var(--white);
+      padding: 1.5rem;
     }
 
     .portfolio-item:hover {
@@ -457,54 +620,22 @@
       box-shadow: var(--shadow-lg);
     }
 
-    .portfolio-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-
-    .portfolio-item:hover .portfolio-bg {
-      transform: scale(1.05);
-    }
-
-    .portfolio-item::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to top, 
-                  rgba(0, 0, 0, 0.85) 0%, 
-                  rgba(0, 0, 0, 0.5) 40%, 
-                  rgba(0, 0, 0, 0.1) 80%);
-      z-index: 1;
-    }
-
     .portfolio-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.5rem;
+      position: relative;
       z-index: 2;
       color: var(--white);
     }
 
     .portfolio-title {
       font-size: 1.25rem;
-      color: var(--white);
+      color: var(--primary);
       margin-bottom: 0.5rem;
     }
 
     .portfolio-desc {
       font-size: 0.9rem;
       margin-bottom: 1rem;
-      opacity: 0.9;
+      color: var(--text-dark);
     }
 
     .portfolio-link {
@@ -531,7 +662,7 @@
     }
 
     .service-card {
-      background-color: var(--white);
+      background-color: var (--white);
       border-radius: var(--radius);
       padding: 2.5rem;
       box-shadow: var(--shadow);
@@ -580,7 +711,7 @@
     }
 
     .testimonial {
-      background-color: var(--white);
+      background-color: var (--white);
       border-radius: var(--radius);
       padding: 2.5rem;
       box-shadow: var(--shadow);
@@ -634,7 +765,6 @@
       color: var(--text-light);
     }
 
-    /* === Contact Section === */
     .contact {
       background-color: var(--primary);
       color: var(--white);
@@ -911,14 +1041,12 @@
         grid-column: span 1;
       }
       
-      .timeline-item {
-        flex-direction: column;
+      .experience-container {
+        margin: 2rem auto;
       }
       
-      .timeline-year {
-        text-align: left;
-        padding-right: 0;
-        margin-bottom: 0.5rem;
+      .experience-item {
+        padding: 1rem;
       }
     }
 
@@ -941,15 +1069,6 @@
       }
     }
   </style>
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYRB58PLKJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SYRB58PLKJ');
-  </script>
 </head>
 <body>
   <!-- Header / Navigation -->
@@ -962,6 +1081,8 @@
       <ul class="navbar-menu" id="navMenu">
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Work Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
@@ -979,7 +1100,7 @@
           I help businesses transform their marketing with data-driven campaigns that build brand awareness and generate measurable ROI.
         </p>
         <div class="hero-cta">
-          <!-- Changed CTA buttons: One makes email link, the other phone call -->
+          <!-- Email and Phone CTA buttons -->
           <a href="mailto:justinanderson1400@gmail.com" class="btn btn-primary">Contact Me</a>
           <a href="tel:2818913117" class="btn btn-secondary">Call Me</a>
         </div>
@@ -1000,7 +1121,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <!-- Updated profile photo -->
+        <!-- Profile Photo -->
         <img src="https://i.imgur.com/Ahyui9M.png" alt="Justin Anderson">
       </div>
     </div>
@@ -1012,83 +1133,418 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
         <p>
-          I'm Justin Anderson, a marketing strategist with over 9 years of experience developing and executing campaigns that drive growth and foster authentic connections with target audiences in Dallas-Fort Worth.
+          I'm Justin Anderson, a marketing strategist with over 9 years of experience. I combine creative storytelling with data-driven insights to deliver campaigns that boost leads and conversions for businesses across Texas.
         </p>
-        <p>
-          My approach blends data analytics with creative storytelling to deliver measurable results that build your brand and engage your community. Whether working with multi-million dollar agencies or local businesses, I tailor every strategy to meet your unique needs.
-        </p>
-        
         <ul class="skill-list">
-          <li>Digital Strategy Development</li>
-          <li>Campaign Management</li>
-          <li>Event Marketing</li>
-          <li>Multi-Brand Marketing</li>
-          <li>SEO & Content Strategy</li>
+          <li>Digital Strategy & Execution</li>
+          <li>Comprehensive Campaign Management</li>
+          <li>SEO & Content Optimization</li>
+          <li>Social Media & Email Marketing</li>
           <li>Data Analytics & Reporting</li>
           <li>Brand Storytelling</li>
           <li>Local Business Marketing</li>
         </ul>
-        
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <div class="timeline-year">2022-2025</div>
-            <div class="timeline-content">
-              <div class="timeline-role">Growth Marketing Specialist</div>
-              <div class="timeline-company">Allegiant Digital Marketing</div>
-              <div class="timeline-description">
-                <ul>
-                  <li>Managed a $1.2M portfolio delivering data-driven strategies.</li>
-                  <li>Boosted client engagement by 42% with comprehensive campaigns.</li>
-                </ul>
-              </div>
-            </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Work Experience Section -->
+  <section class="section" id="experience">
+    <div class="container experience-container">
+      <h2 class="section-title">Work Experience</h2>
+      
+      <!-- Allegiant Digital Marketing -->
+      <div class="experience-item" data-aos="fade-up">
+        <h3>Allegiant Digital Marketing - Dallas</h3>
+        <h4>Growth Marketing Specialist | November 2022 – March 28, 2025</h4>
+        <ul>
+          <li><strong>Spearheaded</strong> digital marketing strategies, achieving 35–45% increases in lead generation and conversion rates.</li>
+          <li>Managed client portfolios with an annual marketing spend of <strong>$1.2M</strong>.</li>
+          <li>Executed strategic SEO campaigns with technical improvements boosting online visibility.</li>
+          <li>Optimized Google Business Profiles to enhance Map Pack visibility, driving significant foot traffic.</li>
+          <li>Managed paid search campaigns with daily budgets up to <strong>$1,200</strong>, improving CPA by 12–25%.</li>
+          <li>Developed and executed multi-platform social media strategies, achieving 12% annual follower growth.</li>
+          <li>Managed social advertising budgets totaling <strong>$36,000 monthly</strong>, improving CPL by 18%.</li>
+          <li>Developed and managed email marketing programs, increasing open rates by 23% and conversion rates by 16%.</li>
+          <li>Created and optimized affiliate marketing programs, expanding revenue streams while maintaining profitable CAC.</li>
+          <li>Used advanced analytics tools to identify opportunities and present comprehensive reports to clients.</li>
+          <li>Designed marketing collateral ensuring brand consistency.</li>
+          <li>Managed website development projects, analyzing campaign performance and creating reports.</li>
+          <li>Collaborated with Allegiant's CEO to develop innovative marketing approaches showcased at the Dallas Small Business Expo.</li>
+        </ul>
+      </div>
+
+      <!-- Performance Foodservice -->
+      <div class="experience-item" data-aos="fade-up">
+        <h3>Performance Foodservice - Houston</h4>
+        <h4>Marketing Specialist | May 2019 – September 2022</h4>
+        <ul>
+          <li>Launched Virtual Vendor Showcase Series, recognized as a best practice across all 34 divisions nationwide.</li>
+          <li>Managed <strong>$125K</strong> annual food show budget, growing attendance by 33% through strategic marketing campaigns.</li>
+          <li>Drove category sales growth: 23% increase in Roma Italian Imports, 17% in West Creek dairy, and 14% in Peak Fresh Produce.</li>
+          <li>Successfully transitioned the annual expo to The Woodlands Resort, resolving logistical challenges.</li>
+          <li>Generated 65+ qualified leads per sampling event with 28% conversion to new customers within 90 days.</li>
+          <li>Utilized Google Maps imagery for event layouts, improving planning efficiency.</li>
+          <li>Tracked and analyzed vendor growth data to inform sales and marketing strategies.</li>
+          <li>Contributed to 7% overall division growth and 15% increase in specialty category sales.</li>
+          <li>Oversaw lead capture and management activities at expos, generating several hundred leads.</li>
+          <li>Developed comprehensive product training programs for sales representatives, receiving a sales training award.</li>
+          <li>Directed setup teams and external contractors, ensuring efficient event execution.</li>
+          <li>Distributed weekly sales updates, tracking promotions and recognizing top performers.</li>
+        </ul>
+      </div>
+
+      <!-- Splash Kingdom Water Park -->
+      <div class="experience-item" data-aos="fade-up">
+        <h3>Splash Kingdom Water Park</h3>
+        <h4>Group Sales Manager & Marketing Director | March 2016 – February 2017</h4>
+        <ul>
+          <li>Managed marketing for Splash Kingdom, Gator Bayou Adventure Park, and Grand Texas properties.</li>
+          <li>Collaborated with various departments to ensure seamless event execution and consistent branding.</li>
+          <li>Developed and executed integrated marketing strategies for multiple brands.</li>
+          <li>Utilized marketing tools like Hootsuite, WordPress, Mailchimp, Google Ads, and more to achieve objectives.</li>
+          <li>Managed vendor relationships, securing favorable rates and maximizing ROI.</li>
+          <li>Provided exceptional customer service, handling inquiries and escalated issues with diplomacy.</li>
+          <li>Oversaw the work of an external marketing agency, ensuring brand consistency and managing media buying.</li>
+          <li>Managed a tight marketing budget, prioritizing spending and tracking expenses.</li>
+          <li>Led the hiring process for marketing staff, including writing job descriptions and making hiring decisions.</li>
+          <li>Provided sales training and support to staff, developing sales materials and coaching on sales techniques.</li>
+          <li>Conducted competitive analysis to inform marketing and pricing strategies.</li>
+          <li>Managed the Google Business Profile, ensuring accurate information and maximizing online visibility.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+<!-- Skills Section - Updated and Enhanced -->
+<section class="section section-alt" id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills & Expertise</h2>
+    
+    <!-- Skills Overview - Executive Summary -->
+    <div class="skills-overview">
+      <p>With over 8 years of management experience and extensive digital marketing expertise, I combine creative execution with data-driven strategy to deliver measurable results. My comprehensive technical skills and industry certifications enable me to implement integrated marketing solutions across multiple platforms.</p>
+    </div>
+    
+    <div class="skills-container">
+      <!-- Digital Marketing Skills -->
+      <div class="skill-category">
+        <h3 class="skill-category-title">Digital Marketing Expertise</h3>
+        <div class="skill-item" data-aos="fade-right">
+          <div class="skill-info">
+            <span class="skill-name">SEO & Content Strategy</span>
+            <span class="skill-percentage">88%</span>
           </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-year">2018-2022</div>
-            <div class="timeline-content">
-              <div class="timeline-role">Marketing Specialist</div>
-              <div class="timeline-company">Performance Foodservice</div>
-              <div class="timeline-description">
-                <ul>
-                  <li>Led event marketing initiatives generating $68K additional revenue.</li>
-                  <li>Increased organic search traffic by 30% through SEO improvements.</li>
-                </ul>
-              </div>
-            </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="88"></div>
           </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-year">2017-2018</div>
-            <div class="timeline-content">
-              <div class="timeline-role">Group Sales Manager & Marketing Director</div>
-              <div class="timeline-company">Big Rivers Waterpark</div>
-              <div class="timeline-description">
-                <ul>
-                  <li>Revitalized brand identity with a complete rebrand, boosting attendance by 20%.</li>
-                  <li>Launched new attractions through integrated sales and marketing efforts.</li>
-                </ul>
-              </div>
-            </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
+          <div class="skill-info">
+            <span class="skill-name">Social Media Marketing</span>
+            <span class="skill-percentage">92%</span>
           </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-year">2016-2017</div>
-            <div class="timeline-content">
-              <div class="timeline-role">Marketing Coordinator & Assistant Manager</div>
-              <div class="timeline-company">Splash Kingdom</div>
-              <div class="timeline-description">
-                <ul>
-                  <li>Supported venue expansion via innovative social media campaigns.</li>
-                  <li>Increased follower engagement by 25%.</li>
-                </ul>
-              </div>
-            </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="92"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="skill-info">
+            <span class="skill-name">Conversion Optimization</span>
+            <span class="skill-percentage">89%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="89"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
+          <div class="skill-info">
+            <span class="skill-name">Email Marketing</span>
+            <span class="skill-percentage">83%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="83"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="400">
+          <div class="skill-info">
+            <span class="skill-name">PPC & SEM Campaigns</span>
+            <span class="skill-percentage">87%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="87"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Analytics & Data Skills -->
+      <div class="skill-category">
+        <h3 class="skill-category-title">Analytics & Data</h3>
+        <div class="skill-item" data-aos="fade-right">
+          <div class="skill-info">
+            <span class="skill-name">Data Analysis & Insights</span>
+            <span class="skill-percentage">86%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="86"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
+          <div class="skill-info">
+            <span class="skill-name">Performance Tracking</span>
+            <span class="skill-percentage">90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="90"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="skill-info">
+            <span class="skill-name">ROI Measurement</span>
+            <span class="skill-percentage">87%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="87"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
+          <div class="skill-info">
+            <span class="skill-name">Statistical Analysis</span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="85"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Creative & Content Skills -->
+      <div class="skill-category">
+        <h3 class="skill-category-title">Creative & Content</h3>
+        <div class="skill-item" data-aos="fade-right">
+          <div class="skill-info">
+            <span class="skill-name">Copywriting & Storytelling</span>
+            <span class="skill-percentage">91%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="91"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
+          <div class="skill-info">
+            <span class="skill-name">Adobe Creative Suite</span>
+            <span class="skill-percentage">90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="90"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="skill-info">
+            <span class="skill-name">Video Production</span>
+            <span class="skill-percentage">83%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="83"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
+          <div class="skill-info">
+            <span class="skill-name">Content Strategy</span>
+            <span class="skill-percentage">92%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="92"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="400">
+          <div class="skill-info">
+            <span class="skill-name">Brand Development</span>
+            <span class="skill-percentage">89%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="89"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tech & MarTech Skills -->
+      <div class="skill-category">
+        <h3 class="skill-category-title">Technology & MarTech</h3>
+        <div class="skill-item" data-aos="fade-right">
+          <div class="skill-info">
+            <span class="skill-name">Google Analytics & Tag Manager</span>
+            <span class="skill-percentage">88%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="88"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
+          <div class="skill-info">
+            <span class="skill-name">HubSpot & CRM Systems</span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="85"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="skill-info">
+            <span class="skill-name">HTML & CSS</span>
+            <span class="skill-percentage">84%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="84"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
+          <div class="skill-info">
+            <span class="skill-name">WordPress & CMS Platforms</span>
+            <span class="skill-percentage">88%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="88"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="400">
+          <div class="skill-info">
+            <span class="skill-name">Marketing Automation</span>
+            <span class="skill-percentage">86%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="86"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Business & Management Skills -->
+      <div class="skill-category">
+        <h3 class="skill-category-title">Business & Management</h3>
+        <div class="skill-item" data-aos="fade-right">
+          <div class="skill-info">
+            <span class="skill-name">Project Management</span>
+            <span class="skill-percentage">92%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="92"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
+          <div class="skill-info">
+            <span class="skill-name">Strategic Planning</span>
+            <span class="skill-percentage">89%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="89"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="skill-info">
+            <span class="skill-name">Team Leadership</span>
+            <span class="skill-percentage">90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="90"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
+          <div class="skill-info">
+            <span class="skill-name">Client Relationship Management</span>
+            <span class="skill-percentage">94%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="94"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="fade-right" data-aos-delay="400">
+          <div class="skill-info">
+            <span class="skill-name">Budget Management</span>
+            <span class="skill-percentage">88%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="88"></div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+    
+    <!-- Additional Professional Skills -->
+    <div class="additional-skills">
+      <h3 class="additional-skills-title">Additional Professional Skills</h3>
+      <div class="tags-container">
+        <span class="skill-tag">A/B Testing</span>
+        <span class="skill-tag">Content Marketing</span>
+        <span class="skill-tag">Lead Generation</span>
+        <span class="skill-tag">AI-Driven Automation</span>
+        <span class="skill-tag">Google Ads</span>
+        <span class="skill-tag">Facebook Advertising</span>
+        <span class="skill-tag">Mobile Marketing</span>
+        <span class="skill-tag">E-commerce</span>
+        <span class="skill-tag">SEO Tools</span>
+        <span class="skill-tag">Media Relations</span>
+        <span class="skill-tag">Strategic Partnerships</span>
+        <span class="skill-tag">Influencer Marketing</span>
+        <span class="skill-tag">Social Media Strategy</span>
+        <span class="skill-tag">B2B Marketing</span>
+        <span class="skill-tag">Event Marketing</span>
+        <span class="skill-tag">Community Engagement</span>
+        <span class="skill-tag">Public Relations</span>
+        <span class="skill-tag">Microsoft Office (30 yrs)</span>
+        <span class="skill-tag">Microsoft Excel (20 yrs)</span>
+      </div>
+    </div>
+    
+    <!-- Technical Competencies -->
+    <div class="technical-skills">
+      <h3 class="technical-skills-title">Technical Competencies</h3>
+      <div class="tech-skills-grid">
+        <div class="tech-category">
+          <h4 class="tech-category-title">Software & Tools</h4>
+          <ul class="tech-list">
+            <li><i class="fas fa-check-circle"></i> Adobe Creative Suite</li>
+            <li><i class="fas fa-check-circle"></i> HubSpot</li>
+            <li><i class="fas fa-check-circle"></i> Google Analytics</li>
+            <li><i class="fas fa-check-circle"></i> Google Tag Manager</li>
+            <li><i class="fas fa-check-circle"></i> Hootsuite</li>
+            <li><i class="fas fa-check-circle"></i> MailChimp</li>
+            <li><i class="fas fa-check-circle"></i> Constant Contact</li>
+            <li><i class="fas fa-check-circle"></i> Canva</li>
+            <li><i class="fas fa-check-circle"></i> Buffer</li>
+          </ul>
+        </div>
+        <div class="tech-category">
+          <h4 class="tech-category-title">Web Development</h4>
+          <ul class="tech-list">
+            <li><i class="fas fa-check-circle"></i> HTML</li>
+            <li><i class="fas fa-check-circle"></i> CSS</li>
+            <li><i class="fas fa-check-circle"></i> JavaScript</li>
+            <li><i class="fas fa-check-circle"></i> WordPress</li>
+            <li><i class="fas fa-check-circle"></i> Shopify</li>
+            <li><i class="fas fa-check-circle"></i> Joomla</li>
+            <li><i class="fas fa-check-circle"></i> React</li>
+            <li><i class="fas fa-check-circle"></i> Python</li>
+            <li><i class="fas fa-check-circle"></i> APIs</li>
+          </ul>
+        </div>
+        <div class="tech-category">
+          <h4 class="tech-category-title">Analytics & Reporting</h4>
+          <ul class="tech-list">
+            <li><i class="fas fa-check-circle"></i> Data Analysis (8 yrs)</li>
+            <li><i class="fas fa-check-circle"></i> Performance Marketing</li>
+            <li><i class="fas fa-check-circle"></i> Statistical Analysis</li>
+            <li><i class="fas fa-check-circle"></i> Web Analytics</li>
+            <li><i class="fas fa-check-circle"></i> Social Media Analysis</li>
+            <li><i class="fas fa-check-circle"></i> Content Analysis</li>
+            <li><i class="fas fa-check-circle"></i> Conversion Tracking</li>
+            <li><i class="fas fa-check-circle"></i> ROI Measurement</li>
+            <li><i class="fas fa-check-circle"></i> Forecasting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   
   <!-- Portfolio Section -->
   <section class="section" id="portfolio">
@@ -1102,36 +1558,44 @@
       <div class="portfolio-grid">
         <!-- Portfolio Item 1: Texas Tamale House Cultural Heritage Campaign Research -->
         <div class="portfolio-item">
-          <img src="https://i.imgur.com/P6UxIt6.png" alt="Texas Tamale House Cultural Heritage Campaign Research" class="portfolio-bg"
-               onerror="this.style.display='none'; this.parentNode.style.backgroundColor='var(--primary-light)';">
           <div class="portfolio-content">
+            <h3 class="portfolio-title">Texas Tamale House Cultural Heritage Campaign Research</h3>
+            <p class="portfolio-desc">
+              A deep dive into leveraging cultural storytelling for authentic engagement.
+            </p>
             <a href="https://drive.google.com/file/d/1agB6bh-siAW2vUtqhhnpuxDcs7e-zBFS/view?usp=drive_link" class="portfolio-link" target="_blank">View Campaign</a>
           </div>
         </div>
 
         <!-- Portfolio Item 2: A-Town Market Rebrand -->
         <div class="portfolio-item">
-          <img src="https://i.imgur.com/BDukMWL.png" alt="A-Town Market Rebrand" class="portfolio-bg"
-               onerror="this.style.display='none'; this.parentNode.style.backgroundColor='var(--primary-light)';">
           <div class="portfolio-content">
+            <h3 class="portfolio-title">A-Town Market Rebrand</h3>
+            <p class="portfolio-desc">
+              A complete brand refresh that increased foot traffic by 32% and boosted average purchase value.
+            </p>
             <a href="https://drive.google.com/file/d/1Kpy3ysGDy5Ilwz2PBkF-ZTG_bcDhyr3w/view?usp=drive_link" class="portfolio-link" target="_blank">View Case Study</a>
           </div>
         </div>
 
         <!-- Portfolio Item 3: DFW Regional Tourism Initiative -->
         <div class="portfolio-item">
-          <img src="https://i.imgur.com/dYZyuh5.png" alt="DFW Regional Tourism Initiative" class="portfolio-bg"
-               onerror="this.style.display='none'; this.parentNode.style.backgroundColor='var(--primary-light)';">
           <div class="portfolio-content">
+            <h3 class="portfolio-title">DFW Regional Tourism Initiative</h3>
+            <p class="portfolio-desc">
+              An integrated campaign boosting local tourism with a focus on hidden gems.
+            </p>
             <a href="https://drive.google.com/file/d/1Zay7NJ2V8Na60rHtUezB8MLCLS5QyZc3/view?usp=drive_link" class="portfolio-link" target="_blank">View Initiative</a>
           </div>
         </div>
 
         <!-- Portfolio Item 4: Tamale House Heritage Campaign -->
         <div class="portfolio-item">
-          <img src="https://i.imgur.com/JavY967.png" alt="Tamale House Heritage Campaign" class="portfolio-bg"
-               onerror="this.style.display='none'; this.parentNode.style.backgroundColor='var(--primary-light)';">
           <div class="portfolio-content">
+            <h3 class="portfolio-title">Tamale House Heritage Campaign</h3>
+            <p class="portfolio-desc">
+              A campaign that celebrated family heritage while driving a 40% increase in community engagement.
+            </p>
             <a href="https://drive.google.com/file/d/1VTTUnKdlk_BhKSmnepDCkkJ36RzeGZHh/view?usp=drive_link" class="portfolio-link" target="_blank">View Case Study</a>
           </div>
         </div>
@@ -1249,234 +1713,6 @@
     </div>
   </section>
 
-  <!-- Skills & Expertise Section -->
-  <section class="section section-alt" id="skills">
-    <div class="container">
-      <h2 class="section-title">Skills & Expertise</h2>
-      <div class="skills-container">
-        <!-- Skill Category: Strategic Marketing -->
-        <div class="skill-category">
-          <h3 class="skill-category-title">Strategic Marketing</h3>
-          <div class="skill-item" data-aos="fade-right">
-            <div class="skill-info">
-              <span class="skill-name">Digital Strategy</span>
-              <span class="skill-percentage">95%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="95"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
-            <div class="skill-info">
-              <span class="skill-name">Campaign Management</span>
-              <span class="skill-percentage">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="90"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
-            <div class="skill-info">
-              <span class="skill-name">Multi-Brand Marketing</span>
-              <span class="skill-percentage">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="85"></div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Skill Category: Digital Marketing -->
-        <div class="skill-category">
-          <h3 class="skill-category-title">Digital Marketing</h3>
-          <div class="skill-item" data-aos="fade-right">
-            <div class="skill-info">
-              <span class="skill-name">SEO & Content Strategy</span>
-              <span class="skill-percentage">88%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="88"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
-            <div class="skill-info">
-              <span class="skill-name">Social Media Marketing</span>
-              <span class="skill-percentage">92%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="92"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
-            <div class="skill-info">
-              <span class="skill-name">Email Marketing</span>
-              <span class="skill-percentage">83%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="83"></div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Skill Category: Analytics & Reporting -->
-        <div class="skill-category">
-          <h3 class="skill-category-title">Analytics & Reporting</h3>
-          <div class="skill-item" data-aos="fade-right">
-            <div class="skill-info">
-              <span class="skill-name">Data Analysis</span>
-              <span class="skill-percentage">86%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="86"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
-            <div class="skill-info">
-              <span class="skill-name">Performance Tracking</span>
-              <span class="skill-percentage">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="90"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
-            <div class="skill-info">
-              <span class="skill-name">ROI Measurement</span>
-              <span class="skill-percentage">87%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-width="87"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Project Showcase -->
-  <section class="section" id="project-showcase">
-    <div class="container">
-      <h2 class="section-title">Project Insights</h2>
-      <div class="project-tabs">
-        <div class="tab-buttons">
-          <button class="tab-btn active" data-tab="tamale-house">Tamale House</button>
-          <button class="tab-btn" data-tab="a-town">A-Town Market</button>
-          <button class="tab-btn" data-tab="food-festival">Dallas Food Festival</button>
-        </div>
-        
-        <div class="tab-content">
-          <!-- Tamale House Tab -->
-          <div class="tab-pane active" id="tamale-house-tab">
-            <div class="project-details">
-              <div class="project-metrics">
-                <div class="metric-card" data-aos="fade-up">
-                  <div class="metric-value">40%</div>
-                  <div class="metric-label">Community Engagement Increase</div>
-                </div>
-                <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
-                  <div class="metric-value">32%</div>
-                  <div class="metric-label">Social Media Growth</div>
-                </div>
-                <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
-                  <div class="metric-value">25%</div>
-                  <div class="metric-label">Revenue Increase</div>
-                </div>
-              </div>
-              <div class="project-summary">
-                <h3>Cultural Heritage Marketing Campaign</h3>
-                <p>
-                  For Tamale House, I developed a campaign that leveraged authentic cultural storytelling to connect with the community and drive engagement.
-                </p>
-                <p>Key elements included:</p>
-                <ul>
-                  <li>Family heritage video series</li>
-                  <li>Community celebration events</li>
-                  <li>Influencer partnerships with local cultural advocates</li>
-                  <li>Targeted social media campaigns</li>
-                </ul>
-                <div class="project-cta">
-                  <a href="https://drive.google.com/file/d/1VTTUnKdlk_BhKSmnepDCkkJ36RzeGZHh/view?usp=drive_link" class="btn btn-primary" target="_blank">View Full Case Study</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- A-Town Market Tab -->
-          <div class="tab-pane" id="a-town-tab">
-            <div class="project-details">
-              <div class="project-metrics">
-                <div class="metric-card">
-                  <div class="metric-value">32%</div>
-                  <div class="metric-label">Increased Foot Traffic</div>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-value">15%</div>
-                  <div class="metric-label">Higher Average Purchase</div>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-value">28%</div>
-                  <div class="metric-label">Brand Recognition</div>
-                </div>
-              </div>
-              <div class="project-summary">
-                <h3>Complete Brand Refresh</h3>
-                <p>
-                  A-Town Market needed to revitalize its identity for a modern, community-centered experience. I delivered a rebrand that maintained core values while appealing to a new demographic.
-                </p>
-                <p>The rebrand included:</p>
-                <ul>
-                  <li>Fresh visual identity (logo, color palette)</li>
-                  <li>Enhanced customer experience journey mapping</li>
-                  <li>Local product spotlight initiatives</li>
-                  <li>Focused digital ad campaigns</li>
-                </ul>
-                <div class="project-cta">
-                  <a href="https://drive.google.com/file/d/1Kpy3ysGDy5Ilwz2PBkF-ZTG_bcDhyr3w/view?usp=drive_link" class="btn btn-primary" target="_blank">View Full Case Study</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Dallas Food Festival Tab -->
-          <div class="tab-pane" id="food-festival-tab">
-            <div class="project-details">
-              <div class="project-metrics">
-                <div class="metric-card">
-                  <div class="metric-value">25K+</div>
-                  <div class="metric-label">Total Attendees</div>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-value">12</div>
-                  <div class="metric-label">Major Sponsors Secured</div>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-value">40+</div>
-                  <div class="metric-label">Local Vendors</div>
-                </div>
-              </div>
-              <div class="project-summary">
-                <h3>Integrated Event Marketing</h3>
-                <p>
-                  The Dallas Food Festival campaign united local culinary talent and generous sponsorships, drawing an impressive crowd and maximizing event impact.
-                </p>
-                <p>Key components included:</p>
-                <ul>
-                  <li>Multi-tiered sponsorship packages</li>
-                  <li>Chef showcase pre-event series</li>
-                  <li>Geotargeted digital ads</li>
-                  <li>Segmented email marketing campaigns</li>
-                </ul>
-                <div class="project-cta">
-                  <a href="#" class="btn btn-primary">View Full Case Study</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact Section -->
   <section class="contact" id="contact">
     <div class="container contact-container">
@@ -1572,6 +1808,8 @@
       <div class="footer-links">
         <a href="#hero">Home</a>
         <a href="#about">About</a>
+        <a href="#experience">Work Experience</a>
+        <a href="#skills">Skills</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
@@ -1582,143 +1820,6 @@
       </p>
     </div>
   </footer>
-
-  <!-- Additional CSS for Interactive Elements -->
-  <style>
-    /* Skills Section Styles */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .skill-category {
-      margin-bottom: 2rem;
-    }
-    .skill-category-title {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-bottom: 0.5rem;
-      color: var(--text-dark);
-      border-bottom: 2px solid var(--accent);
-    }
-    .skill-item {
-      margin-bottom: 1.5rem;
-    }
-    .skill-info {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-    }
-    .skill-name {
-      font-weight: 500;
-      color: var(--text-dark);
-    }
-    .skill-percentage {
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .skill-bar {
-      height: 8px;
-      background-color: var(--form-bg);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .skill-progress {
-      height: 100%;
-      background-color: var(--accent);
-      border-radius: 4px;
-      width: 0;
-      transition: width 1.5s ease;
-    }
-
-    /* Project Showcase Tabs */
-    .project-tabs {
-      margin-top: 3rem;
-    }
-    .tab-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-      gap: 1rem;
-    }
-    .tab-btn {
-      padding: 0.75rem 1.5rem;
-      background-color: var(--form-bg);
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      font-weight: 500;
-      transition: var(--transition);
-      color: var(--text-dark);
-    }
-    .tab-btn:hover, .tab-btn.active {
-      background-color: var(--accent);
-      color: var(--white);
-    }
-    .tab-content {
-      background-color: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .tab-pane {
-      display: none;
-      padding: 2rem;
-    }
-    .tab-pane.active {
-      display: block;
-    }
-    .project-details {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .project-metrics {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .metric-card {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: var(--form-bg);
-      border-radius: var(--radius);
-      min-width: 180px;
-      flex: 1;
-    }
-    .metric-value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-    .metric-label {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-    .project-summary {
-      flex: 1;
-    }
-    .project-summary h3 {
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    .project-summary ul {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
-    }
-    .project-summary li {
-      margin-bottom: 0.5rem;
-    }
-    .project-cta {
-      margin-top: 1.5rem;
-    }
-  </style>
 
   <!-- Scripts -->
   <!-- AOS Animation Library -->
@@ -1741,20 +1842,6 @@
           bar.style.width = width + '%';
         });
       }, 500);
-      
-      // Tab functionality for project showcase
-      const tabButtons = document.querySelectorAll('.tab-btn');
-      const tabPanes = document.querySelectorAll('.tab-pane');
-      
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          tabPanes.forEach(pane => pane.classList.remove('active'));
-          button.classList.add('active');
-          const tabId = button.getAttribute('data-tab');
-          document.getElementById(`${tabId}-tab`).classList.add('active');
-        });
-      });
       
       // Mobile Navigation Toggle
       const navToggle = document.getElementById('navToggle');
