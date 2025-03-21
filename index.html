@@ -1,3 +1,1300 @@
+<style>
+/* === Core Variables === */
+:root {
+  --primary: #22223B;
+  /* Deep navy */
+  --primary-light: #4A4E69;
+  /* Muted purple-blue */
+  --secondary: #6E85B7;
+  /* Muted blue */
+  --accent: #00796b;
+  /* Dark teal - main accent */
+  --accent-light: #26a69a;
+  /* Lighter teal for hover states */
+  --accent-dark: #004d40;
+  /* Darker teal */
+  --text-dark: #22223B;
+  /* Main text color */
+  --text-light: #4A4E69;
+  /* Secondary text */
+  --background: #F5F5F5;
+  /* Light gray background */
+  --background-alt: #FFFFFF;
+  /* White background for alternating sections */
+  --white: #FFFFFF;
+  /* Pure white */
+  --form-bg: #f1f1f1;
+  /* Slightly darker background for form fields */
+  --success: #2ECC71;
+  /* Green for success indicators */
+  --warning: #F39C12;
+  /* Orange for attention elements */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --radius: 5px;
+  --container: 1200px;
+  --section-space: 5rem;
+}
+
+/* === Reset & Base Styles === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  background: var(--background);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent-light);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+p {
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+}
+
+.container {
+  width: 90%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.section {
+  padding: var(--section-space) 0;
+  position: relative;
+}
+
+.section-alt {
+  background-color: var(--background-alt);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  font-weight: 700;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent);
+  margin: 15px auto 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--white);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* === Header & Navigation === */
+.header {
+  background-color: var(--white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;
+  box-shadow: var(--shadow);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  position: relative;
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar-menu li a {
+  color: var(--text-dark);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.navbar-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: var(--transition);
+}
+
+.navbar-menu li a:hover {
+  color: var(--accent);
+}
+
+.navbar-menu li a:hover::after {
+  width: 100%;
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* === Hero Section === */
+.hero {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: calc(4rem + 70px) 0 4rem;
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20% 30%, var(--secondary) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--accent) 0%, transparent 50%);
+  z-index: 1;
+  opacity: 0.2;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  flex: 1.5;
+}
+
+.hero-title {
+  color: var(--white);
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+/* Updated CTA to include Email and Phone buttons */
+.hero-cta a.btn {
+  flex: 1;
+  text-align: center;
+}
+
+.hero-image {
+  flex: 1;
+  max-width: 360px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* === Stats within Hero ===*/
+.stats-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* === About Section === */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skill-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.skill-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.skill-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* === Skills Section === */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.skill-category {
+  margin-bottom: 2rem;
+}
+
+.skill-category-title {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  color: var(--text-dark);
+  border-bottom: 2px solid var(--accent);
+}
+
+.skill-item {
+  margin-bottom: 1.5rem;
+  position: relative; /* For tooltip positioning */
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.skill-percentage {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.skill-bar {
+  height: 8px;
+  background-color: var(--form-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative; /* For tooltip positioning */
+}
+
+.skill-progress {
+  height: 100%;
+  background-color: var(--accent);
+  border-radius: 4px;
+  width: 0;
+  transition: width 0.5s ease-out;
+}
+
+.skill-bar:hover .skill-progress {
+  transition: width 0.5s ease-in-out;
+}
+
+/* Skill Tooltip (Basic) */
+.skill-tooltip {
+  position: absolute;
+  top: -30px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.skill-bar:hover .skill-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.skill-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--primary) transparent transparent transparent;
+}
+
+
+/* === Work Experience Section === */
+.experience-container {
+  max-width: 800px;
+  margin: 3rem auto 0;
+}
+
+.experience-item {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background-color: var(--white);
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+}
+
+.experience-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.experience-item h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.experience-item h4 {
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.experience-item ul {
+  list-style: disc inside;
+  margin-left: 1rem;
+}
+
+.experience-item ul li {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+/* === Portfolio Section === */
+.portfolio-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  height: auto;
+  transition: var(--transition);
+  background-color: var(--white);
+  padding: 1.5rem;
+  display: flex; /* Added flex to align content vertically */
+  flex-direction: column; /* Stack content vertically */
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.portfolio-content {
+  position: relative;
+  z-index: 2;
+  color: var(--white);
+  flex-grow: 1; /* Allow content to take up available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space between title/desc and link */
+}
+
+.portfolio-title {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-desc {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  flex-grow: 1; /* Description takes remaining space if needed */
+}
+
+.portfolio-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--accent);
+  color: var(--white);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: var(--transition);
+  align-self: flex-start; /* Align link to the start of the container */
+}
+
+.portfolio-link:hover {
+  background-color: var(--accent-light);
+  color: var(--white);
+}
+
+.portfolio-thumbnail {
+  width: 100%;
+  height: 150px; /* Adjust as needed */
+  background-color: #ddd; /* Placeholder background */
+  margin-bottom: 1rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888; /* Placeholder text color */
+  font-size: 2rem;
+}
+
+.portfolio-thumbnail i {
+  font-size: 3rem; /* Icon size for placeholder, adjust as needed */
+}
+
+
+/* === Services Section === */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid var(--accent);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: var(--white);
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+  transform: rotate(10deg) scale(1.05);
+}
+
+.service-title {
+  margin-bottom: 1rem;
+}
+
+.service-desc {
+  color: var(--text-light);
+}
+
+/* === Testimonials Section === */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.testimonial {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.testimonial::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 5rem;
+  color: var(--accent);
+  opacity: 0.25;
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonial-content {
+  position: relative;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.author-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  background: linear-gradient(135deg, var(--secondary), var(--accent));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.author-info h4 {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.author-position {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.contact {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: var(--section-space) 0;
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact .section-title {
+  color: var(--white);
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.contact-option {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.contact-option:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-icon {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.contact-option h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.contact-option p {
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.contact-link {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 500;
+  position: relative;
+}
+
+.contact-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: var(--transition);
+}
+
+.contact-link:hover::after {
+  width: 100%;
+}
+
+.contact-form-container {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-group.full {
+  grid-column: span 2;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  background-color: var(--form-bg);
+  transition: var(--transition);
+  font-family: 'Inter', sans-serif;
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+  background-color: var(--white);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.15);
+}
+
+.form-submit {
+  background-color: var(--accent);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.form-submit:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-note {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.form-message {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  display: none; /* Hidden by default */
+}
+
+.form-message.success {
+  background-color: rgba(46, 204, 113, 0.1); /* Success background */
+  color: var(--success);
+}
+
+.form-message.error {
+  background-color: rgba(243, 156, 18, 0.1); /* Error background */
+  color: var(--warning);
+}
+
+
+/* === Footer === */
+.footer {
+  background-color: var(--primary-light);
+  padding: 3rem 0;
+  color: var(--white);
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--white);
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background-color: var(--accent);
+  transform: translateY(-3px);
+  color: var(--white);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links a:hover {
+  color: var(--white);
+}
+
+.copyright {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* === Responsive Design === */
+@media (max-width: 992px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-space: 4rem;
+  }
+
+  .hero-container {
+    flex-direction: column-reverse;
+  }
+
+  .hero-image {
+    margin: 0 auto;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .stats-container {
+    flex-direction: column;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+  }
+
+  .navbar-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full {
+    grid-column: span 1;
+  }
+
+  .experience-container {
+    margin: 2rem auto;
+  }
+
+  .experience-item {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 3rem 0;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Enhanced About Section Styles */
+.core-competencies {
+  margin-top: 2.5rem;
+}
+
+.competencies-title {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.3rem;
+  position: relative;
+}
+
+.competencies-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: var(--accent);
+  margin: 10px auto 0;
+}
+
+.competencies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.competency-column {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.competency-column:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.competency-category {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 121, 107, 0.2);
+  font-size: 1.1rem;
+}
+
+.competency-list {
+  list-style: none;
+}
+
+.competency-list li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.competency-list li i {
+  color: var(--accent);
+  margin-right: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .competencies-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Enhanced Skills Section Styles */
+.skills-overview {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Additional Skills Tags */
+.additional-skills {
+  margin-top: 3rem;
+}
+
+.additional-skills-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.additional-skills-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: var(--accent);
+  margin: 10px auto 0;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.skill-tag {
+  background-color: rgba(0, 121, 107, 0.08);
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition);
+  border: 1px solid rgba(0, 121, 107, 0.2);
+  pointer-events: none;
+  /* Ensure tags are not clickable */
+}
+
+.skill-tag:hover {
+  background-color: var(--accent);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+/* Technical Skills */
+.technical-skills {
+  margin-top: 3rem;
+}
+
+.technical-skills-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.technical-skills-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: var(--accent);
+  margin: 10px auto 0;
+}
+
+.tech-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tech-category {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.tech-category-title {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 121, 107, 0.2);
+}
+
+.tech-list {
+  list-style: none;
+}
+
+.tech-list li {
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+}
+
+.tech-list li i {
+  color: var(--accent);
+  margin-right: 10px;
+  font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .tech-skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-tag {
+    font-size: 0.85rem;
+  }
+}
+
+/* Skill Bars Animation */
+.skill-progress {
+  height: 100%;
+  background-color: var(--accent);
+  border-radius: 4px;
+  width: 0;
+  transition: width 0.5s ease-out;
+  /* Speed up the animation */
+}
+
+.skill-bar:hover .skill-progress {
+  transition: width 0.5s ease-in-out;
+}
+
+/* Work Experience Section */
+.experience-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  /* Wide columns */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.experience-item {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%;
+  /* Ensure full width usage */
+}
+
+.experience-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.experience-item h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.experience-item h4 {
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.experience-item ul {
+  list-style: disc inside;
+  margin-left: 1rem;
+  line-height: 1.6;
+}
+
+.experience-item ul li {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +1303,18 @@
   <meta name="keywords" content="Justin Anderson, marketing portfolio, Houston marketing, tourism marketing, food service marketing, ROI campaigns">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Justin Anderson | Marketing Strategist | Texas</title>
-  
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
   <!-- AOS Animation Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYRB58PLKJ"></script>
   <script>
@@ -26,1125 +1323,16 @@
     gtag('js', new Date());
     gtag('config', 'G-SYRB58PLKJ');
   </script>
-  
-  <style>
-      /* Enhanced Skills Section Styles */
-  .skills-overview {
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto 3rem;
-    font-size: 1.1rem;
-    line-height: 1.7;
-  }
-  
-  /* Additional Skills Tags */
-  .additional-skills {
-    margin-top: 3rem;
-  }
-  
-  .additional-skills-title {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.4rem;
-    position: relative;
-  }
-  
-  .additional-skills-title::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 3px;
-    background-color: var(--accent);
-    margin: 10px auto 0;
-  }
-  
-  .tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin: 0 auto;
-    max-width: 1000px;
-  }
-  
-  .skill-tag {
-    background-color: rgba(0, 121, 107, 0.08);
-    color: var(--accent);
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: var(--transition);
-    border: 1px solid rgba(0, 121, 107, 0.2);
-  }
-  
-  .skill-tag:hover {
-    background-color: var(--accent);
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-  }
-  
-  /* Technical Skills */
-  .technical-skills {
-    margin-top: 3rem;
-  }
-  
-  .technical-skills-title {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.4rem;
-    position: relative;
-  }
-  
-  .technical-skills-title::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 3px;
-    background-color: var(--accent);
-    margin: 10px auto 0;
-  }
-  
-  .tech-skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  
-  .tech-category {
-    background-color: var(--white);
-    padding: 1.5rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-  }
-  
-  .tech-category-title {
-    color: var(--accent);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 121, 107, 0.2);
-  }
-  
-  .tech-list {
-    list-style: none;
-  }
-  
-  .tech-list li {
-    padding: 6px 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .tech-list li i {
-    color: var(--accent);
-    margin-right: 10px;
-    font-size: 0.9rem;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .tech-skills-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .skill-tag {
-      font-size: 0.85rem;
-    }
-  }
-    /* === Core Variables === */
-    :root {
-      --primary: #22223B;          /* Deep navy */
-      --primary-light: #4A4E69;      /* Muted purple-blue */
-      --secondary: #6E85B7;          /* Muted blue */
-      --accent: #00796b;             /* Dark teal - main accent */
-      --accent-light: #26a69a;       /* Lighter teal for hover states */
-      --accent-dark: #004d40;        /* Darker teal */
-      --text-dark: #22223B;          /* Main text color */
-      --text-light: #4A4E69;         /* Secondary text */
-      --background: #F5F5F5;         /* Light gray background */
-      --background-alt: #FFFFFF;     /* White background for alternating sections */
-      --white: #FFFFFF;              /* Pure white */
-      --form-bg: #f1f1f1;            /* Slightly darker background for form fields */
-      --success: #2ECC71;            /* Green for success indicators */
-      --warning: #F39C12;            /* Orange for attention elements */
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease;
-      --radius: 5px;
-      --container: 1200px;
-      --section-space: 5rem;
-    }
 
-    /* === Reset & Base Styles === */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 70px;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-dark);
-      line-height: 1.6;
-      background: var(--background);
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--accent);
-      transition: var(--transition);
-    }
-
-    a:hover {
-      color: var(--accent-light);
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      color: var(--primary);
-      line-height: 1.3;
-      margin-bottom: 1rem;
-    }
-
-    h1 { font-size: clamp(2rem, 5vw, 2.75rem); }
-    h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); }
-    h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); }
-
-    p {
-      margin-bottom: 1.2rem;
-      font-size: 1.05rem;
-    }
-
-    .container {
-      width: 90%;
-      max-width: var(--container);
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: var(--section-space) 0;
-      position: relative;
-    }
-
-    .section-alt {
-      background-color: var(--background-alt);
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
-      font-weight: 700;
-    }
-
-    .section-title::after {
-      content: "";
-      display: block;
-      width: 50px;
-      height: 3px;
-      background-color: var(--accent);
-      margin: 15px auto 0;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      font-weight: 600;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
-      font-size: 1rem;
-    }
-
-    .btn-primary {
-      background-color: var(--accent);
-      color: var(--white);
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-light);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--white);
-      border: 2px solid var(--white);
-    }
-
-    .btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
-    }
-
-    /* === Header & Navigation === */
-    .header {
-      background-color: var(--white);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      height: 70px;
-      box-shadow: var(--shadow);
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-    }
-
-    .navbar-brand {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var (--primary);
-    }
-
-    .navbar-menu {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
-      position: relative;
-      transform: none;
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .navbar-menu li a {
-      color: var(--text-dark);
-      font-weight: 500;
-      position: relative;
-      padding: 0.5rem 0;
-    }
-
-    .navbar-menu li a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--accent);
-      transition: var(--transition);
-    }
-
-    .navbar-menu li a:hover {
-      color: var(--accent);
-    }
-
-    .navbar-menu li a:hover::after {
-      width: 100%;
-    }
-
-    .navbar-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--primary);
-      font-size: 1.25rem;
-      cursor: pointer;
-    }
-
-    /* === Hero Section === */
-    .hero {
-      background-color: var (--primary);
-      color: var(--white);
-      padding: calc(4rem + 70px) 0 4rem;
-      position: relative;
-      overflow: hidden;
-      background-image: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: 
-        radial-gradient(circle at 20% 30%, var(--secondary) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, var(--accent) 0%, transparent 50%);
-      z-index: 1;
-      opacity: 0.2;
-    }
-
-    .hero-container {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-content {
-      flex: 1.5;
-    }
-
-    .hero-title {
-      color: var(--white);
-      margin-bottom: 1.25rem;
-      line-height: 1.3;
-      font-weight: 700;
-    }
-
-    .hero-subtitle {
-      font-size: 1.15rem;
-      margin-bottom: 2rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* Updated CTA to include Email and Phone buttons */
-    .hero-cta a.btn {
-      flex: 1;
-      text-align: center;
-    }
-
-    .hero-image {
-      flex: 1;
-      max-width: 360px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .hero-image img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    
-    /* === Stats within Hero ===*/
-    .stats-container {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .stat-card {
-      flex: 1;
-      background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      padding: 1.5rem;
-      border-radius: var(--radius);
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var (--accent-light);
-      margin-bottom: 0.25rem;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    /* === About Section === */
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .skill-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      list-style: none;
-      margin-top: 2rem;
-    }
-
-    .skill-list li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .skill-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: bold;
-    }
-
-    /* === Skills Section === */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .skill-category {
-      margin-bottom: 2rem;
-    }
-
-    .skill-category-title {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-bottom: 0.5rem;
-      color: var(--text-dark);
-      border-bottom: 2px solid var(--accent);
-    }
-
-    .skill-item {
-      margin-bottom: 1.5rem;
-    }
-
-    .skill-info {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-    }
-
-    .skill-name {
-      font-weight: 500;
-      color: var(--text-dark);
-    }
-
-    .skill-percentage {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .skill-bar {
-      height: 8px;
-      background-color: var(--form-bg);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .skill-progress {
-      height: 100%;
-      background-color: var(--accent);
-      border-radius: 4px;
-      width: 0;
-      transition: width 1.5s ease;
-    }
-
-    /* === Work Experience Section === */
-    .experience-container {
-      max-width: 800px;
-      margin: 3rem auto 0;
-    }
-
-    .experience-item {
-      margin-bottom: 2.5rem;
-      padding: 1.5rem;
-      background-color: var(--white);
-      border-left: 4px solid var(--accent);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-    }
-
-    .experience-item h3 {
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    .experience-item h4 {
-      margin-bottom: 1rem;
-      color: var(--text-dark);
-      font-weight: 500;
-    }
-
-    .experience-item ul {
-      list-style: disc inside;
-      margin-left: 1rem;
-    }
-
-    .experience-item ul li {
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
-    }
-
-    /* === Portfolio Section === */
-    .portfolio-intro {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 3rem;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-
-    .portfolio-item {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      height: auto;
-      transition: var(--transition);
-      background-color: var(--white);
-      padding: 1.5rem;
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .portfolio-content {
-      position: relative;
-      z-index: 2;
-      color: var(--white);
-    }
-
-    .portfolio-title {
-      font-size: 1.25rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .portfolio-desc {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      color: var(--text-dark);
-    }
-
-    .portfolio-link {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: var(--accent);
-      color: var(--white);
-      border-radius: var(--radius);
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .portfolio-link:hover {
-      background-color: var(--accent-light);
-      color: var(--white);
-    }
-
-    /* === Services Section === */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      background-color: var (--white);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      border-top: 3px solid var(--accent);
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .service-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      color: var(--white);
-      border-radius: 50%;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-      transition: var(--transition);
-    }
-
-    .service-card:hover .service-icon {
-      transform: rotate(10deg) scale(1.05);
-    }
-
-    .service-title {
-      margin-bottom: 1rem;
-    }
-
-    .service-desc {
-      color: var(--text-light);
-    }
-
-    /* === Testimonials Section === */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-
-    .testimonial {
-      background-color: var (--white);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      box-shadow: var(--shadow);
-      position: relative;
-    }
-
-    .testimonial::before {
-      content: "";
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      font-size: 5rem;
-      color: var(--accent);
-      opacity: 0.25;
-      font-family: serif;
-      line-height: 1;
-    }
-
-    .testimonial-content {
-      position: relative;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-      z-index: 1;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-    }
-
-    .author-image {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 1rem;
-      background: linear-gradient(135deg, var(--secondary), var(--accent));
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .author-info h4 {
-      margin-bottom: 0.25rem;
-      font-weight: 600;
-    }
-
-    .author-position {
-      font-size: 0.85rem;
-      color: var(--text-light);
-    }
-
-    .contact {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: var(--section-space) 0;
-    }
-
-    .contact-container {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .contact .section-title {
-      color: var(--white);
-    }
-
-    .contact-intro {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .contact-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .contact-option {
-      background-color: var(--white);
-      padding: 2rem;
-      border-radius: var(--radius);
-      text-align: center;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-    
-    .contact-option:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .contact-icon {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    
-    .contact-option h3 {
-      margin-bottom: 0.75rem;
-      font-size: 1.25rem;
-    }
-    
-    .contact-option p {
-      margin-bottom: 1rem;
-      color: var(--text-light);
-      font-size: 0.95rem;
-    }
-    
-    .contact-link {
-      display: inline-block;
-      color: var(--accent);
-      font-weight: 500;
-      position: relative;
-    }
-    
-    .contact-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--accent);
-      transition: var(--transition);
-    }
-    
-    .contact-link:hover::after {
-      width: 100%;
-    }
-    
-    .contact-form-container {
-      background-color: var(--white);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .form-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: var(--primary);
-    }
-    
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    
-    .form-group {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-group.full {
-      grid-column: span 2;
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 1rem 0.75rem;
-      font-size: 1rem;
-      border: 1px solid rgba(0,0,0,0.1);
-      border-radius: var(--radius);
-      background-color: var(--form-bg);
-      transition: var(--transition);
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .form-control:focus {
-      border-color: var(--accent);
-      background-color: var(--white);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.15);
-    }
-    
-    .form-submit {
-      background-color: var(--accent);
-      color: var(--white);
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      width: 100%;
-      font-size: 1rem;
-      margin-top: 1rem;
-    }
-    
-    .form-submit:hover {
-      background-color: var(--accent-light);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .form-note {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    /* === Footer === */
-    .footer {
-      background-color: var(--primary-light);
-      padding: 3rem 0;
-      color: var(--white);
-      text-align: center;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: var(--white);
-      transition: var(--transition);
-    }
-
-    .social-link:hover {
-      background-color: var(--accent);
-      transform: translateY(-3px);
-      color: var(--white);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .footer-links a:hover {
-      color: var(--white);
-    }
-
-    .copyright {
-      opacity: 0.8;
-      font-size: 0.9rem;
-    }
-
-    /* === Responsive Design === */
-    @media (max-width: 992px) {
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      :root {
-        --section-space: 4rem;
-      }
-
-      .hero-container {
-        flex-direction: column-reverse;
-      }
-
-      .hero-image {
-        margin: 0 auto;
-      }
-
-      .hero-content {
-        text-align: center;
-      }
-
-      .hero-cta {
-        justify-content: center;
-      }
-
-      .stats-container {
-        flex-direction: column;
-      }
-
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .navbar-toggle {
-        display: block;
-      }
-
-      .navbar-menu {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background-color: var(--white);
-        flex-direction: column;
-        align-items: center;
-        box-shadow: var(--shadow);
-        transform: translateY(-150%);
-        opacity: 0;
-        pointer-events: none;
-        transition: var(--transition);
-      }
-
-      .navbar-menu.active {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-group.full {
-        grid-column: span 1;
-      }
-      
-      .experience-container {
-        margin: 2rem auto;
-      }
-      
-      .experience-item {
-        padding: 1rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .section {
-        padding: 3rem 0;
-      }
-
-      .hero-cta {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-      /* Enhanced About Section Styles */
-  .core-competencies {
-    margin-top: 2.5rem;
-  }
-  
-  .competencies-title {
-    margin-bottom: 1.5rem;
-    text-align: center;
-    font-size: 1.3rem;
-    position: relative;
-  }
-  
-  .competencies-title::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 3px;
-    background-color: var(--accent);
-    margin: 10px auto 0;
-  }
-  
-  .competencies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  
-  .competency-column {
-    background-color: var(--white);
-    padding: 1.5rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-  }
-  
-  .competency-column:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-  }
-  
-  .competency-category {
-    color: var(--accent);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 121, 107, 0.2);
-    font-size: 1.1rem;
-  }
-  
-  .competency-list {
-    list-style: none;
-  }
-  
-  .competency-list li {
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .competency-list li i {
-    color: var(--accent);
-    margin-right: 10px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .competencies-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  </style>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Header / Navigation -->
   <header class="header">
     <div class="container navbar">
       <a href="#top" class="navbar-brand">Justin Anderson</a>
-      <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation">
+      <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
         <i class="fas fa-bars"></i>
       </button>
       <ul class="navbar-menu" id="navMenu">
@@ -1159,7 +1347,7 @@
       </ul>
     </div>
   </header>
-  
+
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <div class="container hero-container">
@@ -1173,7 +1361,7 @@
           <a href="mailto:justinanderson1400@gmail.com" class="btn btn-primary">Contact Me</a>
           <a href="tel:2818913117" class="btn btn-secondary">Call Me</a>
         </div>
-        
+
         <div class="stats-container">
           <div class="stat-card">
             <div class="stat-number">42%</div>
@@ -1195,7 +1383,7 @@
       </div>
     </div>
   </section>
-  
+
 <!-- Enhanced About Me Section with Improved Skill List -->
 <section class="section section-alt" id="about">
   <div class="container">
@@ -1204,130 +1392,151 @@
       <p>
         I'm Justin Anderson, a marketing strategist with over 9 years of experience. I combine creative storytelling with data-driven insights to deliver campaigns that boost leads and conversions for businesses across Texas.
       </p>
-      
-      <!-- Enhanced core competencies list -->
-      <div class="core-competencies">
-        <h3 class="competencies-title">Core Competencies</h3>
-        <div class="competencies-grid">
-          <!-- Digital Strategy Column -->
-          <div class="competency-column">
-            <h4 class="competency-category">Digital Marketing</h4>
-            <ul class="competency-list">
-              <li><i class="fas fa-check"></i> Strategic Campaign Development</li>
-              <li><i class="fas fa-check"></i> SEO & Content Optimization</li>
-              <li><i class="fas fa-check"></i> Social Media Strategy</li>
-              <li><i class="fas fa-check"></i> PPC & Paid Media Management</li>
-              <li><i class="fas fa-check"></i> Email Marketing Automation</li>
-            </ul>
-          </div>
-          
-          <!-- Analytics Column -->
-          <div class="competency-column">
-            <h4 class="competency-category">Analytics & Performance</h4>
-            <ul class="competency-list">
-              <li><i class="fas fa-check"></i> Data-Driven Decision Making</li>
-              <li><i class="fas fa-check"></i> Conversion Rate Optimization</li>
-              <li><i class="fas fa-check"></i> Marketing ROI Analysis</li>
-              <li><i class="fas fa-check"></i> Performance Tracking</li>
-              <li><i class="fas fa-check"></i> Customer Journey Mapping</li>
-            </ul>
-          </div>
-          
-          <!-- Content & Creative Column -->
-          <div class="competency-column">
-            <h4 class="competency-category">Content & Creative</h4>
-            <ul class="competency-list">
-              <li><i class="fas fa-check"></i> Brand Development & Positioning</li>
-              <li><i class="fas fa-check"></i> Content Strategy & Creation</li>
-              <li><i class="fas fa-check"></i> Visual Storytelling</li>
-              <li><i class="fas fa-check"></i> Video Marketing Production</li>
-              <li><i class="fas fa-check"></i> Copywriting & Messaging</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+
+<!-- Enhanced core competencies list -->
+<div class="core-competencies">
+  <h3 class="competencies-title">Core Competencies</h3>
+  <div class="competencies-grid animate-fade-in">
+    <!-- Digital Strategy Column -->
+    <div class="competency-column">
+      <h4 class="competency-category">Digital Marketing</h4>
+      <ul class="competency-list">
+        <li><i class="fas fa-check"></i> Strategic Campaign Development</li>
+        <li><i class="fas fa-check"></i> SEO & Content Optimization</li>
+        <li><i class="fas fa-check"></i> Social Media Strategy</li>
+        <li><i class="fas fa-check"></i> PPC & Paid Media Management</li>
+        <li><i class="fas fa-check"></i> Email Marketing Automation</li>
+      </ul>
+    </div>
+
+    <!-- Analytics Column -->
+    <div class="competency-column">
+      <h4 class="competency-category">Analytics & Performance</h4>
+      <ul class="competency-list">
+        <li><i class="fas fa-check"></i> Data-Driven Decision Making</li>
+        <li><i class="fas fa-check"></i> Conversion Rate Optimization</li>
+        <li><i class="fas fa-check"></i> Marketing ROI Analysis</li>
+        <li><i class="fas fa-check"></i> Performance Tracking</li>
+        <li><i class="fas fa-check"></i> Customer Journey Mapping</li>
+      </ul>
+    </div>
+
+    <!-- Content & Creative Column -->
+    <div class="competency-column">
+      <h4 class="competency-category">Content & Creative</h4>
+      <ul class="competency-list">
+        <li><i class="fas fa-check"></i> Brand Development & Positioning</li>
+        <li><i class="fas fa-check"></i> Content Strategy & Creation</li>
+        <li><i class="fas fa-check"></i> Visual Storytelling</li>
+        <li><i class="fas fa-check"></i> Video Marketing Production</li>
+        <li><i class="fas fa-check"></i> Copywriting & Messaging</li>
+      </ul>
+    </div>
+
+    <!-- New Fourth Column: Marketing Technology & Automation -->
+    <div class="competency-column">
+      <h4 class="competency-category">Marketing Technology & Automation</h4>
+      <ul class="competency-list">
+        <li><i class="fas fa-check"></i> Marketing Automation Implementation</li>
+        <li><i class="fas fa-check"></i> CRM Strategy & Management</li>
+        <li><i class="fas fa-check"></i> Data Analytics Tools</li>
+        <li><i class="fas fa-check"></i> A/B Testing & Optimization</li>
+        <li><i class="fas fa-check"></i> Email Marketing Platforms</li>
+      </ul>
     </div>
   </div>
-</section>
-  
-  <!-- Work Experience Section -->
-  <section class="section" id="experience">
-    <div class="container experience-container">
-      <h2 class="section-title">Work Experience</h2>
-      
-      <!-- Allegiant Digital Marketing -->
-      <div class="experience-item" data-aos="fade-up">
-        <h3>Allegiant Digital Marketing - Dallas</h3>
-        <h4>Growth Marketing Specialist | November 2022 – March 28, 2025</h4>
-        <ul>
-          <li><strong>Spearheaded</strong> digital marketing strategies, achieving 35–45% increases in lead generation and conversion rates.</li>
-          <li>Managed client portfolios with an annual marketing spend of <strong>$1.2M</strong>.</li>
-          <li>Executed strategic SEO campaigns with technical improvements boosting online visibility.</li>
-          <li>Optimized Google Business Profiles to enhance Map Pack visibility, driving significant foot traffic.</li>
-          <li>Managed paid search campaigns with daily budgets up to <strong>$1,200</strong>, improving CPA by 12–25%.</li>
-          <li>Developed and executed multi-platform social media strategies, achieving 12% annual follower growth.</li>
-          <li>Managed social advertising budgets totaling <strong>$36,000 monthly</strong>, improving CPL by 18%.</li>
-          <li>Developed and managed email marketing programs, increasing open rates by 23% and conversion rates by 16%.</li>
-          <li>Created and optimized affiliate marketing programs, expanding revenue streams while maintaining profitable CAC.</li>
-          <li>Used advanced analytics tools to identify opportunities and present comprehensive reports to clients.</li>
-          <li>Designed marketing collateral ensuring brand consistency.</li>
-          <li>Managed website development projects, analyzing campaign performance and creating reports.</li>
-          <li>Collaborated with Allegiant's CEO to develop innovative marketing approaches showcased at the Dallas Small Business Expo.</li>
-        </ul>
-      </div>
+</div>
 
-      <!-- Performance Foodservice -->
-      <div class="experience-item" data-aos="fade-up">
-        <h3>Performance Foodservice - Houston</h4>
-        <h4>Marketing Specialist | May 2019 – September 2022</h4>
-        <ul>
-          <li>Launched Virtual Vendor Showcase Series, recognized as a best practice across all 34 divisions nationwide.</li>
-          <li>Managed <strong>$125K</strong> annual food show budget, growing attendance by 33% through strategic marketing campaigns.</li>
-          <li>Drove category sales growth: 23% increase in Roma Italian Imports, 17% in West Creek dairy, and 14% in Peak Fresh Produce.</li>
-          <li>Successfully transitioned the annual expo to The Woodlands Resort, resolving logistical challenges.</li>
-          <li>Generated 65+ qualified leads per sampling event with 28% conversion to new customers within 90 days.</li>
-          <li>Utilized Google Maps imagery for event layouts, improving planning efficiency.</li>
-          <li>Tracked and analyzed vendor growth data to inform sales and marketing strategies.</li>
-          <li>Contributed to 7% overall division growth and 15% increase in specialty category sales.</li>
-          <li>Oversaw lead capture and management activities at expos, generating several hundred leads.</li>
-          <li>Developed comprehensive product training programs for sales representatives, receiving a sales training award.</li>
-          <li>Directed setup teams and external contractors, ensuring efficient event execution.</li>
-          <li>Distributed weekly sales updates, tracking promotions and recognizing top performers.</li>
-        </ul>
-      </div>
-
-      <!-- Splash Kingdom Water Park -->
-      <div class="experience-item" data-aos="fade-up">
-        <h3>Splash Kingdom Water Park</h3>
-        <h4>Group Sales Manager & Marketing Director | March 2016 – February 2017</h4>
-        <ul>
-          <li>Managed marketing for Splash Kingdom, Gator Bayou Adventure Park, and Grand Texas properties.</li>
-          <li>Collaborated with various departments to ensure seamless event execution and consistent branding.</li>
-          <li>Developed and executed integrated marketing strategies for multiple brands.</li>
-          <li>Utilized marketing tools like Hootsuite, WordPress, Mailchimp, Google Ads, and more to achieve objectives.</li>
-          <li>Managed vendor relationships, securing favorable rates and maximizing ROI.</li>
-          <li>Provided exceptional customer service, handling inquiries and escalated issues with diplomacy.</li>
-          <li>Oversaw the work of an external marketing agency, ensuring brand consistency and managing media buying.</li>
-          <li>Managed a tight marketing budget, prioritizing spending and tracking expenses.</li>
-          <li>Led the hiring process for marketing staff, including writing job descriptions and making hiring decisions.</li>
-          <li>Provided sales training and support to staff, developing sales materials and coaching on sales techniques.</li>
-          <li>Conducted competitive analysis to inform marketing and pricing strategies.</li>
-          <li>Managed the Google Business Profile, ensuring accurate information and maximizing online visibility.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  
 <!-- Skills Section - Updated and Enhanced -->
 <section class="section section-alt" id="skills">
   <div class="container">
     <h2 class="section-title">Skills & Expertise</h2>
-    
+
     <!-- Skills Overview - Executive Summary -->
     <div class="skills-overview">
       <p>With over 8 years of management experience and extensive digital marketing expertise, I combine creative execution with data-driven strategy to deliver measurable results. My comprehensive technical skills and industry certifications enable me to implement integrated marketing solutions across multiple platforms.</p>
     </div>
-    
+    <section class="section" id="experience">
+  <div class="container experience-container">
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="experience-item" data-aos="fade-up">
+      <h3>Allegiant Digital Marketing - Dallas</h3>
+      <h4>Growth Marketing Specialist | November 2022 – March 28, 2025</h4>
+      <ul>
+        <li><strong>Spearheaded</strong> digital marketing strategies, achieving 35–45% increases in lead generation and conversion rates.</li>
+        <li>Managed client portfolios with an annual marketing spend of <strong>$1.2M</strong>.</li>
+        <li>Executed strategic SEO campaigns with technical improvements boosting online visibility.</li>
+        <li>Optimized Google Business Profiles to enhance Map Pack visibility, driving significant foot traffic.</li>
+        <li>Managed paid search campaigns with daily budgets up to <strong>$1,200</strong>, improving CPA by 12–25%.</li>
+        <li>Developed and executed multi-platform social media strategies, achieving 12% annual follower growth.</li>
+        <li>Managed social advertising budgets totaling <strong>$36,000 monthly</strong>, improving CPL by 18%.</li>
+        <li>Developed and managed email marketing programs, increasing open rates by 23% and conversion rates by 16%.</li>
+        <li>Created and optimized affiliate marketing programs, expanding revenue streams while maintaining profitable CAC.</li>
+        <li>Used advanced analytics tools to identify opportunities and present comprehensive reports to clients.</li>
+        <li>Designed marketing collateral ensuring brand consistency.</li>
+        <li>Managed website development projects, analyzing campaign performance and creating reports.</li>
+        <li>Collaborated with Allegiant's CEO to develop innovative marketing approaches showcased at the Dallas Small Business Expo.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item" data-aos="fade-up">
+      <h3>Performance Foodservice - Houston</h3>
+      <h4>Marketing Specialist | May 2019 – September 2022</h4>
+                  <ul class="card-list">
+                    <li>Launched Virtual Vendor Showcase Series, recognized as a best practice across all 34 divisions nationwide.</li>
+                    <li>Managed <span class="bold">$125K</span> annual food show budget, growing attendance by 33% through strategic marketing campaigns.</li>
+                    <li>Drove category sales growth: 23% increase in Roma Italian Imports, 17% in West Creek dairy, and 14% in Peak Fresh Produce.</li>
+                    <li>Successfully transitioned the annual expo to The Woodlands Resort, resolving logistical challenges.</li>
+                    <li>Generated 65+ qualified leads per sampling event with 28% conversion to new customers within 90 days.</li>
+                    <li>Utilized Google Maps imagery for event layouts, improving planning efficiency.</li>
+                    <li>Tracked and analyzed vendor growth data to inform sales and marketing strategies.</li>
+                    <li>Contributed to 7% overall division growth and 15% increase in specialty category sales.</li>
+                    <li>Oversaw lead capture and management activities at expos, generating several hundred leads.</li>
+                    <li>Developed comprehensive product training programs for sales representatives, receiving a sales training award.</li>
+                    <li>Directed setup teams and external contractors, ensuring efficient event execution.</li>
+                    <li>Distributed weekly sales updates, tracking promotions and recognizing top performers.</li>
+                  </ul>
+    </div>
+  <div class="experience-item" data-aos="fade-up">
+      <h3>Big Rivers Water Park</h3>
+      <h4>Group Sales Manager & Marketing Director | February 2017 - April 2019</h4>
+                       <ul class="card-list">
+                    <li>Managed all aspects of marketing for Big Rivers Waterpark, Gator Bayou Adventure Park, and the associated Grand Texas properties, encompassing social media, advertising, public relations, event planning, sponsorships, website management, email marketing, graphic design, customer service, crisis communication, competitive analysis, and influencer marketing. </li>
+                    <li>Collaborated with all departments (operations, food service, aquatics, management, and sales) to ensure seamless event execution, consistent branding, and a positive guest experience.</li>
+                    <li>Developed and executed integrated marketing strategies for multiple brands (Big Rivers Waterpark, Gator Bayou Adventure Park, Grand Texas), ensuring consistent messaging and maximizing reach. </li>
+                    <li>Utilized a wide range of marketing tools and technologies, including Hootsuite, WordPress, Mailchimp, Google Ads, Facebook Ads, Canva, Adobe Creative Suite, and Ahrefs, to achieve marketing objectives. </li>
+                    <li>Managed vendor relationships, including negotiating with media groups, advertising agencies, promotional partners, and local hotels, securing favorable rates and maximizing ROI. </li>
+                    <li>Provided exceptional customer service, handling inquiries, complaints, and escalated issues, demonstrating diplomacy and problem-solving under pressure. </li>
+                    <li>Oversaw the work of an external marketing agency, relaying the owner's vision, ensuring brand consistency, and managing media buying activities. </li>
+                    <li>Managed a tight marketing budget, prioritizing spending, identifying cost-effective solutions, and tracking expenses. </li>
+                    <li>Led the full hiring process for marketing staff, including writing job descriptions, screening resumes, interviewing candidates, and making hiring decisions. </li>
+                    <li>Provided sales training and support to staff, including developing sales materials, coaching on sales techniques, and providing event-specific instructions. </li>
+                    <li>Conducted in-depth competitive analysis, including gathering pricing and package information from competitors, to inform marketing and pricing strategies. </li>
+                    <li>Managed the Google Business Profile for the waterpark, ensuring accurate information and maximizing online visibility. </li>
+                    <li>Trained employees on sales, customer service, and event-specific procedures, ensuring consistent service quality and operational efficiency. </li>
+                  </ul>
+    </div>
+    <div class="experience-item" data-aos="fade-up">
+      <h3>Splash Kingdom Water Park</h3>
+      <h4>Group Sales Manager & Marketing Director | March 2016 – February 2017</h4>
+                       <ul class="card-list">
+                    <li>Managed marketing for Splash Kingdom, Gator Bayou Adventure Park, and Grand Texas properties.</li>
+                    <li>Collaborated with various departments to ensure seamless event execution and consistent branding.</li>
+                    <li>Developed and executed integrated marketing strategies for multiple brands.</li>
+                    <li>Utilized marketing tools like Hootsuite, WordPress, Mailchimp, Google Ads, and more to achieve objectives.</li>
+                    <li>Managed vendor relationships, securing favorable rates and maximizing ROI.</li>
+                    <li>Provided exceptional customer service, handling inquiries and escalated issues with diplomacy.</li>
+                    <li>Oversaw the work of an external marketing agency, ensuring brand consistency and managing media buying.</li>
+                    <li>Managed a tight marketing budget, prioritizing spending and tracking expenses.</li>
+                    <li>Led the hiring process for marketing staff, including writing job descriptions and making hiring decisions.</li>
+                    <li>Provided sales training and support to staff, developing sales materials and coaching on sales techniques.</li>
+                    <li>Conducted competitive analysis to inform marketing and pricing strategies.</li>
+                    <li>Managed the Google Business Profile, ensuring accurate information and maximizing online visibility.</li>
+                  </ul>
+    </div>
+  </div>
+</section>
     <div class="skills-container">
       <!-- Digital Marketing Skills -->
       <div class="skill-category">
@@ -1339,6 +1548,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="88"></div>
+            <div class="skill-tooltip">88%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
@@ -1348,6 +1558,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="92"></div>
+            <div class="skill-tooltip">92%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
@@ -1357,6 +1568,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="89"></div>
+            <div class="skill-tooltip">89%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
@@ -1366,6 +1578,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="83"></div>
+            <div class="skill-tooltip">83%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="400">
@@ -1375,10 +1588,11 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="87"></div>
+            <div class="skill-tooltip">87%</div>
           </div>
         </div>
       </div>
-      
+
       <!-- Analytics & Data Skills -->
       <div class="skill-category">
         <h3 class="skill-category-title">Analytics & Data</h3>
@@ -1389,6 +1603,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="86"></div>
+            <div class="skill-tooltip">86%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
@@ -1398,6 +1613,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="90"></div>
+            <div class="skill-tooltip">90%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
@@ -1407,6 +1623,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="87"></div>
+            <div class="skill-tooltip">87%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
@@ -1416,10 +1633,11 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="85"></div>
+            <div class="skill-tooltip">85%</div>
           </div>
         </div>
       </div>
-      
+
       <!-- Creative & Content Skills -->
       <div class="skill-category">
         <h3 class="skill-category-title">Creative & Content</h3>
@@ -1430,6 +1648,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="91"></div>
+            <div class="skill-tooltip">91%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
@@ -1439,6 +1658,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="90"></div>
+            <div class="skill-tooltip">90%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
@@ -1448,6 +1668,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="83"></div>
+            <div class="skill-tooltip">83%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
@@ -1457,6 +1678,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="92"></div>
+            <div class="skill-tooltip">92%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="400">
@@ -1466,10 +1688,11 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="89"></div>
+            <div class="skill-tooltip">89%</div>
           </div>
         </div>
       </div>
-      
+
       <!-- Tech & MarTech Skills -->
       <div class="skill-category">
         <h3 class="skill-category-title">Technology & MarTech</h3>
@@ -1480,6 +1703,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="88"></div>
+            <div class="skill-tooltip">88%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
@@ -1489,6 +1713,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="85"></div>
+            <div class="skill-tooltip">85%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
@@ -1498,6 +1723,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="84"></div>
+            <div class="skill-tooltip">84%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
@@ -1507,6 +1733,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="88"></div>
+            <div class="skill-tooltip">88%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="400">
@@ -1516,10 +1743,11 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="86"></div>
+            <div class="skill-tooltip">86%</div>
           </div>
         </div>
       </div>
-      
+
       <!-- Business & Management Skills -->
       <div class="skill-category">
         <h3 class="skill-category-title">Business & Management</h3>
@@ -1530,6 +1758,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="92"></div>
+            <div class="skill-tooltip">92%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
@@ -1539,6 +1768,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="89"></div>
+            <div class="skill-tooltip">89%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
@@ -1548,6 +1778,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="90"></div>
+            <div class="skill-tooltip">90%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="300">
@@ -1557,6 +1788,7 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="94"></div>
+            <div class="skill-tooltip">94%</div>
           </div>
         </div>
         <div class="skill-item" data-aos="fade-right" data-aos-delay="400">
@@ -1566,11 +1798,12 @@
           </div>
           <div class="skill-bar">
             <div class="skill-progress" data-width="88"></div>
+            <div class="skill-tooltip">88%</div>
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Additional Professional Skills -->
     <div class="additional-skills">
       <h3 class="additional-skills-title">Additional Professional Skills</h3>
@@ -1596,58 +1829,70 @@
         <span class="skill-tag">Microsoft Excel</span>
       </div>
     </div>
-    
-    <!-- Technical Competencies -->
-    <div class="technical-skills">
-      <h3 class="technical-skills-title">Technical Competencies</h3>
-      <div class="tech-skills-grid">
-        <div class="tech-category">
-          <h4 class="tech-category-title">Software & Tools</h4>
-          <ul class="tech-list">
-            <li><i class="fas fa-check-circle"></i> Adobe Creative Suite</li>
-            <li><i class="fas fa-check-circle"></i> HubSpot</li>
-            <li><i class="fas fa-check-circle"></i> Google Analytics</li>
-            <li><i class="fas fa-check-circle"></i> Google Tag Manager</li>
-            <li><i class="fas fa-check-circle"></i> Hootsuite</li>
-            <li><i class="fas fa-check-circle"></i> MailChimp</li>
-            <li><i class="fas fa-check-circle"></i> Constant Contact</li>
-            <li><i class="fas fa-check-circle"></i> Canva</li>
-            <li><i class="fas fa-check-circle"></i> Buffer</li>
-          </ul>
-        </div>
-        <div class="tech-category">
-          <h4 class="tech-category-title">Web Development</h4>
-          <ul class="tech-list">
-            <li><i class="fas fa-check-circle"></i> HTML</li>
-            <li><i class="fas fa-check-circle"></i> CSS</li>
-            <li><i class="fas fa-check-circle"></i> JavaScript</li>
-            <li><i class="fas fa-check-circle"></i> WordPress</li>
-            <li><i class="fas fa-check-circle"></i> Shopify</li>
-            <li><i class="fas fa-check-circle"></i> Joomla</li>
-            <li><i class="fas fa-check-circle"></i> React</li>
-            <li><i class="fas fa-check-circle"></i> Python</li>
-            <li><i class="fas fa-check-circle"></i> APIs</li>
-          </ul>
-        </div>
-        <div class="tech-category">
-          <h4 class="tech-category-title">Analytics & Reporting</h4>
-          <ul class="tech-list">
-            <li><i class="fas fa-check-circle"></i> Data Analysis</li>
-            <li><i class="fas fa-check-circle"></i> Performance Marketing</li>
-            <li><i class="fas fa-check-circle"></i> Statistical Analysis</li>
-            <li><i class="fas fa-check-circle"></i> Web Analytics</li>
-            <li><i class="fas fa-check-circle"></i> Social Media Analysis</li>
-            <li><i class="fas fa-check-circle"></i> Content Analysis</li>
-            <li><i class="fas fa-check-circle"></i> Conversion Tracking</li>
-            <li><i class="fas fa-check-circle"></i> ROI Measurement</li>
-            <li><i class="fas fa-check-circle"></i> Forecasting</li>
-          </ul>
-        </div>
-      </div>
+
+   <!-- Technical Competencies -->
+<div class="technical-skills">
+  <h3 class="technical-skills-title">Technical Competencies</h3>
+  <div class="tech-skills-grid">
+    <div class="tech-category">
+      <h4 class="tech-category-title">Software & Tools</h4>
+      <ul class="tech-list">
+        <li><i class="fas fa-check-circle"></i> Adobe Creative Suite</li>
+        <li><i class="fas fa-check-circle"></i> HubSpot</li>
+        <li><i class="fas fa-check-circle"></i> Google Analytics</li>
+        <li><i class="fas fa-check-circle"></i> Google Tag Manager</li>
+        <li><i class="fas fa-check-circle"></i> Hootsuite</li>
+        <li><i class="fas fa-check-circle"></i> MailChimp</li>
+        <li><i class="fas fa-check-circle"></i> Constant Contact</li>
+        <li><i class="fas fa-check-circle"></i> Canva</li>
+        <li><i class="fas fa-check-circle"></i> Buffer</li>
+      </ul>
+    </div>
+    <div class="tech-category">
+      <h4 class="tech-category-title">Web Development</h4>
+      <ul class="tech-list">
+        <li><i class="fas fa-check-circle"></i> HTML</li>
+        <li><i class="fas fa-check-circle"></i> CSS</li>
+        <li><i class="fas fa-check-circle"></i> JavaScript</li>
+        <li><i class="fas fa-check-circle"></i> WordPress</li>
+        <li><i class="fas fa-check-circle"></i> Shopify</li>
+        <li><i class="fas fa-check-circle"></i> Joomla</li>
+        <li><i class="fas fa-check-circle"></i> React</li>
+        <li><i class="fas fa-check-circle"></i> Python</li>
+        <li><i class="fas fa-check-circle"></i> APIs</li>
+      </ul>
+    </div>
+    <div class="tech-category">
+      <h4 class="tech-category-title">Analytics & Reporting</h4>
+      <ul class="tech-list">
+        <li><i class="fas fa-check-circle"></i> Data Analysis</li>
+        <li><i class="fas fa-check-circle"></i> Performance Marketing</li>
+        <li><i class="fas fa-check-circle"></i> Statistical Analysis</li>
+        <li><i class="fas fa-check-circle"></i> Web Analytics</li>
+        <li><i class="fas fa-check-circle"></i> Social Media Analysis</li>
+        <li><i class="fas fa-check-circle"></i> Content Analysis</li>
+        <li><i class="fas fa-check-circle"></i> Conversion Tracking</li>
+        <li><i class="fas fa-check-circle"></i> ROI Measurement</li>
+        <li><i class="fas fa-check-circle"></i> Forecasting</li>
+      </ul>
+    </div>
+    <div class="tech-category">
+      <h4 class="tech-category-title">Cloud Technologies</h4>
+      <ul class="tech-list">
+        <li><i class="fas fa-check-circle"></i> AWS</li>
+        <li><i class="fas fa-check-circle"></i> Azure</li>
+        <li><i class="fas fa-check-circle"></i> Google Cloud</li>
+        <li><i class="fas fa-check-circle"></i> Docker</li>
+        <li><i class="fas fa-check-circle"></i> Kubernetes</li>
+        <li><i class="fas fa-check-circle"></i> Terraform</li>
+        <li><i class="fas fa-check-circle"></i> Jenkins</li>
+        <li><i class="fas fa-check-circle"></i> Ansible</li>
+        <li><i class="fas fa-check-circle"></i> Prometheus</li>
+      </ul>
     </div>
   </div>
-</section>
-  
+</div>
+
   <!-- Portfolio Section -->
   <section class="section" id="portfolio">
     <div class="container">
@@ -1660,6 +1905,9 @@
       <div class="portfolio-grid">
         <!-- Portfolio Item 1: Texas Tamale House Cultural Heritage Campaign Research -->
         <div class="portfolio-item">
+          <div class="portfolio-thumbnail">
+            <i class="fas fa-search"></i> <!-- Placeholder icon -->
+          </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">Texas Tamale House Cultural Heritage Campaign Research</h3>
             <p class="portfolio-desc">
@@ -1671,6 +1919,9 @@
 
         <!-- Portfolio Item 2: A-Town Market Rebrand -->
         <div class="portfolio-item">
+          <div class="portfolio-thumbnail">
+            <i class="fas fa-store"></i> <!-- Placeholder icon -->
+          </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">A-Town Market Rebrand</h3>
             <p class="portfolio-desc">
@@ -1682,6 +1933,9 @@
 
         <!-- Portfolio Item 3: DFW Regional Tourism Initiative -->
         <div class="portfolio-item">
+          <div class="portfolio-thumbnail">
+            <i class="fas fa-map-marked-alt"></i> <!-- Placeholder icon -->
+          </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">DFW Regional Tourism Initiative</h3>
             <p class="portfolio-desc">
@@ -1693,6 +1947,9 @@
 
         <!-- Portfolio Item 4: Tamale House Heritage Campaign -->
         <div class="portfolio-item">
+          <div class="portfolio-thumbnail">
+            <i class="fas fa-history"></i> <!-- Placeholder icon -->
+          </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">Tamale House Heritage Campaign</h3>
             <p class="portfolio-desc">
@@ -1824,7 +2081,7 @@
           I’m eager to discuss your marketing challenges and opportunities. Whether you prefer a quick email, a phone call, or exploring potential projects, I’m here to help.
         </p>
       </div>
-      
+
       <!-- Contact Options -->
       <div class="contact-options">
         <div class="contact-option" data-aos="fade-up">
@@ -1835,7 +2092,7 @@
           <p>Reach out for project inquiries or marketing insights.</p>
           <a href="mailto:justinanderson1400@gmail.com" class="contact-link">justinanderson1400@gmail.com</a>
         </div>
-        
+
         <div class="contact-option" data-aos="fade-up" data-aos-delay="100">
           <div class="contact-icon">
             <i class="fas fa-phone-alt"></i>
@@ -1845,7 +2102,7 @@
           <a href="tel:2818913117" class="contact-link">281-891-3117</a>
         </div>
       </div>
-      
+
       <!-- Employment Contact Form -->
       <div class="contact-form-container">
         <h3 class="form-title">Get in Touch</h3>
@@ -1855,6 +2112,7 @@
               <input
                 type="text"
                 class="form-control"
+                id="name"
                 placeholder="Your Full Name"
                 required
               />
@@ -1863,6 +2121,7 @@
               <input
                 type="email"
                 class="form-control"
+                id="email"
                 placeholder="Your Email Address"
                 required
               />
@@ -1871,6 +2130,7 @@
               <input
                 type="text"
                 class="form-control"
+                id="subject"
                 placeholder="Subject (e.g., Employment Inquiry)"
                 required
               />
@@ -1879,12 +2139,15 @@
               <textarea
                 rows="5"
                 class="form-control"
+                id="message"
                 placeholder="Your Message (Include details like role, experience, and skills)"
                 required
               ></textarea>
             </div>
           </div>
           <button type="submit" class="form-submit">Send Message</button>
+          <div class="form-message success" id="formSuccess">Thank you! Your message has been sent.</div>
+          <div class="form-message error" id="formError">Oops! Something went wrong. Please try again.</div>
           <p class="form-note">
             I typically respond within 1-2 business days. Your information will remain confidential.
           </p>
@@ -1918,7 +2181,7 @@
         <a href="#contact">Contact</a>
       </div>
       <p class="copyright">
-        &copy; <span id="year"></span> Justin Anderson - Strategic Marketing
+        © <span id="year"></span> Justin Anderson - Strategic Marketing
       </p>
     </div>
   </footer>
@@ -1926,58 +2189,97 @@
   <!-- Scripts -->
   <!-- AOS Animation Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  
+
   <!-- Main script -->
-  <script>
-    // Initialize AOS animation library
-    document.addEventListener('DOMContentLoaded', function() {
-      AOS.init({
-        duration: 800,
-        once: true
-      });
-      
-      // Animate skill bars
-      const skillBars = document.querySelectorAll('.skill-progress');
+  <script src="script.js"></script>
+</body>
+</html>
+
+<script>// script.js
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize AOS animation library
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+
+  // Animate skill bars and add tooltips
+  const skillBars = document.querySelectorAll('.skill-progress');
+  skillBars.forEach(bar => {
+    const width = bar.getAttribute('data-width');
+    bar.style.width = width + '%';
+
+    // Create tooltip dynamically (example, you can enhance this)
+    const tooltip = bar.nextElementSibling; // Assuming tooltip is immediately after progress bar
+    if (tooltip) {
+      tooltip.textContent = width + '%'; // Set tooltip text to the skill percentage
+    }
+  });
+
+  // Mobile Navigation Toggle
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+    navToggle.setAttribute('aria-expanded', !expanded);
+    navMenu.classList.toggle('active');
+  });
+
+  // Close mobile menu when a link is clicked
+  document.querySelectorAll('.navbar-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // Update Footer Year
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  // Form Submission - For employer inquiries
+  const contactForm = document.getElementById('contactForm');
+  const formSuccess = document.getElementById('formSuccess');
+  const formError = document.getElementById('formError');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Basic form data (for demonstration - you'd usually send this to a server)
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      console.log('Form Data:', formData); // Log form data to console (for demonstration)
+
+      // Simulate form submission success (replace with actual AJAX/Fetch request to your server)
       setTimeout(() => {
-        skillBars.forEach(bar => {
-          const width = bar.getAttribute('data-width');
-          bar.style.width = width + '%';
-        });
-      }, 500);
-      
-      // Mobile Navigation Toggle
-      const navToggle = document.getElementById('navToggle');
-      const navMenu = document.getElementById('navMenu');
-      
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-      });
-      
-      // Close mobile menu when a link is clicked
-      document.querySelectorAll('.navbar-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          navMenu.classList.remove('active');
-        });
-      });
-      
-      // Update Footer Year
-      document.getElementById('year').textContent = new Date().getFullYear();
-      
-      // Form Submission - For employer inquiries
-      const contactForm = document.getElementById('contactForm');
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        console.log('Form submitted!');
+        formSuccess.style.display = 'block';
+        formError.style.display = 'none'; // Hide error message if it was previously shown
+        contactForm.reset();
+
         if (typeof gtag === 'function') {
           gtag('event', 'form_submission', {
             'event_category': 'engagement',
             'event_label': 'contact_form'
           });
         }
-        alert('Thank you for reaching out! I will get back to you shortly.');
-        contactForm.reset();
-      });
+      }, 500); // Simulate network delay
+
+      // In case of error, you would handle the error response from your server and show formError
+      // Example error scenario (for demonstration):
+      // setTimeout(() => {
+      //   formError.style.display = 'block';
+      //   formSuccess.style.display = 'none'; // Hide success message if shown
+      // }, 2000); // Simulate error after 2 seconds
     });
-  </script>
-</body>
-</html>
+  }
+});</script>
