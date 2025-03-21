@@ -1068,6 +1068,75 @@
         grid-template-columns: 1fr;
       }
     }
+      /* Enhanced About Section Styles */
+  .core-competencies {
+    margin-top: 2.5rem;
+  }
+  
+  .competencies-title {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.3rem;
+    position: relative;
+  }
+  
+  .competencies-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+    margin: 10px auto 0;
+  }
+  
+  .competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .competency-column {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+  
+  .competency-column:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .competency-category {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 121, 107, 0.2);
+    font-size: 1.1rem;
+  }
+  
+  .competency-list {
+    list-style: none;
+  }
+  
+  .competency-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .competency-list li i {
+    color: var(--accent);
+    margin-right: 10px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .competencies-grid {
+      grid-template-columns: 1fr;
+    }
+  }
   </style>
 </head>
 <body>
@@ -1127,26 +1196,59 @@
     </div>
   </section>
   
-  <!-- About Section -->
-  <section class="section section-alt" id="about">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        <p>
-          I'm Justin Anderson, a marketing strategist with over 9 years of experience. I combine creative storytelling with data-driven insights to deliver campaigns that boost leads and conversions for businesses across Texas.
-        </p>
-        <ul class="skill-list">
-          <li>Digital Strategy & Execution</li>
-          <li>Comprehensive Campaign Management</li>
-          <li>SEO & Content Optimization</li>
-          <li>Social Media & Email Marketing</li>
-          <li>Data Analytics & Reporting</li>
-          <li>Brand Storytelling</li>
-          <li>Local Business Marketing</li>
-        </ul>
+<!-- Enhanced About Me Section with Improved Skill List -->
+<section class="section section-alt" id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <p>
+        I'm Justin Anderson, a marketing strategist with over 9 years of experience. I combine creative storytelling with data-driven insights to deliver campaigns that boost leads and conversions for businesses across Texas.
+      </p>
+      
+      <!-- Enhanced core competencies list -->
+      <div class="core-competencies">
+        <h3 class="competencies-title">Core Competencies</h3>
+        <div class="competencies-grid">
+          <!-- Digital Strategy Column -->
+          <div class="competency-column">
+            <h4 class="competency-category">Digital Marketing</h4>
+            <ul class="competency-list">
+              <li><i class="fas fa-check"></i> Strategic Campaign Development</li>
+              <li><i class="fas fa-check"></i> SEO & Content Optimization</li>
+              <li><i class="fas fa-check"></i> Social Media Strategy</li>
+              <li><i class="fas fa-check"></i> PPC & Paid Media Management</li>
+              <li><i class="fas fa-check"></i> Email Marketing Automation</li>
+            </ul>
+          </div>
+          
+          <!-- Analytics Column -->
+          <div class="competency-column">
+            <h4 class="competency-category">Analytics & Performance</h4>
+            <ul class="competency-list">
+              <li><i class="fas fa-check"></i> Data-Driven Decision Making</li>
+              <li><i class="fas fa-check"></i> Conversion Rate Optimization</li>
+              <li><i class="fas fa-check"></i> Marketing ROI Analysis</li>
+              <li><i class="fas fa-check"></i> Performance Tracking</li>
+              <li><i class="fas fa-check"></i> Customer Journey Mapping</li>
+            </ul>
+          </div>
+          
+          <!-- Content & Creative Column -->
+          <div class="competency-column">
+            <h4 class="competency-category">Content & Creative</h4>
+            <ul class="competency-list">
+              <li><i class="fas fa-check"></i> Brand Development & Positioning</li>
+              <li><i class="fas fa-check"></i> Content Strategy & Creation</li>
+              <li><i class="fas fa-check"></i> Visual Storytelling</li>
+              <li><i class="fas fa-check"></i> Video Marketing Production</li>
+              <li><i class="fas fa-check"></i> Copywriting & Messaging</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
   
   <!-- Work Experience Section -->
   <section class="section" id="experience">
