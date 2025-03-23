@@ -10,7 +10,7 @@
     --text-dark: #212529; /* Use primary for text on light backgrounds */
     --text-light: #f8f9fa; /* Use light gray for text on dark backgrounds */
     --font-family-sans: 'Inter', sans-serif; /* Modern, readable sans-serif */
-    --font-family-serif: 'DM Serif Display', serif; /* Elegant serif for headings (optional) */
+    --font-family-serif: 'DM Serif Display', serif; /* Elegant serif for headings */
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 600;
@@ -18,8 +18,8 @@
     --radius: 8px; /* Slightly rounded corners */
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-    --section-space: 5rem;
-    --container-padding: 1rem; /* Padding for mobile */
+    --section-space: 6rem; /* Increased section spacing */
+    --container-padding: 1.5rem; /* Increased padding */
 }
 
 /* === Reset & Base Styles === */
@@ -65,20 +65,20 @@ h1, h2, h3, h4 {
     margin-bottom: 1rem;
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3rem); } /* Responsive font sizes */
-h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
-h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
-h4 { font-size: clamp(1rem, 2vw, 1.4rem); }
+h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); } /* More aggressive responsive sizing */
+h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+h3 { font-size: clamp(1.4rem, 4vw, 2rem); } /* Adjusted h3 size */
+h4 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); } /* Adjusted h4 size */
 
 p {
   margin-bottom: 1.2rem;
-  font-size: 1.05rem;
-  color: var(--secondary); /* Slightly lighter text for paragraphs */
+  font-size: 1.1rem; /* Slightly larger body text */
+  color: var(--secondary);
 }
 
 .container {
   width: 100%;
-  max-width: 1200px; /* Maximum width for larger screens */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
@@ -94,7 +94,7 @@ p {
 
 .section-title {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem; /* Increased margin */
   position: relative;
   font-weight: var(--font-weight-bold);
 }
@@ -102,7 +102,7 @@ p {
 .section-title::after {
   content: "";
   display: block;
-  width: 50px;
+  width: 60px; /* Slightly wider line */
   height: 3px;
   background-color: var(--accent);
   margin: 15px auto 0;
@@ -117,7 +117,7 @@ p {
   transition: var(--transition);
   text-align: center;
   font-size: 1rem;
-  border: none; /* Remove default borders */
+  border: none;
 }
 
 .btn-primary {
@@ -152,7 +152,7 @@ p {
 .navbar-brand {
     font-family: var(--font-family-serif);
     font-weight: var(--font-weight-bold);
-    font-size: 1.5rem;
+    font-size: 1.6rem; /* Slightly larger */
     color: var(--primary);
 }
 
@@ -297,8 +297,8 @@ p {
 /* === Skills Section (Grid Layout) === */
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted for smaller screens */
+  gap: 1rem; /* Reduced gap */
   margin-top: 2rem;
 }
 
@@ -308,7 +308,7 @@ p {
 
 .skill-category-title {
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reduced margin */
   position: relative;
   padding-bottom: 0.5rem;
   color: var(--text-dark);
@@ -316,16 +316,18 @@ p {
 }
 
 .skill-item {
-    margin-bottom: 1.5rem;
-    /* Remove skill bars for now.  We'll decide later if/how to include them. */
+    margin-bottom: 1rem; /* Reduced margin */
 }
+
 .skill-info{
     display: flex;
     justify-content: space-between;
 }
+
 .skill-name{
     font-weight: var(--font-weight-medium);
 }
+
 .skill-percentage{
     color: var(--accent);
     font-weight: 500;
@@ -346,6 +348,7 @@ p {
     border-radius: var(--radius);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .experience-item:hover{
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
@@ -353,7 +356,9 @@ p {
 
 .experience-item h3 {
     margin-bottom: 0.5rem;
+    white-space: nowrap; /* Prevent title wrapping */
 }
+
 .experience-item h4{
     margin-bottom: 0.5rem;
     font-weight: var(--font-weight-medium);
@@ -371,6 +376,13 @@ p {
   margin-bottom: 0.75rem;
   font-size: 1rem; /* Consistent font size */
     color: var(--secondary);
+}
+
+/* Two-column layout for larger screens */
+@media (min-width: 768px) {
+    .experience-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+    }
 }
 /* === Core Competencies Section === */
 
