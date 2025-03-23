@@ -3,10 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
 
-    if (navToggle && navMenu) { // Check if elements exist
+    if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-            navToggle.setAttribute('aria-expanded', !expanded);
             navMenu.classList.toggle('active');
         });
 
@@ -14,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.navbar-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', false);
             });
         });
     }
@@ -27,29 +24,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form Submission (Placeholder - Requires Server-Side Handling)
     const contactForm = document.getElementById('contactForm');
-    if (contactForm) { // Check if the form exists
+    if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Basic form data (for demonstration - you'd usually send this to a server)
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-
-            console.log('Form Data:', formData); // Log form data
-
-            // Simulate form submission success (replace with actual AJAX/Fetch request)
+            // Simulate form submission success
             const formSuccess = document.getElementById('formSuccess');
             const formError = document.getElementById('formError');
 
-            if (formSuccess && formError) { // Check if elements exist
+            if (formSuccess && formError) {
                 formSuccess.style.display = 'block';
                 formError.style.display = 'none';
-                                contactForm.reset();
+                contactForm.reset();
             }
+
+            // In a real application, you would send the form data to a server here.
         });
     }
 });
