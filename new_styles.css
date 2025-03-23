@@ -18,8 +18,8 @@
     --radius: 8px; /* Slightly rounded corners */
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-    --section-space: 6rem; /* Increased section spacing */
-    --container-padding: 1.5rem; /* Increased padding */
+    --section-space: 6rem;
+    --container-padding: 1.5rem;
 }
 
 /* === Reset & Base Styles === */
@@ -65,14 +65,14 @@ h1, h2, h3, h4 {
     margin-bottom: 1rem;
 }
 
-h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); } /* More aggressive responsive sizing */
+h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
 h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
-h3 { font-size: clamp(1.4rem, 4vw, 2rem); } /* Adjusted h3 size */
-h4 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); } /* Adjusted h4 size */
+h3 { font-size: clamp(1.4rem, 4vw, 2rem); }
+h4 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); }
 
 p {
   margin-bottom: 1.2rem;
-  font-size: 1.1rem; /* Slightly larger body text */
+  font-size: 1.1rem;
   color: var(--secondary);
 }
 
@@ -94,7 +94,7 @@ p {
 
 .section-title {
   text-align: center;
-  margin-bottom: 4rem; /* Increased margin */
+  margin-bottom: 4rem;
   position: relative;
   font-weight: var(--font-weight-bold);
 }
@@ -102,7 +102,7 @@ p {
 .section-title::after {
   content: "";
   display: block;
-  width: 60px; /* Slightly wider line */
+  width: 60px;
   height: 3px;
   background-color: var(--accent);
   margin: 15px auto 0;
@@ -152,8 +152,9 @@ p {
 .navbar-brand {
     font-family: var(--font-family-serif);
     font-weight: var(--font-weight-bold);
-    font-size: 1.6rem; /* Slightly larger */
+    font-size: 1.6rem;
     color: var(--primary);
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .navbar-menu {
@@ -297,8 +298,8 @@ p {
 /* === Skills Section (Grid Layout) === */
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted for smaller screens */
-  gap: 1rem; /* Reduced gap */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
   margin-top: 2rem;
 }
 
@@ -308,7 +309,7 @@ p {
 
 .skill-category-title {
   font-size: 1.2rem;
-  margin-bottom: 1rem; /* Reduced margin */
+  margin-bottom: 1rem;
   position: relative;
   padding-bottom: 0.5rem;
   color: var(--text-dark);
@@ -316,7 +317,7 @@ p {
 }
 
 .skill-item {
-    margin-bottom: 1rem; /* Reduced margin */
+    margin-bottom: 1rem;
 }
 
 .skill-info{
@@ -336,7 +337,7 @@ p {
 /* === Work Experience Section (Vertical Layout) === */
 .experience-container {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
     gap: 2rem;
 }
 
@@ -354,9 +355,12 @@ p {
     box-shadow: var(--shadow-lg);
 }
 
+/* Use flexbox to prevent wrapping and adjust sizing */
 .experience-item h3 {
     margin-bottom: 0.5rem;
-    white-space: nowrap; /* Prevent title wrapping */
+    display: flex;
+    align-items: center; /* Vertically center the title */
+    font-size: clamp(1.2rem, 2.8vw, 1.6rem); /* Responsive font size, but not too small */
 }
 
 .experience-item h4{
@@ -368,13 +372,13 @@ p {
 
 .experience-item ul {
   list-style: disc;
-  margin-left: 1.5rem; /* Indent the list */
-  margin-bottom: 0; /* Remove bottom margin */
+  margin-left: 1.5rem;
+  margin-bottom: 0;
 }
 
 .experience-item ul li {
   margin-bottom: 0.75rem;
-  font-size: 1rem; /* Consistent font size */
+  font-size: 1rem;
     color: var(--secondary);
 }
 
@@ -521,6 +525,8 @@ p {
     position: relative;
     overflow: hidden;
     border-top: 3px solid var(--accent);
+     display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack content vertically */
 }
 
 .service-card:hover {
@@ -546,6 +552,7 @@ p {
 }
 .service-title {
   margin-bottom: 1rem;
+   flex-grow: 1;
 }
 
 .service-desc {
