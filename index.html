@@ -1,573 +1,1170 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Justin Anderson - Marketing Strategist | Data-driven campaigns for tourism, food service, and retail businesses in Texas">
-    <meta name="keywords" content="Justin Anderson, marketing portfolio, Houston marketing, tourism marketing, food service marketing, ROI campaigns">
-    <title>Justin Anderson | Marketing Strategist | Texas</title>
+/* === Core Variables === */
+:root {
+    --primary: #212529;
+    --secondary: #343a40;
+    --accent: #007bff;
+    --accent-light: #b3d9ff;
+    /* Lighter, less saturated blue */
+    --background: #f8f9fa;
+    --background-alt: #fff;
+    --white: #fff;
+    --text-dark: #212529;
+    --text-light: #f8f9fa;
+    --font-family-sans: 'Inter', sans-serif;
+    --font-family-serif: 'DM Serif Display', serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+    --transition: all 0.3s ease;
+    --radius: 4px;
+    /* Slightly smaller radius */
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* More subtle shadow */
+    --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.15);
+    /* Slightly stronger shadow */
+    --section-space: 5rem;
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display:wght@400;700&display=swap" rel="stylesheet">
+    /* Reduced container padding */
+    --container-padding: 1rem;
+}
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+/* === Reset & Base Styles === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <!-- Stylesheet (new_styles.css) -->
-    <link rel="stylesheet" href="new_styles.css">
-</head>
-<body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <a href="#hero" class="navbar-brand">Justin Anderson</a>
-                <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="navbar-menu" id="navMenu">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Work Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+}
 
-    <main>
-        <section class="hero" id="hero">
-            <div class="container hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Strategic Marketing That Delivers Real Results</h1>
-                    <p class="hero-subtitle">I help businesses transform their marketing with data-driven campaigns that build brand awareness and generate measurable ROI.</p>
-                    <div class="hero-cta">
-                        <a href="mailto:justinanderson1400@gmail.com" class="btn btn-primary">Contact Me</a>
-                        <a href="tel:2818913117" class="btn btn-primary">Call Me</a>
-                    </div>
-                    <div class="stats-container">
-                        <div class="stat-card">
-                            <div class="stat-number">42%</div>
-                            <div class="stat-label">Avg Engagement Increase</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">$1.2M</div>
-                            <div class="stat-label">Budget Managed</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">9+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="https://i.imgur.com/Ahyui9M.png" alt="Justin Anderson - Marketing Strategist">
-                </div>
-            </div>
-        </section>
+body {
+    font-family: var(--font-family-sans);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: var(--background);
+}
 
-        <section class="about section" id="about">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <p>I'm Justin Anderson, a marketing strategist with over 9 years of experience. I combine creative storytelling with data-driven insights to deliver campaigns that boost leads and conversions for businesses across Texas.</p>
-                </div>
-                </div>
-        </section>
-                <section class="section core-competencies" id="core-competencies">
-                    <div class="container">
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
-                    <h3 class="section-title">Core Competencies</h3>
-                    <div class="competencies-grid">
-                        <div class="competency-column">
-                            <h4 class="competency-category">Digital Marketing</h4>
-                            <ul class="competency-list">
-                                <li><i class="fas fa-check-circle"></i> Strategic Campaign Development</li>
-                                <li><i class="fas fa-check-circle"></i> SEO & Content Optimization</li>
-                                <li><i class="fas fa-check-circle"></i> Social Media Strategy</li>
-                                <li><i class="fas fa-check-circle"></i> PPC & Paid Media Management</li>
-                                <li><i class="fas fa-check-circle"></i> Email Marketing Automation</li>
-                            </ul>
-                        </div>
-                        <div class="competency-column">
-                            <h4 class="competency-category">Analytics & Performance</h4>
-                            <ul class="competency-list">
-                                <li><i class="fas fa-check-circle"></i> Data-Driven Decision Making</li>
-                                <li><i class="fas fa-check-circle"></i> Conversion Rate Optimization</li>
-                                <li><i class="fas fa-check-circle"></i> Marketing ROI Analysis</li>
-                                <li><i class="fas fa-check-circle"></i> Performance Tracking</li>
-                                <li><i class="fas fa-check-circle"></i> Customer Journey Mapping</li>
-                            </ul>
-                        </div>
-                        <div class="competency-column">
-                            <h4 class="competency-category">Content & Creative</h4>
-                            <ul class="competency-list">
-                                <li><i class="fas fa-check-circle"></i> Brand Development & Positioning</li>
-                                <li><i class="fas fa-check-circle"></i> Content Strategy & Creation</li>
-                                <li><i class="fas fa-check-circle"></i> Visual Storytelling</li>
-                                <li><i class="fas fa-check-circle"></i> Video Marketing Production</li>
-                                <li><i class="fas fa-check-circle"></i> Copywriting & Messaging</li>
-                            </ul>
-                        </div>
-                        <div class="competency-column">
-                            <h4 class="competency-category">Marketing Technology & Automation</h4>
-                            <ul class="competency-list">
-                                <li><i class="fas fa-check-circle"></i> Marketing Automation Implementation</li>
-                                <li><i class="fas fa-check-circle"></i> CRM Strategy & Management</li>
-                                <li><i class="fas fa-check-circle"></i> Data Analytics Tools</li>
-                                <li><i class="fas fa-check-circle"></i> A/B Testing & Optimization</li>
-                                <li><i class="fas fa-check-circle"></i> Email Marketing Platforms</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            
-        </section>
+a {
+    text-decoration: none;
+    color: var(--accent);
+    transition: var(--transition);
+}
 
-        <section class="experience section" id="experience">
-            <div class="container">
-                <h2 class="section-title">Work Experience</h2>
-                <div class="experience-container">
-                    <div class="experience-item">
-                        <h3>Allegiant Digital Marketing - Dallas</h3>
-                        <h4>Growth Marketing Specialist | November 2022 – March 28, 2025</h4>
-                        <ul>
-                            <li><strong>Spearheaded</strong> digital marketing strategies, achieving 35–45% increases in lead generation and conversion rates.</li>
-                            <li>Managed client portfolios with an annual marketing spend of <strong>$1.2M</strong>.</li>
-                            <li>Executed strategic SEO campaigns with technical improvements boosting online visibility.</li>
-                            <li>Optimized Google Business Profiles to enhance Map Pack visibility, driving significant foot traffic.</li>
-                            <li>Managed paid search campaigns with daily budgets up to <strong>$1,200</strong>, improving CPA by 12–25%.</li>
-                            <li>Developed and executed multi-platform social media strategies, achieving 12% annual follower growth.</li>
-                            <li>Managed social advertising budgets totaling <strong>$36,000 monthly</strong>, improving CPL by 18%.</li>
-                            <li>Developed and managed email marketing programs, increasing open rates by 23% and conversion rates by 16%.</li>
-                            <li>Created and optimized affiliate marketing programs, expanding revenue streams while maintaining profitable CAC.</li>
-                            <li>Used advanced analytics tools to identify opportunities and present comprehensive reports to clients.</li>
-                            <li>Designed marketing collateral ensuring brand consistency.</li>
-                            <li>Managed website development projects, analyzing campaign performance and creating reports.</li>
-                            <li>Collaborated with Allegiant's CEO to develop innovative marketing approaches showcased at the Dallas Small Business Expo.</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>Performance Foodservice - Houston</h3>
-                        <h4>Marketing Specialist | May 2019 – September 2022</h4>
-                        <ul>
-                            <li>Launched Virtual Vendor Showcase Series, recognized as a best practice across all 34 divisions nationwide.</li>
-                            <li>Managed <strong>$125K</strong> annual food show budget, growing attendance by 33% through strategic marketing campaigns.</li>
-                            <li>Drove category sales growth: 23% increase in Roma Italian Imports, 17% in West Creek dairy, and 14% in Peak Fresh Produce.</li>
-                            <li>Successfully transitioned the annual expo to The Woodlands Resort, resolving logistical challenges.</li>
-                            <li>Generated 65+ qualified leads per sampling event with 28% conversion to new customers within 90 days.</li>
-                            <li>Utilized Google Maps imagery for event layouts, improving planning efficiency.</li>
-                            <li>Tracked and analyzed vendor growth data to inform sales and marketing strategies.</li>
-                            <li>Contributed to 7% overall division growth and 15% increase in specialty category sales.</li>
-                            <li>Oversaw lead capture and management activities at expos, generating several hundred leads.</li>
-                            <li>Developed comprehensive product training programs for sales representatives, receiving a sales training award.</li>
-                            <li>Directed setup teams and external contractors, ensuring efficient event execution.</li>
-                            <li>Distributed weekly sales updates, tracking promotions and recognizing top performers.</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>Big Rivers Water Park</h3>
-                        <h4>Group Sales Manager & Marketing Director | February 2017 - April 2019</h4>
-                        <ul>
-                            <li>Managed all aspects of marketing for Big Rivers Waterpark, Gator Bayou Adventure Park, and the associated Grand Texas properties.</li>
-                            <li>Collaborated with all departments to ensure seamless event execution and consistent branding.</li>
-                            <li>Developed and executed integrated marketing strategies for multiple brands.</li>
-                            <li>Utilized marketing tools like Hootsuite, WordPress, Mailchimp, Google Ads, and more.</li>
-                            <li>Managed vendor relationships, securing favorable rates and maximizing ROI.</li>
-                            <li>Provided exceptional customer service, handling inquiries and escalated issues.</li>
-                            <li>Oversaw an external marketing agency, ensuring brand consistency and managing media buying.</li>
-                            <li>Managed a tight marketing budget, prioritizing spending and tracking expenses.</li>
-                            <li>Led the hiring process for marketing staff.</li>
-                            <li>Provided sales training and support to staff.</li>
-                            <li>Conducted competitive analysis to inform marketing and pricing strategies.</li>
-                            <li>Managed the Google Business Profile for the waterpark.</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>Splash Kingdom Water Park</h3>
-                        <h4>Group Sales Manager & Marketing Director | March 2016 – February 2017</h4>
-                        <ul>
-                            <li>Managed marketing for Splash Kingdom, Gator Bayou Adventure Park, and Grand Texas properties.</li>
-                            <li>Collaborated with various departments to ensure seamless event execution and consistent branding.</li>
-                            <li>Developed and executed integrated marketing strategies for multiple brands.</li>
-                            <li>Utilized marketing tools like Hootsuite, WordPress, Mailchimp, Google Ads, and more to achieve objectives.</li>
-                            <li>Managed vendor relationships, securing favorable rates and maximizing ROI.</li>
-                            <li>Provided exceptional customer service, handling inquiries and escalated issues with diplomacy.</li>
-                            <li>Oversaw the work of an external marketing agency, ensuring brand consistency and managing media buying.</li>
-                            <li>Managed a tight marketing budget, prioritizing spending and tracking expenses.</li>
-                            <li>Led the hiring process for marketing staff, including writing job descriptions and making hiring decisions.</li>
-                            <li>Provided sales training and support to staff, developing sales materials and coaching on sales techniques.</li>
-                            <li>Conducted competitive analysis to inform marketing and pricing strategies.</li>
-                            <li>Managed the Google Business Profile, ensuring accurate information and maximizing online visibility.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+a:hover {
+    color: var(--accent-light);
+}
 
-        <section class="skills section section-alt" id="skills">
-            <div class="container">
-                <h2 class="section-title">Skills & Expertise</h2>
-                <div class="skills-overview">
-                    <p>With over 8 years of management experience and extensive digital marketing expertise, I combine creative execution with data-driven strategy to deliver measurable results. My comprehensive technical skills and industry certifications enable me to implement integrated marketing solutions across multiple platforms.</p>
-                </div>
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Digital Marketing Expertise</h3>
-                        <div class="skill-item">
-                                <span class="skill-name">SEO & Content Strategy</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Social Media Marketing</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Conversion Optimization</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Email Marketing</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">PPC & SEM Campaigns</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Analytics & Data</h3>
-                        <div class="skill-item">
-                                <span class="skill-name">Data Analysis & Insights</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Performance Tracking</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">ROI Measurement</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Statistical Analysis</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Predictive Analytics</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Creative & Content</h3>
-                        <div class="skill-item">
-                                <span class="skill-name">Copywriting & Storytelling</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Adobe Creative Suite</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Video Production</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Content Strategy</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Brand Development</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Technology & MarTech</h3>
-                        <div class="skill-item">
-                                <span class="skill-name">Google Analytics & Tag Manager</span>
-                            </div>
-                        <div class="skill-item">
-                                <span class="skill-name">HubSpot & CRM Systems</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">HTML & CSS</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">WordPress & CMS Platforms</span>
-                        </div>
-                        <div class="skill-item">
-                                <span class="skill-name">Marketing Automation</span>
-                        </div>
-                    </div>
-                </div>
-                </section>
-                <section class="section additional-skills" id="additional-skills">
-                <div class="container">
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
 
-                    <h3 class="section-title">Additional Professional Skills</h3>
-                    <div class="tags-container">
-                        <span class="skill-tag">A/B Testing</span>
-                        <span class="skill-tag">Content Marketing</span>
-                        <span class="skill-tag">Lead Generation</span>
-                        <span class="skill-tag">AI-Driven Automation</span>
-                        <span class="skill-tag">Google Ads</span>
-                        <span class="skill-tag">Facebook Advertising</span>
-                        <span class="skill-tag">Mobile Marketing</span>
-                        <span class="skill-tag">E-commerce</span>
-                        <span class="skill-tag">SEO Tools</span>
-                        <span class="skill-tag">Media Relations</span>
-                        <span class="skill-tag">Strategic Partnerships</span>
-                        <span class="skill-tag">Influencer Marketing</span>
-                        <span class="skill-tag">Social Media Strategy</span>
-                        <span class="skill-tag">B2B Marketing</span>
-                        <span class="skill-tag">Event Marketing</span>
-                        <span class="skill-tag">Community Engagement</span>
-                        <span class="skill-tag">Public Relations</span>
-                        <span class="skill-tag">Microsoft Office</span>
-                        <span class="skill-tag">Microsoft Excel</span>
-                    </div>
-                </div>
-                </section>
+h1 {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+}
 
-                <section class="section technical-skills" id="technical-skills">
-                <div class="container">
-                    <h3 class="section-title">Technical Competencies</h3>
-                    <div class="tech-skills-grid">
-                        <div class="tech-category">
-                            <h4 class="tech-category-title">Software & Tools</h4>
-                            <ul class="tech-list">
-                                <li><i class="fas fa-check-circle"></i> Adobe Creative Suite</li>
-                                <li><i class="fas fa-check-circle"></i> HubSpot</li>
-                                <li><i class="fas fa-check-circle"></i> Google Analytics</li>
-                                <li><i class="fas fa-check-circle"></i> Google Tag Manager</li>
-                                <li><i class="fas fa-check-circle"></i> Hootsuite</li>
-                                <li><i class="fas fa-check-circle"></i> MailChimp</li>
-                                <li><i class="fas fa-check-circle"></i> Constant Contact</li>
-                                <li><i class="fas fa-check-circle"></i> Canva</li>
-                                <li><i class="fas fa-check-circle"></i> Buffer</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4 class="tech-category-title">Web Development</h4>
-                            <ul class="tech-list">
-                                <li><i class="fas fa-check-circle"></i> HTML</li>
-                                <li><i class="fas fa-check-circle"></i> CSS</li>
-                                <li><i class="fas fa-check-circle"></i> JavaScript</li>
-                                <li><i class="fas fa-check-circle"></i> WordPress</li>
-                                <li><i class="fas fa-check-circle"></i> Shopify</li>
-                                <li><i class="fas fa-check-circle"></i> Joomla</li>
-                                <li><i class="fas fa-check-circle"></i> React</li>
-                                <li><i class="fas fa-check-circle"></i> Python</li>
-                                <li><i class="fas fa-check-circle"></i> APIs</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4 class="tech-category-title">Analytics & Reporting</h4>
-                            <ul class="tech-list">
-                                <li><i class="fas fa-check-circle"></i> Data Analysis</li>
-                                <li><i class="fas fa-check-circle"></i> Performance Marketing</li>
-                                <li><i class="fas fa-check-circle"></i> Statistical Analysis</li>
-                                <li><i class="fas fa-check-circle"></i> Web Analytics</li>
-                                <li><i class="fas fa-check-circle"></i> Social Media Analysis</li>
-                                <li><i class="fas fa-check-circle"></i> Content Analysis</li>
-                                <li><i class="fas fa-check-circle"></i> Conversion Tracking</li>
-                                <li><i class="fas fa-check-circle"></i> ROI Measurement</li>
-                                <li><i class="fas fa-check-circle"></i> Forecasting</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4 class="tech-category-title">Cloud Technologies</h4>
-                            <ul class="tech-list">
-                                <li><i class="fas fa-check-circle"></i> AWS</li>
-                                <li><i class="fas fa-check-circle"></i> Azure</li>
-                                <li><i class="fas fa-check-circle"></i> Google Cloud</li>
-                                <li><i class="fas fa-check-circle"></i> Docker</li>
-                                <li><i class="fas fa-check-circle"></i> Kubernetes</li>
-                                <li><i class="fas fa-check-circle"></i> Terraform</li>
-                                <li><i class="fas fa-check-circle"></i> Jenkins</li>
-                                <li><i class="fas fa-check-circle"></i> Ansible</li>
-                                <li><i class="fas fa-check-circle"></i> Prometheus</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-        </section>
+/* Tuned sizes */
+h2 {
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+}
 
-        <section class="portfolio section" id="portfolio">
-            <div class="container">
-                <h2 class="section-title">Portfolio</h2>
-                <div class="portfolio-intro">
-                    <p>Explore my work, featuring data-driven marketing campaigns designed for local Dallas-Fort Worth businesses. Click a case study to learn how each project boosted engagement and revenue.</p>
-                </div>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-thumbnail">
-                            <img src="placeholder.jpg" alt="Placeholder Image">
-                        </div>
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">Texas Tamale House Cultural Heritage Campaign Research</h3>
-                            <p class="portfolio-desc">A deep dive into leveraging cultural storytelling for authentic engagement.</p>
-                            <a href="https://drive.google.com/file/d/1agB6bh-siAW2vUtqhhnpuxDcs7e-zBFS/view?usp=drive_link" class="btn btn-primary" target="_blank">View Campaign</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-thumbnail">
-                            <img src="placeholder.jpg" alt="Placeholder Image">
-                        </div>
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">A-Town Market Rebrand</h3>
-                            <p class="portfolio-desc">A complete brand refresh that increased foot traffic by 32% and boosted average purchase value.</p>
-                            <a href="https://drive.google.com/file/d/1Kpy3ysGDy5Ilwz2PBkF-ZTG_bcDhyr3w/view?usp=drive_link" class="btn btn-primary" target="_blank">View Case Study</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-thumbnail">
-                            <img src="placeholder.jpg" alt="Placeholder Image">
-                        </div>
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">DFW Regional Tourism Initiative</h3>
-                            <p class="portfolio-desc">An integrated campaign boosting local tourism with a focus on hidden gems.</p>
-                            <a href="https://drive.google.com/file/d/1Zay7NJ2V8Na60rHtUezB8MLCLS5QyZc3/view?usp=drive_link" class="btn btn-primary" target="_blank">View Initiative</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-thumbnail">
-                            <img src="placeholder.jpg" alt="Placeholder Image">
-                        </div>
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">Tamale House Heritage Campaign</h3>
-                            <p class="portfolio-desc">A campaign that celebrated family heritage while driving a 40% increase in community engagement.</p>
-                            <a href="https://drive.google.com/file/d/1VTTUnKdlk_BhKSmnepDCkkJ36RzeGZHh/view?usp=drive_link" class="btn btn-primary" target="_blank">View Case Study</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+h3 {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+}
 
-        <section class="services section section-alt" id="services">
-            <div class="container">
-                <h2 class="section-title">Marketing Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-chess"></i></div>
-                        <h3 class="service-title">Strategy Development</h3>
-                        <p class="service-desc">Custom marketing plans based on data-driven insights and competitive analysis to maximize ROI.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
-                        <h3 class="service-title">Brand Storytelling</h3>
-                        <p class="service-desc">Compelling narratives that communicate your unique value and build emotional connections.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3 class="service-title">Digital Marketing</h3>
-                        <p class="service-desc">Multi-channel campaigns across social media, email, SEO, and SEM to drive conversions.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-analytics"></i></div>
-                        <h3 class="service-title">Analytics & Reporting</h3>
-                        <p class="service-desc">Regular performance insights that pinpoint optimization opportunities and guide strategic decisions.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <h3 class="service-title">Local Marketing</h3>
-                        <p class="service-desc">Targeted approaches to strengthen your community presence and engage local customers.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
-                        <h3 class="service-title">Event Marketing</h3>
-                        <p class="service-desc">End-to-end event promotion that maximizes attendance and creates memorable experiences.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* Smaller h3 */
+h4 {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
 
-        <section class="testimonials section" id="testimonials">
-            <div class="container">
-                <h2 class="section-title">Client Feedback</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial">
-                        <div class="testimonial-content">"Justin brought innovative thinking to our brand rebrand. His strategic approach not only increased foot traffic but also fostered a strong community connection."</div>
-                        <div class="testimonial-author">
-                            <div class="author-image">M</div>
-                            <div class="author-info">
-                                <h4>Miguel Hernandez</h4>
-                                <p class="author-position">Owner, Tamale House</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <div class="testimonial-content">"Working with Justin revolutionized our digital campaigns. His data-driven strategies delivered impressive ROI and boosted our customer engagement significantly."</div>
-                        <div class="testimonial-author">
-                            <div class="author-image">S</div>
-                            <div class="author-info">
-                                <h4>Sarah Johnson</h4>
-                                <p class="author-position">Marketing Director, A-Town Market</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* Smaller h4 */
 
-        <section class="contact section" id="contact">
-            <div class="container">
-                <h2 class="section-title">Connect with Me</h2>
-                <div class="contact-intro">
-                    <p>I'm eager to discuss your marketing challenges and opportunities. Whether you prefer a quick email, a phone call, or exploring potential projects, I'm here to help.</p>
-                </div>
-                <div class="contact-options">
-                    <div class="contact-option">
-                        <div class="contact-icon"><i class="far fa-envelope"></i></div>
-                        <h3 class="contact-option-title">Email Me</h3>
-                        <p>Reach out for project inquiries or marketing insights.</p>
-                        <a href="mailto:justinanderson1400@gmail.com" class="contact-link">justinanderson1400@gmail.com</a>
-                    </div>
-                    <div class="contact-option">
-                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                        <h3 class="contact-option-title">Call Me</h3>
-                        <p>Speak directly with me about your marketing needs.</p>
-                        <a href="tel:2818913117" class="contact-link">281-891-3117</a>
-                    </div>
-                </div>
-                <div class="contact-form-container">
-                    <h3 class="form-title">Get in Touch</h3>
-                    <form class="contact-form" id="contactForm" netlify>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Full Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address" required>
-                            </div>
-                            <div class="form-group full-width">
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject (e.g., Employment Inquiry)" required>
-                            </div>
-                            <div class="form-group full-width">
-                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message (Include details like role, experience, and skills)" required></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                        <div class="form-message success" id="formSuccess">Thank you! Your message has been sent.</div>
-                        <div class="form-message error" id="formError">Oops! Something went wrong. Please try again.</div>
-                        <p class="form-note">I typically respond within 1-2 business days. Your information will remain confidential.</p>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    /* Slightly smaller body */
+    color: var(--secondary);
+}
 
-    <footer class="footer">
-        <div class="container">
-            <div class="social-links">
-                <a href="https://linkedin.com/in/justinandersonmkting" class="social-link" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://x.com/chichicrewshop" class="social-link" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com/chichicrewshop" class="social-link" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div class="footer-links">
-                <a href="#hero">Home</a>
-                <a href="#about">About</a>
-                <a href="#experience">Work Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#services">Services</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <p class="copyright">© <span id="year">2024</span> Justin Anderson - Strategic Marketing</p>
-        </div>
-    </footer>
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.section {
+    padding: var(--section-space) 0;
+    position: relative;
+}
+
+.section-alt {
+    background-color: var(--background-alt);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    /* Adjusted */
+    position: relative;
+    font-weight: var(--font-weight-bold);
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent);
+    margin: 15px auto 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    /* Slightly smaller padding */
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    font-size: 0.9rem;
+    /* Smaller button text */
+    border: none;
+    background-color: var(--accent);
+    /* Added background to all buttons */
+    color: var(--white);
+    /* Added text color to all buttons */
+}
+
+.btn:hover {
+    background-color: var(--accent-light);
+}
+
+/* === Header & Navigation (Fixed & Mobile-Friendly) === */
+.header {
+    background-color: var(--background-alt);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+    box-shadow: var(--shadow);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 var(--container-padding);
+}
+
+.navbar-brand {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.4rem;
+    /* Adjusted size */
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+    /* Reduced gap */
+}
+
+.navbar-menu li a {
+    color: var(--text-dark);
+    font-weight: var(--font-weight-medium);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.navbar-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: var(--transition);
+}
+
+.navbar-menu li a:hover::after {
+    width: 100%;
+}
+
+/* Mobile Navigation */
+.navbar-toggle {
+    display: none;
+    /* Hidden by default */
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        text-align: center;
+        width: 100%;
+        /* Center on mobile */
+        margin-right: 2rem;
+    }
+
+    .navbar-menu {
+        display: none;
+        /* Hide menu by default on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        /* Below the header */
+        left: 0;
+        width: 100%;
+        background-color: var(--background-alt);
+        box-shadow: var(--shadow);
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        /* Show menu when active */
+    }
+
+    .navbar-toggle {
+        display: block;
+        /* Show hamburger icon on mobile */
+    }
+
+    .navbar-menu li {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* === Hero Section === */
+.hero {
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: calc(4rem + 70px) 0 4rem;
+    text-align: center;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-content {
+    order: 2;
+}
+
+.hero-title {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    /* Smaller subtitle */
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    margin: 0 auto 2rem;
+    max-width: 300px;
+    /* Smaller image */
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    order: 1;
+    /* Image above content on mobile */
+}
+
+/* Stats within Hero */
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    /* Reduced gap */
+}
+
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+    /* Smaller padding */
+    border-radius: var(--radius);
+    text-align: center;
+    flex: 1 0 100px;
+    /* Smaller base */
+    max-width: 180px;
+    /* Smaller max-width */
+}
+
+.stat-number {
+    font-size: 1.6rem;
+    /* Smaller numbers */
+    font-weight: var(--font-weight-bold);
+    color: var(--accent-light);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    /* Smaller labels */
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media (min-width: 768px) {
+    .hero-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .hero-content {
+        order: 1;
+        flex: 1;
+        margin-right: 2rem;
+    }
+
+    .hero-image {
+        order: 2;
+        margin: 0;
+        flex: 0 0 40%;
+        /* Adjusted size */
+    }
+}
+
+/* === About Section === */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* === Core Competencies Section === */
+.section.core-competencies {
+    background-color: transparent;
+    /* Removed section background color*/
+    box-shadow: none;
+}
+
+.core-competencies {
+    margin-top: 3rem;
+}
+
+.competencies-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /*  smaller base */
+    gap: 1rem;
+}
+
+.competency-column {
+    padding: 1rem;
+    /* Reduced padding */
+    background-color: var(--background-alt);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.competency-category {
+    font-size: 1.1rem;
+    /* Smaller category title */
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 0.8rem;
+    /* Reduced margin */
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.4rem;
+    /* Reduced padding */
+}
+
+.competency-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.competency-list li {
+    margin-bottom: 0.6rem;
+    /* Reduced margin */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary);
+    font-size: .9rem;
+}
+
+.competency-list li i {
+    color: var(--accent);
+    font-size: 0.9rem;
+    /* Smaller icon */
+}
+
+/* === Work Experience Section === */
+.experience-container {
+    display: grid;
+    /* Use CSS Grid */
+    grid-template-columns: 1fr;
+    /* Initially one column */
+    gap: 1.5rem;
+    /* Reduced gap */
+}
+
+.experience-item {
+    background-color: var(--background-alt);
+    padding: 1.2rem;
+    /* Reduced padding */
+    border-left: 3px solid var(--accent);
+    /* Thinner border */
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateY(-3px);
+    /* Smaller translation */
+    box-shadow: var(--shadow-lg);
+}
+
+.experience-item h3 {
+    margin-bottom: 0.4rem;
+    /* Reduced margin */
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    /* Further adjusted */
+    display: block;
+}
+
+.experience-item h4 {
+    margin-bottom: 0.5rem;
+    font-weight: var(--font-weight-medium);
+    color: var (--secondary);
+    font-size: 0.9rem;
+    /* Smaller font size */
+}
+
+.experience-item ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 0;
+}
+
+.experience-item ul li {
+    margin-bottom: 0.6rem;
+    /* Reduced margin */
+    font-size: 0.9rem;
+    /* Smaller font size */
+    color: var(--secondary);
+}
+
+@media (min-width: 768px) {
+    .experience-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* Two columns on larger screens */
+    }
+}
+
+/* === Skills Section === */
+
+/* Removed explicit skill bars and percentages */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /*  smaller base */
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.skill-category {
+    margin-bottom: 1.5rem;
+}
+
+.skill-category-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-bottom: 0.4rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--accent);
+}
+
+.skill-item {
+    margin-bottom: 0.8rem;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill-name {
+    font-weight: var(--font-weight-medium);
+    font-size: 0.9rem;
+}
+
+/* Additional Skills and Tech Competencies (Simplified) */
+.additional-skills,
+.technical-skills {
+    margin-top: 2rem;
+    /* Reduced margin */
+}
+
+.additional-skills-title,
+.technical-skills-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    /* Reduced margin */
+    font-size: 1.4rem;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.skill-tag {
+    background-color: var(--accent);
+    color: var(--white);
+    padding: 0.2rem 0.6rem;
+    /* Smaller padding */
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+    /* Smaller font size */
+}
+
+.tech-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /*  smaller base */
+    gap: 1rem;
+    /* Reduced gap */
+}
+
+.tech-category-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-bottom: 0.4rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--accent);
+}
+
+.tech-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tech-list li {
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.tech-list li i {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+/* === Portfolio Section === */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        /* Force 2x2 layout for 4 items */
+    }
+}
+
+@media (min-width: 992px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        /* Maintain 2x2 layout at larger screens */
+    }
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: 100%;
+    transition: var(--transition);
+    background-color: var(--white);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.portfolio-thumbnail {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    background-color: var(--background);
+}
+
+.portfolio-thumbnail img {
+    max-height: 100%;
+}
+
+.portfolio-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portfolio-title {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 0.4rem;
+}
+
+.portfolio-desc {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+    flex-grow: 1;
+}
+
+/* === Services Section === */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    /* Reduced gap */
+}
+
+.service-card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: var(--white);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+    transform: rotate(10deg) scale(1.05);
+}
+
+.service-title {
+    margin-bottom: 0.8rem;
+    flex-grow: 1;
+    font-size: 1.1rem;
+}
+
+.service-desc {
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+/* === Testimonials Section === */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.testimonial {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.testimonial::before {
+    content: "\201C";
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.25;
+    font-family: serif;
+    line-height: 1;
+}
+
+.testimonial-content {
+    position: relative;
+    margin-bottom: 1rem;
+    font-style: italic;
+    z-index: 1;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.8rem;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.author-info h4 {
+    margin-bottom: 0.2rem;
+    font-weight: var(--font-weight-medium);
+    font-size: 1rem;
+}
+
+.author-position {
+    font-size: 0.8rem;
+    color: var(--secondary);
+}
+
+/* === Contact Section === */
+.contact {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: var(--section-space) 0;
+}
+
+.contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact .section-title {
+    color: var(--white);
+}
+
+.contact-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-option {
+    background-color: var(--background-alt);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.contact-option:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-icon {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+}
+
+.contact-option-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.contact-option p {
+    margin-bottom: 1rem;
+    color: var(--secondary);
+    font-size: 0.85rem;
+}
+
+.contact-link {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: var(--font-weight-medium);
+    position: relative;
+}
+
+/* === Contact Form === */
+.contact-form-container {
+    background-color: var(--background-alt);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+    font-family: var(--font-family-sans);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.form-message {
+    margin-top: 0.8rem;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    display: none;
+    font-size: 0.9rem;
+}
+
+.form-message.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.form-message.error {
+    background-color: #dc3545;
+    color: white;
+}
+
+.form-note {
+    margin-top: 0.8rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--secondary);
+}
+
+/* === Footer === */
+.footer {
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-link {
+    display: inline-block;
+    margin: 0 0.75rem;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    color: var(--accent-light);
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    display: inline-block;
+    margin: 0 0.75rem;
+    color: var(--text-light);
+    transition: var(--transition);
+    font-weight: var(--font-weight-medium);
+}
+
+.footer-links a:hover {
+    color: var(--accent-light)
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    .container {
+        --container-padding: 2rem;
+    }
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 1100px;
+    }
+}
+
+/* === Utility Classes === */
+/* Spacing utilities with consistent variables */
+:root {
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+}
+
+/* Text alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Text colors and styles */
+.text-muted { color: var(--secondary); }
+.text-accent { color: var(--accent); }
+.text-light { color: var(--text-light); }
+.text-dark { color: var(--text-dark); }
+.text-bold { font-weight: var(--font-weight-bold); }
+.text-medium { font-weight: var(--font-weight-medium); }
+
+/* Margins with consistent sizing */
+.m-0 { margin: 0; }
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-1 { margin-bottom: var(--space-md); }
+.mb-2 { margin-bottom: var(--space-lg); }
+.mb-3 { margin-bottom: var(--space-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-1 { margin-top: var(--space-md); }
+.mt-2 { margin-top: var(--space-lg); }
+.mt-3 { margin-top: var(--space-xl); }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Padding utilities */
+.p-0 { padding: 0; }
+.p-1 { padding: var(--space-md); }
+.p-2 { padding: var(--space-lg); }
+
+/* Display utilities */
+.d-flex { display: flex; }
+.d-block { display: block; }
+.d-none { display: none; }
+
+/* Flex utilities */
+.flex-column { flex-direction: column; }
+.justify-center { justify-content: center; }
+.align-center { align-items: center; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-1 { gap: var(--space-md); }
+.gap-2 { gap: var(--space-lg); }
+
+/* Accessibility utilities */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.focus-outline:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    .d-sm-none { display: none; }
+    .d-sm-block { display: block; }
+    .text-sm-center { text-align: center; }
+}
+/* === Additional Mobile Adjustments === */
+@media (max-width: 576px) {
+
+    /* Ensure the hero container stacks vertically and centers its content */
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    /* Center and scale the hero image */
+    .hero-image {
+        display: block;
+        margin: 0 auto 2rem;
+        max-width: 80%;
+    }
+
+    /* Stack call-to-action buttons vertically with proper spacing */
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Stack stat cards vertically with consistent gap */
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Mobile adjustments for the navigation menu */
+    .navbar-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* === Additional Desktop Adjustments if needed === */
+@media (min-width: 992px) {
+
+    /* Ensure the hero image and content have proper spacing on wider screens */
+    .hero-container {
+        align-items: flex-start;
+    }
+
+    .hero-content {
+        margin-right: 2rem;
+    }
+}
+
+/* === Hero Section Adjustments for Mobile === */
+@media (max-width: 576px) {
+    /* Ensure hero container items are centered */
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    /* Center and scale down hero image */
+    .hero-image {
+        margin: 0 auto 2rem;
+        max-width: 80%;
+        flex: none;
+    }
+    /* Adjust spacing for hero-cta and stat cards */
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+    .stats-container {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+}
+
+/* === Desktop Adjustments (min-width: 768px already in place) === */
