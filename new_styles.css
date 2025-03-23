@@ -617,11 +617,14 @@ p {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 @media (min-width: 576px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
         /* Force 2x2 layout for 4 items */
     }
 }
@@ -629,6 +632,7 @@ p {
 @media (min-width: 992px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
         /* Maintain 2x2 layout at larger screens */
     }
 }
