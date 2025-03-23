@@ -18,7 +18,8 @@
   --radius: 4px; /* Slightly smaller radius */
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* More subtle shadow */
   --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
-  --section-space: 5rem; /* Reduced a  --container-padding: 1rem;
+  --section-space: 5rem; /* Reduced a bit */
+  --container-padding: 1rem;
 }
 
 /* === Reset & Base Styles === */
@@ -342,12 +343,13 @@ p {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
 }
-
+/* Corrected grid layout for Core Competencies */
 .competencies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /*  smaller base */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem;
 }
+
 
 .competency-column {
   padding: 1rem; /* Reduced padding */
@@ -429,6 +431,7 @@ p {
   color: var(--secondary);
 }
 
+/* Two-column layout for larger screens */
 @media (min-width: 768px) {
   .experience-container {
     grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
@@ -497,11 +500,11 @@ p {
   border-radius: var(--radius);
   font-size: 0.8rem; /* Smaller font size */
 }
-
+/* Corrected grid layout for Technical Competencies */
 .tech-skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /*  smaller base */
-  gap: 1rem; /* Reduced gap */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
 }
 
 .tech-category-title {
@@ -533,11 +536,13 @@ p {
 }
 
 /* === Portfolio Section === */
+/* Corrected grid layout for Portfolio */
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Smaller items */
-  gap: 1.5rem; /* Reduced gap */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
+
 
 .portfolio-item {
   position: relative;
@@ -810,6 +815,8 @@ p {
   font-size: 0.9rem; /* Smaller font size */
   transition: border-color 0.3s ease;
   font-family: var(--font-family-sans);
+    color: var(--text-dark); /* ADDED THIS LINE */
+    background-color: var(--white); /* ADDED THIS LINE */
 }
 
 .form-control:focus {
