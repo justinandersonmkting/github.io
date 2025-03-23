@@ -18,8 +18,7 @@
   --radius: 4px; /* Slightly smaller radius */
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* More subtle shadow */
   --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
-  --section-space: 5rem; /* Reduced a bit */
-  --container-padding: 1rem;
+  --section-space: 5rem; /* Reduced a  --container-padding: 1rem;
 }
 
 /* === Reset & Base Styles === */
@@ -264,10 +263,10 @@ p {
 
 .hero-image {
     margin: 0 auto 2rem;
-  max-width: 300px; /* Smaller image */
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
+    max-width: 300px; /* Smaller image */
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
      order: 1; /* Image above content on mobile */
 }
 
@@ -346,23 +345,23 @@ p {
 
 .competencies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /*  smaller base */
     gap: 1rem;
 }
 
 .competency-column {
-  padding: 1rem;
+  padding: 1rem; /* Reduced padding */
   background-color: var(--background-alt);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
 .competency-category {
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* Smaller category title */
   font-weight: var(--font-weight-medium);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem; /* Reduced margin */
   border-bottom: 2px solid var(--accent);
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.4rem; /* Reduced padding */
 }
 
 .competency-list {
@@ -371,7 +370,7 @@ p {
 }
 
 .competency-list li {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.6rem; /* Reduced margin */
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -381,7 +380,7 @@ p {
 
 .competency-list li i {
   color: var(--accent);
-  font-size: 0.9rem;
+  font-size: 0.9rem; /* Smaller icon */
 }
 
 /* === Work Experience Section === */
@@ -447,7 +446,7 @@ p {
 }
 
 .skill-category {
-    margin-bottom: 1.5rem; /* Reduced margin */
+    margin-bottom: 1.5rem;
 }
 
 .skill-category-title {
@@ -461,7 +460,9 @@ p {
 
 .skill-item {
     margin-bottom: 0.8rem;
-     display: flex;
+}
+.skill-info{
+    display: flex;
     justify-content: space-between;
 }
 .skill-name{
@@ -498,14 +499,10 @@ p {
 }
 
 .tech-skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    grid-template-areas:
-    "software web"
-    "analytics cloud";
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /*  smaller base */
+  gap: 1rem; /* Reduced gap */
 }
-
 
 .tech-category-title {
   font-size: 1.1rem;
@@ -534,12 +531,6 @@ p {
   color: var(--accent);
   font-size: 0.9rem;
 }
-
-/* Assigning grid areas */
-.tech-category:nth-child(1) { grid-area: software; }
-.tech-category:nth-child(2) { grid-area: web; }
-.tech-category:nth-child(3) { grid-area: analytics; }
-.tech-category:nth-child(4) { grid-area: cloud; }
 
 /* === Portfolio Section === */
 .portfolio-grid {
@@ -796,7 +787,6 @@ p {
 .form-title {
   text-align: center;
   margin-bottom: 1rem; /* Reduced margin */
-    color: var(--primary)
 }
 
 .contact-form {
@@ -820,8 +810,6 @@ p {
   font-size: 0.9rem; /* Smaller font size */
   transition: border-color 0.3s ease;
   font-family: var(--font-family-sans);
-    color: var(--text-dark);
-    background-color: var(--white);
 }
 
 .form-control:focus {
