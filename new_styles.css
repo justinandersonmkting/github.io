@@ -18,8 +18,7 @@
   --radius: 4px; /* Slightly smaller radius */
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* More subtle shadow */
   --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
-  --section-space: 5rem; /* Reduced a bit */
-  --container-padding: 1rem;
+  --section-space: 5rem; /* Reduced a  --container-padding: 1rem;
 }
 
 /* === Reset & Base Styles === */
@@ -118,12 +117,12 @@ p {
   text-align: center;
   font-size: 0.9rem; /* Smaller button text */
   border: none;
-  background-color: var(--accent);
-  color: var(--white);
+  background-color: var(--accent); /* Added background to all buttons */
+  color: var(--white); /* Added text color to all buttons */
 }
 
 .btn:hover {
-  background-color: var(--accent-light);
+     background-color: var(--accent-light);
 }
 
 /* === Header & Navigation (Fixed & Mobile-Friendly) === */
@@ -184,7 +183,7 @@ p {
 
 /* Mobile Navigation */
 .navbar-toggle {
-  display: none;
+  display: none; /* Hidden by default */
   background: none;
   border: none;
   color: var(--primary);
@@ -201,10 +200,10 @@ p {
   }
 
   .navbar-menu {
-    display: none;
+    display: none; /* Hide menu by default on mobile */
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    top: 70px; /* Below the header */
     left: 0;
     width: 100%;
     background-color: var(--background-alt);
@@ -212,11 +211,11 @@ p {
   }
 
   .navbar-menu.active {
-    display: flex;
+    display: flex; /* Show menu when active */
   }
 
   .navbar-toggle {
-    display: block;
+    display: block; /* Show hamburger icon on mobile */
   }
 
   .navbar-menu li {
@@ -263,12 +262,12 @@ p {
 }
 
 .hero-image {
-  margin: 0 auto 2rem;
-  max-width: 300px; /* Smaller image */
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  order: 1;
+    margin: 0 auto 2rem;
+    max-width: 300px; /* Smaller image */
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+     order: 1; /* Image above content on mobile */
 }
 
 /* Stats within Hero */
@@ -345,9 +344,9 @@ p {
 }
 
 .competencies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem; /* Reduced gap */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /*  smaller base */
+    gap: 1rem;
 }
 
 .competency-column {
@@ -437,15 +436,17 @@ p {
 }
 
 /* === Skills Section === */
+
+/* Removed explicit skill bars and percentages */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /*  smaller base */
     gap: 1rem;
     margin-top: 2rem;
 }
 
 .skill-category {
-    margin-bottom: 1.5rem; /* Reduced margin */
+    margin-bottom: 1.5rem;
 }
 
 .skill-category-title {
@@ -459,12 +460,14 @@ p {
 
 .skill-item {
     margin-bottom: 0.8rem;
-     display: flex;
+}
+.skill-info{
+    display: flex;
     justify-content: space-between;
 }
 .skill-name{
     font-weight: var(--font-weight-medium);
-    font-size: .9rem;
+      font-size: 0.9rem;
 }
 
 /* Additional Skills and Tech Competencies (Simplified) */
@@ -497,7 +500,7 @@ p {
 
 .tech-skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /*  smaller base */
   gap: 1rem; /* Reduced gap */
 }
 
@@ -560,7 +563,7 @@ p {
   justify-content: center;
   align-items: center;
   height: 120px; /* Smaller placeholder */
-  background-color: var(--background);
+  background-color: var(--background); /* Placeholder background */
 }
 
 .portfolio-thumbnail img {
