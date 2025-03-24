@@ -848,8 +848,10 @@ p {
 .contact-intro {
     text-align: center;
     margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-light); /* Updated to use a lighter text color */
 }
+
+/* Rest of the CSS remains unchanged */
 
 .contact-options {
     display: grid;
