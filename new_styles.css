@@ -841,19 +841,15 @@ p {
 .contact-intro {
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--text-dark); /* Ensure readability */
-    padding: 2rem; /* Increase padding for better spacing */
-    border-radius: var(--radius); /* Rounded corners for aesthetics */
-    background: linear-gradient(135deg, rgba(240, 240, 240, 0.9), rgba(220, 220, 220, 0.9)); /* Subtle gradient */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add depth */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Thin border for definition */
+    color: #ffffff !important; /* Ensures the text color is white */
+    background-color: transparent; /* Removes unnecessary background */
+    font-size: 1rem; /* Adjusts font size for readability */
 }
 
 .contact-intro p {
-    font-size: 1.2rem; /* Slightly larger text for better readability */
-    line-height: 1.8; /* Improve spacing between lines */
-    font-weight: var(--font-weight-medium); /* Add emphasis */
+    color: #ffffff; /* Force white text */
 }
+
 
 
 /* Rest of the CSS remains unchanged */
