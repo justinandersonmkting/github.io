@@ -848,7 +848,7 @@ p {
 .contact-intro {
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--text-light); /* Updated to use a lighter text color */
+    color: #ffffff; /* Change to white for better contrast */
 }
 
 /* Rest of the CSS remains unchanged */
