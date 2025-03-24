@@ -841,7 +841,10 @@ p {
 .contact-intro {
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--text-light); /* Ensure this is using a lighter color */
+    background-color: var(--background-alt); /* Change to a lighter background color */
+    color: var(--text-dark); /* Ensure the text color contrasts well with the new background */
+    padding: 1rem; /* Add some padding for better spacing */
+    border-radius: var(--radius); /* Optional: Add border-radius for aesthetics */
 }
 
 /* Rest of the CSS remains unchanged */
