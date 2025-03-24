@@ -674,12 +674,21 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
+    width: 100%; /* Set width to 100% of the container */
+    height: 0; /* Set height to 0 */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (adjust if needed) */
+    position: relative;
+    overflow: hidden;
     background-color: var(--background);
 }
 
 .portfolio-thumbnail img {
-    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire container */
 }
 
 .portfolio-content {
