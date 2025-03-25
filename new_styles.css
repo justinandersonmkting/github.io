@@ -468,7 +468,7 @@ p {
 .experience-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two equal columns for wider layout */
-    gap: 2rem; /* Increased gap for better spacing */
+    gap: 2rem; /* Good spacing between items */
     position: relative;
     box-sizing: border-box; /* Ensures consistent padding and border handling */
     max-width: 1200px; /* Aligns container width with the cards above */
@@ -476,16 +476,26 @@ p {
     padding: 0 2rem; /* Adds horizontal padding for alignment */
 }
 
+/* REMOVED: Timeline Line */
+.experience-container::before {
+    content: none; /* Eliminates the vertical line completely */
+}
+
 .experience-item {
     background-color: var(--background-alt);
-    padding: 1rem; /* Increased padding for a more spacious look */
+    padding: 2rem; /* Increased padding for a more spacious look */
     border-left: 3px solid var(--accent);
     box-shadow: var(--shadow);
     border-radius: var(--radius);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 1rem; /* Increased margin for spacing between items */
+    margin-bottom: 2rem; /* Increased margin for spacing between items */
     width: calc(100% - 4rem); /* Makes items wider while accounting for padding */
     box-sizing: border-box; /* Ensures width includes padding and borders */
+}
+
+/* REMOVED: Timeline Dot */
+.experience-item::before {
+    content: none; /* Eliminates the timeline dot entirely */
 }
 
 .experience-item:hover {
@@ -511,7 +521,7 @@ p {
 }
 
 .experience-item ul li {
-    margin-bottom: 0.5rem; /* Increased spacing between list items */
+    margin-bottom: 0.8rem; /* Increased spacing between list items */
 }
 
 /* Responsive Styling for Larger Screens */
@@ -522,8 +532,10 @@ p {
         max-width: none; /* Removes width restriction for larger screens */
         padding-left: 2rem; /* Adds padding to align with wider layout above */
         padding-right: 2rem;
-        margin-left:auto;margin-right:auto
+        margin-left:auto;margin-right:auto;
+    }
 }
+
 
 /* === Skills Section === */
 
