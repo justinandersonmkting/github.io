@@ -463,45 +463,44 @@ p {
     font-size: 0.9rem;
     /* Smaller icon */
 }
-
 /* === Work Experience Section === */
 .experience-container {
     display: grid;
-    grid-template-columns: 1fr; /* One column by default for mobile */
-    gap: 2rem;
+    grid-template-columns: 1fr; /* Single column for mobile */
+    gap: 1.5rem;
     position: relative;
     box-sizing: border-box;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem; /* Reduced padding for mobile */
+}
+
+.experience-item {
+    background-color: var(--background-alt);
+    padding: 1.5rem;
+    border-left: 3px solid var(--accent);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1rem;
+    width: 100%; /* Full width on mobile */
+    box-sizing: border-box;
 }
 
 /* Responsive Styling for Larger Screens */
 @media (min-width: 768px) {
     .experience-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns for larger screens */
-        gap: 3rem;
-        /* Removed max-width: none to prevent layout issues */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        padding: 0 2rem;
+    }
+    
+    .experience-item {
+        padding: 2rem;
     }
 }
 
-
-.experience-item {
-    background-color: var(--background-alt);
-    padding: 2rem; /* Increased padding for a more spacious look */
-    border-left: 3px solid var(--accent);
-    box-shadow: var(--shadow);
-    border-radius: var(--radius);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 2rem; /* Increased margin for spacing between items */
-    width: calc(100% - 4rem); /* Makes items wider while accounting for padding */
-    box-sizing: border-box; /* Ensures width includes padding and borders */
-}
-
-/* REMOVED: Timeline Dot */
-.experience-item::before {
-    content: none; /* Eliminates the timeline dot entirely */
-}
 
 .experience-item:hover {
     transform: translateY(-5px); /* Slightly larger hover effect for emphasis */
