@@ -476,17 +476,6 @@ p {
     padding: 0 2rem; /* Adds horizontal padding for alignment */
 }
 
-/* Timeline Line */
-.experience-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: calc(50% - 1px); /* Centers the timeline line */
-    width: 2px;
-    background-color: var(--accent-light);
-}
-
 .experience-item {
     background-color: var(--background-alt);
     padding: 1rem; /* Increased padding for a more spacious look */
