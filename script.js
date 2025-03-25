@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
         statCards.forEach(card => {
             const numberElement = card.querySelector('.stat-number');
             const targetNumber = parseInt(numberElement.textContent.replace('%', '').replace('$', '').replace('M', '000000')); // Remove % and $ and M for parsing
-            const duration = 3000; // Updated animation duration in milliseconds
+            const duration = 2000; // Updated animation duration in milliseconds
             let startTimestamp = null;
 
             function step(timestamp) {
