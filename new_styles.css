@@ -489,27 +489,14 @@ p {
 
 .experience-item {
     background-color: var(--background-alt);
-    padding: 2rem; /* Increased padding for a more spacious look */
+    padding: 1rem; /* Increased padding for a more spacious look */
     border-left: 3px solid var(--accent);
     box-shadow: var(--shadow);
     border-radius: var(--radius);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 2rem; /* Increased margin for spacing between items */
+    margin-bottom: 1rem; /* Increased margin for spacing between items */
     width: calc(100% - 4rem); /* Makes items wider while accounting for padding */
     box-sizing: border-box; /* Ensures width includes padding and borders */
-}
-
-/* Timeline Dot */
-.experience-item::before {
-    content: '';
-    position: absolute;
-    left: -20px; /* Adjusted to align with the timeline line */
-    top: 10px;
-    width: 12px;
-    height: 12px;
-    background-color: var(--accent);
-    border-radius: 50%;
-    border: 2px solid var(--background-alt);
 }
 
 .experience-item:hover {
@@ -535,7 +522,7 @@ p {
 }
 
 .experience-item ul li {
-    margin-bottom: 0.8rem; /* Increased spacing between list items */
+    margin-bottom: 0.5rem; /* Increased spacing between list items */
 }
 
 /* Responsive Styling for Larger Screens */
