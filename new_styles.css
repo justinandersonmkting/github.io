@@ -467,10 +467,13 @@ p {
 /* === Work Experience Section === */
 .experience-container {
     display: grid;
-    grid-template-columns: minmax(0, 1fr); /* Changed from 1fr to prevent content expansion issues */
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns for wider layout */
+    gap: 2rem; /* Increased gap for better spacing */
     position: relative;
-    box-sizing: border-box; /* Added to normalize sizing behavior */
+    box-sizing: border-box; /* Ensures consistent padding and border handling */
+    max-width: 1200px; /* Aligns container width with the cards above */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 0 2rem; /* Adds horizontal padding for alignment */
 }
 
 /* Timeline Line */
@@ -479,29 +482,28 @@ p {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 20px;
+    left: calc(50% - 1px); /* Centers the timeline line */
     width: 2px;
     background-color: var(--accent-light);
 }
 
 .experience-item {
     background-color: var(--background-alt);
-    padding: 1.2rem;
+    padding: 2rem; /* Increased padding for a more spacious look */
     border-left: 3px solid var(--accent);
     box-shadow: var(--shadow);
     border-radius: var(--radius);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 1.5rem;
-    padding-left: 3rem;
-    position: relative;
-    box-sizing: border-box; /* Critical fix - ensures padding doesn't expand elements */
+    margin-bottom: 2rem; /* Increased margin for spacing between items */
+    width: calc(100% - 4rem); /* Makes items wider while accounting for padding */
+    box-sizing: border-box; /* Ensures width includes padding and borders */
 }
 
 /* Timeline Dot */
 .experience-item::before {
     content: '';
     position: absolute;
-    left: 15px;
+    left: -20px; /* Adjusted to align with the timeline line */
     top: 10px;
     width: 12px;
     height: 12px;
@@ -511,68 +513,41 @@ p {
 }
 
 .experience-item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px); /* Slightly larger hover effect for emphasis */
     box-shadow: var(--shadow-lg);
 }
 
 .experience-item h3 {
-    margin-bottom: 0.4rem;
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    display: block;
+    margin-bottom: 0.6rem; /* Adjusted margin for better spacing */
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem); /* Slightly larger font size */
 }
 
 .experience-item h4 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     font-weight: var(--font-weight-medium);
     color: var(--secondary);
-    font-size: 0.9rem;
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Increased font size for better readability */
 }
 
 .experience-item ul {
-    list-style: disc;
-    margin-left: 1.5rem;
-    margin-bottom: 0;
+    list-style-type: disc;
+    margin-left: 2rem; /* Increased indentation for better alignment */
 }
 
 .experience-item ul li {
-    margin-bottom: 0.6rem;
-    font-size: 0.9rem;
-    color: var(--secondary);
+    margin-bottom: 0.8rem; /* Increased spacing between list items */
 }
 
+/* Responsive Styling for Larger Screens */
 @media (min-width: 768px) {
     .experience-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Fixed to prevent content-based sizing */
-    }
-    .experience-container::before {
-        left: 50%;
-    }
-    .experience-item {
-        padding-left: 1rem;
-        padding-right: 3rem;
-        margin-left: 50%;
-        text-align: right;
-        width: calc(50% - 2rem);
-        margin-bottom: 2rem;
-        box-sizing: border-box; /* Reinforced in media query */
-    }
-    .experience-item:nth-child(even) {
-        margin-left: 0;
-        margin-right: 50%;
-        text-align: left;
-        padding-left: 3rem;
-        padding-right: 1rem;
-    }
-    .experience-item::before {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .experience-item:nth-child(even)::before {
-        left: 50%;
-        transform: translateX(-50%);
-    }
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Maintains two-column layout on larger screens */
+        gap: 3rem; /* Increased gap for better spacing on wider screens */
+        max-width: none; /* Removes width restriction for larger screens */
+        padding-left: 2rem; /* Adds padding to align with wider layout above */
+        padding-right: 2rem;
+        margin-left:auto;margin-right:auto
 }
-
 
 /* === Skills Section === */
 
