@@ -140,52 +140,52 @@ document.addEventListener('DOMContentLoaded', function () {
         debounce(highlightActiveSection, 100)
     );
 
-// Animate Stats Numbers on Hero Section
-function animateStats() {
-    const statCards = document.querySelectorAll('.stat-card');
-    statCards.forEach(card => {
-        const numberElement = card.querySelector('.stat-number');
-        const targetNumber = parseInt(numberElement.textContent.replace('%', '').replace('$', '').replace('M', '000000')); // Remove % and $ and M for parsing
-        const duration = 3000; // Updated animation duration in milliseconds
-        let startTimestamp = null;
+    // Animate Stats Numbers on Hero Section
+    function animateStats() {
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach(card => {
+            const numberElement = card.querySelector('.stat-number');
+            const targetNumber = parseInt(numberElement.textContent.replace('%', '').replace('$', '').replace('M', '000000')); // Remove % and $ and M for parsing
+            const duration = 3000; // Updated animation duration in milliseconds
+            let startTimestamp = null;
 
-        function step(timestamp) {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            numberElement.textContent = formatStatNumber(Math.floor(progress * targetNumber), numberElement.textContent); // Format and update text
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            }
-        }
-
-        function formatStatNumber(number, originalText) {
-            if (originalText.includes('%')) {
-                return number + '%';
-            } else if (originalText.includes('$')) {
-                if (number >= 1000000) {
-                    return '$' + (number / 1000000).toFixed(1) + 'M';
-                }
-                return '$' + number.toLocaleString(); // Updated dollar formatting with commas
-            } else if (originalText.includes('+')) {
-                return number + '+';
-            }
-            return number.toString();
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
+            function step(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                numberElement.textContent = formatStatNumber(Math.floor(progress * targetNumber), numberElement.textContent); // Format and update text
+                if (progress < 1) {
                     requestAnimationFrame(step);
-                    observer.unobserve(card); // Animate only once
                 }
-            });
-        }, { threshold: 0.5 }); // Trigger when 50% of card is visible
+            }
 
-        observer.observe(card);
-    });
-}
+            function formatStatNumber(number, originalText) {
+                if (originalText.includes('%')) {
+                    return number + '%';
+                } else if (originalText.includes('$')) {
+                    if (number >= 1000000) {
+                        return '$' + (number / 1000000).toFixed(1) + 'M';
+                    }
+                    return '$' + number.toLocaleString(); // Updated dollar formatting with commas
+                } else if (originalText.includes('+')) {
+                    return number + '+';
+                }
+                return number.toString();
+            }
 
-animateStats(); // Call animateStats function after DOMContentLoaded
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        requestAnimationFrame(step);
+                        observer.unobserve(card); // Animate only once
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of card is visible
+
+            observer.observe(card);
+        });
+    }
+
+    animateStats(); // Call animateStats function after DOMContentLoaded
 
 });
 
