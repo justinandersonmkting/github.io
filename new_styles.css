@@ -467,19 +467,24 @@ p {
 /* === Work Experience Section === */
 .experience-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two equal columns for wider layout */
-    gap: 2rem; /* Good spacing between items */
+    grid-template-columns: 1fr; /* One column by default for mobile */
+    gap: 2rem;
     position: relative;
-    box-sizing: border-box; /* Ensures consistent padding and border handling */
-    max-width: 1200px; /* Aligns container width with the cards above */
-    margin: 0 auto; /* Centers the container horizontally */
-    padding: 0 2rem; /* Adds horizontal padding for alignment */
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-/* REMOVED: Timeline Line */
-.experience-container::before {
-    content: none; /* Eliminates the vertical line completely */
+/* Responsive Styling for Larger Screens */
+@media (min-width: 768px) {
+    .experience-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns for larger screens */
+        gap: 3rem;
+        /* Removed max-width: none to prevent layout issues */
+    }
 }
+
 
 .experience-item {
     background-color: var(--background-alt);
