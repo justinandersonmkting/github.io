@@ -467,12 +467,10 @@ p {
 /* === Work Experience Section === */
 .experience-container {
     display: grid;
-    /* Use CSS Grid */
-    grid-template-columns: 1fr;
-    /* Initially one column */
+    grid-template-columns: minmax(0, 1fr); /* Changed from 1fr to prevent content expansion issues */
     gap: 1.5rem;
-    /* Reduced gap */
-    position: relative; /* For absolute positioning of the timeline line */
+    position: relative;
+    box-sizing: border-box; /* Added to normalize sizing behavior */
 }
 
 /* Timeline Line */
@@ -481,62 +479,53 @@ p {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 20px; /* Adjust based on your design and padding */
+    left: 20px;
     width: 2px;
-    background-color: var(--accent-light); /* Timeline line color */
-    /* Dotted line (optional) */
-    /* background-image: linear-gradient(to bottom, var(--accent-light) 50%, transparent 50%);
-    background-size: 2px 10px; */
+    background-color: var(--accent-light);
 }
 
 .experience-item {
     background-color: var(--background-alt);
     padding: 1.2rem;
-    /* Reduced padding */
     border-left: 3px solid var(--accent);
-    /* Thinner border */
     box-shadow: var(--shadow);
     border-radius: var(--radius);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 1.5rem; /* Add margin to separate timeline items */
-    padding-left: 3rem; /* Indent content to make space for timeline dot */
-    position: relative; /* To position the timeline dot */
+    margin-bottom: 1.5rem;
+    padding-left: 3rem;
+    position: relative;
+    box-sizing: border-box; /* Critical fix - ensures padding doesn't expand elements */
 }
 
 /* Timeline Dot */
 .experience-item::before {
     content: '';
     position: absolute;
-    left: 15px; /* Adjust to center dot on timeline line */
-    top: 10px; /* Adjust vertical position of dot */
+    left: 15px;
+    top: 10px;
     width: 12px;
     height: 12px;
     background-color: var(--accent);
     border-radius: 50%;
-    border: 2px solid var(--background-alt); /* Optional: white border for better visibility */
+    border: 2px solid var(--background-alt);
 }
-
 
 .experience-item:hover {
     transform: translateY(-3px);
-    /* Smaller translation */
     box-shadow: var(--shadow-lg);
 }
 
 .experience-item h3 {
     margin-bottom: 0.4rem;
-    /* Reduced margin */
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    /* Further adjusted */
     display: block;
 }
 
 .experience-item h4 {
     margin-bottom: 0.5rem;
     font-weight: var(--font-weight-medium);
-    color: var (--secondary);
+    color: var(--secondary);
     font-size: 0.9rem;
-    /* Smaller font size */
 }
 
 .experience-item ul {
@@ -547,29 +536,27 @@ p {
 
 .experience-item ul li {
     margin-bottom: 0.6rem;
-    /* Reduced margin */
     font-size: 0.9rem;
-    /* Smaller font size */
     color: var(--secondary);
 }
 
 @media (min-width: 768px) {
     .experience-container {
-        grid-template-columns: repeat(2, 1fr);
-        /* Two columns on larger screens */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Fixed to prevent content-based sizing */
     }
     .experience-container::before {
-        left: 50%; /* Center timeline line on larger screens */
+        left: 50%;
     }
     .experience-item {
-        padding-left: 1rem; /* Reset padding for larger screens */
-        padding-right: 3rem; /* Add right padding for content on larger screens */
-        margin-left: 50%; /* Shift items to the right of the timeline */
-        text-align: right; /* Align text to the right */
-        width: calc(50% - 2rem); /* Adjust width to fit beside timeline */
+        padding-left: 1rem;
+        padding-right: 3rem;
+        margin-left: 50%;
+        text-align: right;
+        width: calc(50% - 2rem);
         margin-bottom: 2rem;
+        box-sizing: border-box; /* Reinforced in media query */
     }
-    .experience-item:nth-child(even) { /* Alternate items to the left */
+    .experience-item:nth-child(even) {
         margin-left: 0;
         margin-right: 50%;
         text-align: left;
@@ -577,14 +564,15 @@ p {
         padding-right: 1rem;
     }
     .experience-item::before {
-        left: 50%; /* Center dots on timeline line for larger screens */
-        transform: translateX(-50%); /* Center dots precisely */
+        left: 50%;
+        transform: translateX(-50%);
     }
-    .experience-item:nth-child(even)::before { /* Dots for even items on the left */
+    .experience-item:nth-child(even)::before {
         left: 50%;
         transform: translateX(-50%);
     }
 }
+
 
 /* === Skills Section === */
 
