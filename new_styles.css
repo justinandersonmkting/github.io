@@ -463,7 +463,8 @@ p {
     font-size: 0.9rem;
     /* Smaller icon */
 }
-/* === Work Experience Section === */
+/* === Flip Card Experience Section === */
+
 .experience-container {
     display: grid;
     grid-template-columns: 1fr; /* Single column for mobile */
@@ -471,75 +472,241 @@ p {
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; /* Max width for the container */
+    margin: 0 auto; /* Center the container */
     padding: 0 1rem; /* Reduced padding for mobile */
 }
 
-.experience-item {
-    background-color: var(--background-alt);
-    padding: 1.5rem;
-    border-left: 3px solid var(--accent);
-    box-shadow: var(--shadow);
-    border-radius: var(--radius);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 1rem;
-    width: 100%; /* Full width on mobile */
-    box-sizing: border-box;
+/* Card Container */
+.experience-card-container {
+    perspective: 1000px; /* 3D effect for flipping */
+    width: 100%;
+    min-height: 350px; /* Minimum height to ensure enough space */
+    margin-bottom: 1.5rem;
 }
 
-/* Responsive Styling for Larger Screens */
+/* Card Inner - this is what will flip */
+.experience-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Flipped state */
+.experience-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Common styles for both faces */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    backface-visibility: hidden;
+    border-radius: var(--radius, 4px);
+    overflow: hidden;
+    box-shadow: var(--shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: box-shadow 0.3s ease;
+}
+
+/* Front face styles */
+.card-front {
+    background-color: var(--background-alt, #fff);
+    border-left: 3px solid var(--accent, #007bff);
+    cursor: pointer; /* Indicate it's clickable */
+    z-index: 1; /* Ensure it's above when not flipped */
+}
+
+.card-front:hover {
+    box-shadow: var(--shadow-lg, 0 5px 15px rgba(0, 0, 0, 0.15));
+}
+
+/* Back face styles - hidden by default */
+.card-back {
+    background-color: var(--background-alt, #fff);
+    border-left: 3px solid var(--primary, #0056b3);
+    transform: rotateY(180deg); /* Flip it */
+    overflow-y: auto; /* Allow scrolling if content is too long */
+    z-index: 0; /* Behind front face when not flipped */
+}
+
+/* Content within each face */
+.card-content {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Front face specific content */
+.card-front .card-content {
+    justify-content: space-between;
+}
+
+.card-front h3 {
+    margin-bottom: 0.6rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+}
+
+.card-front h4 {
+    margin-bottom: 0.4rem;
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--secondary, #343a40);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.date-range {
+    color: var(--text-muted, #6c757d);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.summary {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.summary p {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.flip-prompt {
+    text-align: right;
+    color: var(--primary, #007bff);
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.flip-prompt i {
+    margin-left: 0.3rem;
+    transition: transform 0.3s;
+}
+
+.card-front:hover .flip-prompt i {
+    transform: translateX(3px);
+}
+
+/* Back face specific content */
+.back-header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color, #dee2e6);
+}
+
+.back-header h3 {
+    margin-bottom: 0.4rem;
+    padding-right: 2rem; /* Space for close button */
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+}
+
+.back-header p {
+    color: var(--secondary, #343a40);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted, #6c757d);
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--danger, #dc3545);
+}
+
+.card-back h4 {
+    margin: 1rem 0 0.8rem;
+    color: var(--primary, #007bff);
+    font-size: 1.1rem;
+}
+
+.highlights-list {
+    list-style-type: disc;
+    margin: 0 0 1rem 1.5rem;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.highlights-list li {
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+}
+
+.highlights-list li strong {
+    font-weight: var(--font-weight-bold, 600);
+    color: var(--primary, #212529);
+}
+
+.flip-back-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--light, #f8f9fa);
+    color: var(--primary, #007bff);
+    border: 1px solid var(--border-color, #dee2e6);
+    border-radius: var(--radius-sm, 3px);
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+
+.flip-back-btn:hover {
+    background-color: var(--primary, #007bff);
+    color: white;
+}
+
+.flip-back-btn i {
+    margin-right: 0.3rem;
+}
+
+/* Responsive adjustments */
 @media (min-width: 768px) {
     .experience-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
         gap: 2rem;
         padding: 0 2rem;
     }
     
-    .experience-item {
-        padding: 2rem;
+    .experience-card-container {
+        min-height: 400px; /* Slightly taller on desktop */
+    }
+    
+    .card-face, .experience-card-inner {
+        min-height: 400px;
     }
 }
 
-
-.experience-item:hover {
-    transform: translateY(-5px); /* Slightly larger hover effect for emphasis */
-    box-shadow: var(--shadow-lg);
-}
-
-.experience-item h3 {
-    margin-bottom: 0.6rem; /* Adjusted margin for better spacing */
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem); /* Slightly larger font size */
-}
-
-.experience-item h4 {
-    margin-bottom: 0.6rem;
-    font-weight: var(--font-weight-medium);
-    color: var(--secondary);
-    font-size: clamp(1rem, 2vw, 1.2rem); /* Increased font size for better readability */
-}
-
-.experience-item ul {
-    list-style-type: disc;
-    margin-left: 2rem; /* Increased indentation for better alignment */
-}
-
-.experience-item ul li {
-    margin-bottom: 0.8rem; /* Increased spacing between list items */
-}
-
-/* Responsive Styling for Larger Screens */
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .experience-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Maintains two-column layout on larger screens */
-        gap: 3rem; /* Increased gap for better spacing on wider screens */
-        max-width: none; /* Removes width restriction for larger screens */
-        padding-left: 2rem; /* Adds padding to align with wider layout above */
-        padding-right: 2rem;
-        margin-left:auto;margin-right:auto;
+        gap: 3rem;
     }
 }
 
+/* For very small screens, increase minimum heights for better readability */
+@media (max-width: 480px) {
+    .card-back {
+        min-height: 450px; /* More space for content on small screens */
+    }
+}
 
 /* === Skills Section === */
 
