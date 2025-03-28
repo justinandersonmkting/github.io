@@ -1,1 +1,1401 @@
-:root{--primary:#212529;--secondary:#343a40;--accent:#007bff;--accent-light:#b3d9ff;--spacing-xs:.25rem;--spacing-sm:.5rem;--spacing-md:1rem;--spacing-lg:2rem;--spacing-xl:3rem;--border-radius-sm:4px;--border-radius-md:8px;--box-shadow-sm:0 2px 4px rgba(0,0,0,.1);--box-shadow-md:0 5px 15px rgba(0,0,0,.15);--background:#f8f9fa;--background-alt:#fff;--white:#fff;--text-dark:#212529;--text-light:#f8f9fa;--font-family-sans:'Inter',sans-serif;--font-family-serif:'DM Serif Display',serif;--font-weight-normal:400;--font-weight-medium:500;--font-weight-bold:600;--transition:all .3s ease;--radius:4px;--shadow:0 2px 4px rgba(0,0,0,.1);--shadow-lg:0 5px 15px rgba(0,0,0,.15);--section-space:5rem;--container-padding:1rem}*,::after,::before{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:70px}body{font-family:var(--font-family-sans);color:var(--text-dark);line-height:1.6;background:var(--background)}img{max-width:100%;height:auto;display:block}.btn:hover{background-color:var(--accent-light);transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.2)}.portfolio-item:hover{transform:scale(1.05)}a{text-decoration:none;color:var(--accent);transition:var(--transition)}a:hover{color:var(--accent-light)}h1,h2,h3,h4{font-family:var(--font-family-serif);font-weight:var(--font-weight-bold);color:var(--primary);line-height:1.3;margin-bottom:1rem}h1{font-size:clamp(2.2rem,5vw,3rem)}h2{font-size:clamp(1.6rem,4vw,2.5rem)}h3{font-size:clamp(1.2rem,3vw,1.6rem)}h4{font-size:clamp(1rem,2vw,1.2rem)}p{margin-bottom:1.2rem;font-size:1rem;color:var(--secondary)}.container{width:100%;max-width:1200px;margin:0 auto;padding:0 var(--container-padding)}.section{padding:var(--section-space) 0;position:relative}.section-alt{background-color:var(--background-alt)}.section-title{text-align:center;margin-bottom:3rem;position:relative;font-weight:var(--font-weight-bold)}.section-title::after{content:"";display:block;width:50px;height:3px;background-color:var(--accent);margin:15px auto 0}.btn{display:inline-block;padding:10px 20px;font-weight:var(--font-weight-medium);border-radius:var(--radius);cursor:pointer;transition:var(--transition);text-align:center;font-size:.9rem;border:none;background-color:var(--accent);color:var(--white)}.btn:hover{background-color:var(--accent-light)}.contact{background-color:var(--primary);color:var(--white);padding:var(--section-space) 0}.contact-container{max-width:700px;margin:0 auto}.contact .section-title{color:var(--white)}.contact-intro{text-align:center;margin-bottom:2rem;color:var(--white)}.contact-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-bottom:2rem}.contact-option{background-color:var(--background-alt);padding:1.5rem;border-radius:var(--radius);text-align:center;box-shadow:var(--shadow);transition:var(--transition)}.contact-option:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}.contact-icon{font-size:1.8rem;color:var(--accent);margin-bottom:.8rem}.contact-option-title{margin-bottom:.5rem;font-size:1.1rem}.contact-option p{margin-bottom:1rem;color:var(--secondary);font-size:.85rem}.contact-link{display:inline-block;color:var(--accent);font-weight:var(--font-weight-medium);position:relative}.contact-form-container{background-color:var(--background-alt);padding:1.5rem;border-radius:var(--radius);box-shadow:var(--shadow)}.form-title{text-align:center;margin-bottom:1rem}.contact-form{display:grid;gap:.8rem}.form-group{width:100%}.full-width{grid-column:1 / -1}.form-control{width:100%;padding:8px 12px;border:1px solid #ced4da;border-radius:var(--radius);font-size:.9rem;transition:border-color .3s ease;font-family:var(--font-family-sans)}.form-control:focus{outline:0;border-color:var(--accent)}textarea.form-control{resize:vertical}.form-message{margin-top:.8rem;padding:8px 12px;border-radius:var(--radius);display:none;font-size:.9rem}.form-message.success{background-color:#28a745;color:#fff}.form-message.error{background-color:#dc3545;color:#fff}.form-note{margin-top:.8rem;text-align:center;font-size:.8rem;color:var(--secondary)}
+:root {
+    --primary: #212529;
+    --secondary: #343a40;
+    --accent: #007bff;
+    --accent-light: #b3d9ff; /* Adjusted for more contrast */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --box-shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
+    --background: #f8f9fa;
+    --background-alt: #fff;
+    --white: #fff;
+    --text-dark: #212529;
+    --text-light: #f8f9fa;
+    --font-family-sans: 'Inter', sans-serif;
+    --font-family-serif: 'DM Serif Display', serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+    --transition: all 0.3s ease;
+    --radius: 4px;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.15);
+    --section-space: 5rem;
+    --container-padding: 1rem;
+
+    /* Custom Cursor Variables */
+    --cursor-size: 20px;
+    --cursor-color: var(--accent);
+    --cursor-blend-mode: difference;
+}
+
+/* === Reset & Base Styles === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Adjusted slightly for better spacing */
+}
+
+body {
+    font-family: var(--font-family-sans);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: var(--background);
+    cursor: none; /* Hide default cursor */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--secondary); /* Slightly darker accent on hover */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 3vw, 1.6rem); }
+h4 { font-size: clamp(1rem, 2vw, 1.2rem); }
+
+p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    color: var(--secondary);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.section {
+    padding: var(--section-space) 0;
+    position: relative;
+    overflow-x: hidden; /* Prevent horizontal scrollbars from animations */
+}
+
+.section-alt {
+    background-color: var(--background-alt);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    font-weight: var(--font-weight-bold);
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent);
+    margin: 15px auto 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition), transform 0.2s ease, box-shadow 0.2s ease; /* Added transform/shadow */
+    text-align: center;
+    font-size: 0.9rem;
+    border: none;
+    background-color: var(--accent);
+    color: var(--white);
+}
+
+.btn:hover {
+    background-color: var(--secondary); /* Darker hover */
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* === Custom Cursor Styles === */
+.custom-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    background-color: var(--cursor-color);
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: var(--cursor-blend-mode);
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, transform 0.08s ease-out, opacity 0.2s ease;
+    will-change: transform, width, height, opacity; /* Performance hint */
+    opacity: 1; /* Ensure it's visible initially */
+}
+
+.custom-cursor.hover-effect {
+    width: calc(var(--cursor-size) * 2.5); /* Make hover larger */
+    height: calc(var(--cursor-size) * 2.5);
+    background-color: var(--accent-light); /* Lighter color on hover */
+    mix-blend-mode: normal; /* Optional: remove blend mode on hover */
+}
+
+/* Hide cursor on touch devices (optional) */
+@media (hover: none) {
+  .custom-cursor {
+    display: none;
+  }
+  body {
+    cursor: auto; /* Restore default cursor */
+  }
+}
+
+
+/* === Header & Navigation === */
+.header {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent */
+    backdrop-filter: blur(8px); /* Glass effect */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 var(--container-padding);
+}
+
+.navbar-brand {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.4rem;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+}
+
+.navbar-menu li a {
+    color: var(--text-dark);
+    font-weight: var(--font-weight-medium);
+    position: relative;
+    padding: 0.5rem 0.2rem; /* Added horizontal padding */
+    transition: var(--transition), transform 0.2s ease; /* Ensure transform transition */
+    font-size: 0.95rem;
+}
+
+.navbar-menu li a:hover {
+    color: var(--accent); /* Use accent color on hover */
+    transform: scale(1.05); /* Scale up slightly on hover */
+}
+
+.navbar-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Slightly below text */
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: width 0.3s ease; /* Smooth underline transition */
+}
+
+.navbar-menu li a:hover::after {
+    width: 100%;
+}
+
+/* Active Navigation Link Style */
+.navbar-menu li a.active {
+    color: var(--accent); /* Highlight color */
+    font-weight: var(--font-weight-bold);
+}
+.navbar-menu li a.active::after {
+     width: 100%; /* Underline active link */
+     background-color: var(--accent);
+}
+
+/* Mobile Navigation */
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    z-index: 1001; /* Ensure toggle is above menu */
+}
+
+@media (max-width: 992px) { /* Adjusted breakpoint */
+     .navbar-brand {
+        /* Keep left aligned */
+        margin-right: auto; /* Push toggle to the right */
+     }
+
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 0; /* Align with header top */
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Full viewport height */
+        padding-top: 80px; /* Space for header */
+        background-color: var(--background-alt);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateX(-100%); /* Start off-screen */
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        text-align: center;
+        gap: 0; /* Remove gap for full width items */
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        opacity: 1;
+        transform: translateX(0); /* Slide in */
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu li {
+        padding: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        width: 100%;
+    }
+     .navbar-menu li a {
+        display: block; /* Make links full width */
+        padding: 1.5rem 1rem; /* Larger clickable area */
+        width: 100%;
+     }
+     .navbar-menu li a::after {
+        display: none; /* Remove underline on mobile */
+     }
+      .navbar-menu li a.active {
+         background-color: var(--accent-light); /* Background highlight */
+         color: var(--primary);
+      }
+}
+
+
+/* === Hero Section === */
+.hero {
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: calc(5rem + 70px) 0 5rem; /* Increased padding */
+    text-align: center;
+    position: relative; /* For potential pseudo-elements */
+}
+
+/* Optional: Subtle background pattern or gradient */
+/* .hero::before { ... } */
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-content {
+    order: 2;
+    max-width: 650px; /* Control text width */
+    margin-bottom: 3rem;
+}
+
+.hero-title {
+    color: var(--white); /* Ensure white title */
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem; /* Increased spacing */
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem; /* Increased spacing */
+    flex-wrap: wrap;
+}
+
+.hero-cta .btn {
+    padding: 12px 25px; /* Slightly larger buttons */
+    font-size: 1rem;
+}
+.hero-cta .btn-primary:last-child { /* Example: Secondary button style */
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+.hero-cta .btn-primary:last-child:hover {
+    background-color: var(--accent);
+    color: var(--white);
+}
+
+
+.hero-image {
+    margin: 0 auto 2rem;
+    max-width: 320px; /* Slightly larger image */
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    order: 1;
+    border: 5px solid var(--background-alt); /* Optional frame */
+}
+
+/* Stats within Hero */
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem; /* Space above stats */
+}
+
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 1.2rem; /* Slightly larger padding */
+    border-radius: var(--radius);
+    text-align: center;
+    flex: 1 1 120px; /* Allow shrinking but base at 120px */
+    max-width: 180px;
+    transition: transform 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 1.8rem; /* Larger numbers */
+    font-weight: var(--font-weight-bold);
+    color: var(--accent-light);
+    margin-bottom: 0.25rem;
+    min-height: 1.8rem; /* Prevent layout shift during animation */
+}
+
+.stat-label {
+    font-size: 0.85rem; /* Slightly larger labels */
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media (min-width: 768px) {
+    .hero { padding: calc(6rem + 70px) 0 6rem; }
+    .hero-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; /* Align vertically */
+        text-align: left;
+    }
+    .hero-content {
+        order: 1;
+        flex: 1;
+        margin-right: 3rem; /* More space */
+        margin-bottom: 0;
+    }
+    .hero-cta { justify-content: flex-start; }
+    .hero-image {
+        order: 2;
+        margin: 0;
+        flex: 0 0 40%;
+        max-width: 380px; /* Larger image on desktop */
+    }
+    .stats-container { justify-content: flex-start; }
+}
+
+@media (min-width: 992px) {
+    .hero-content { flex: 0 0 55%; } /* Give content slightly more space */
+    .hero-image { flex: 0 0 35%; }
+}
+
+
+/* === About Section === */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* === Core Competencies Section === */
+.core-competencies {
+    margin-top: 3rem;
+    /* background-color: var(--background-alt); */ /* Consider adding alt background */
+    /* padding: 3rem 0; */
+}
+
+.competencies-title { /* This is actually .section-title */
+    text-align: center;
+    margin-bottom: 3rem; /* Match section title spacing */
+}
+
+.competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Slightly larger base */
+    gap: 1.5rem; /* Increased gap */
+}
+
+.competency-column {
+    padding: 1.5rem; /* Increased padding */
+    background-color: var(--background-alt);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition), transform 0.3s ease;
+}
+.competency-column:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.competency-category {
+    font-size: 1.2rem; /* Slightly larger */
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.competency-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.competency-list li {
+    margin-bottom: 0.7rem; /* Increased spacing */
+    display: flex;
+    align-items: flex-start; /* Align icon with first line */
+    gap: 0.6rem;
+    color: var(--secondary);
+    font-size: .95rem;
+}
+
+.competency-list li i {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-top: 0.2em; /* Align icon better with text */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* === Flip Card Experience Section === */
+.experience-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; /* Increased gap */
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding); /* Use container padding */
+}
+
+.experience-card-container {
+    perspective: 1200px; /* Enhanced 3D effect */
+    width: 100%;
+    min-height: 400px; /* Consistent minimum height */
+    margin-bottom: 0; /* Gap handled by grid */
+}
+
+.experience-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1); /* Smoother flip */
+    transform-style: preserve-3d;
+}
+
+.experience-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    backface-visibility: hidden;
+    border-radius: var(--radius-md); /* Slightly larger radius */
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.3s ease;
+    display: flex; /* Use flex for content layout */
+    flex-direction: column;
+}
+
+.card-front {
+    background-color: var(--background-alt);
+    border-left: 4px solid var(--accent); /* Thicker border */
+    cursor: pointer;
+    z-index: 1;
+}
+
+.card-front:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px); /* Lift effect */
+}
+
+.card-back {
+    background-color: var(--background-alt);
+    border-left: 4px solid var(--primary);
+    transform: rotateY(180deg);
+    z-index: 0;
+}
+
+.card-content {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow scrolling on back face if needed */
+}
+
+/* Front face specific content */
+.card-front .card-content {
+    justify-content: space-between;
+}
+
+.card-front h3 {
+    margin-bottom: 0.6rem;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem); /* Slightly larger title */
+    color: var(--primary);
+}
+
+.card-front h4 {
+    margin-bottom: 0.4rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--secondary);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.date-range {
+    color: #6c757d; /* Muted text color */
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem; /* More space */
+}
+
+.summary {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.summary p {
+    margin-bottom: 0.8rem;
+    line-height: 1.6; /* Improved readability */
+}
+
+.flip-prompt {
+    text-align: right;
+    color: var(--accent); /* Use accent color */
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: auto; /* Push to bottom */
+    align-self: flex-end; /* Align to the right */
+}
+
+.flip-prompt i {
+    margin-left: 0.4rem;
+    transition: transform 0.3s;
+}
+
+.card-front:hover .flip-prompt i {
+    transform: translateX(5px);
+}
+
+/* Back face specific content */
+.back-header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 1.5rem; /* Increased space */
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dee2e6; /* Lighter border */
+}
+
+.back-header h3 {
+    margin-bottom: 0.4rem;
+    padding-right: 2.5rem; /* More space for close button */
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    color: var(--primary);
+}
+
+.back-header p {
+    color: var(--secondary);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: -0.5rem; /* Position slightly above */
+    right: -0.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem; /* Larger button */
+    color: #adb5bd; /* Lighter color */
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #dc3545; /* Danger color on hover */
+}
+
+.card-back h4 {
+    margin: 1.5rem 0 1rem; /* Increased spacing */
+    color: var(--accent); /* Use accent color */
+    font-size: 1.2rem;
+}
+
+.highlights-list {
+    list-style-type: none; /* Remove default disc */
+    margin: 0 0 1.5rem 0; /* Remove left margin */
+    padding: 0;
+    flex-grow: 1;
+}
+
+.highlights-list li {
+    margin-bottom: 0.8rem; /* More space */
+    line-height: 1.6;
+    padding-left: 1.5rem; /* Indent text */
+    position: relative;
+}
+/* Custom bullet point */
+.highlights-list li::before {
+    content: "\f00c"; /* Font Awesome check icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    font-size: 0.9em;
+}
+
+
+.highlights-list li strong {
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+}
+
+.flip-back-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: auto; /* Push to bottom */
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+
+.flip-back-btn:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+.flip-back-btn i {
+    margin-right: 0.4rem;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .experience-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem; /* Larger gap on desktop */
+    }
+    .experience-card-container {
+        min-height: 450px; /* Taller on desktop */
+    }
+    .card-face, .experience-card-inner {
+        min-height: 450px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .experience-container {
+        gap: 3rem;
+    }
+}
+
+
+/* === Skills Section === */
+.skills-overview {
+    text-align: center;
+    max-width: 800px;
+    margin: -1rem auto 3rem; /* Space below title, above grid */
+    font-size: 1.05rem;
+    color: var(--secondary);
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.skill-category {
+    margin-bottom: 1.5rem;
+    background-color: var(--background); /* Add slight background */
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.skill-category-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+}
+
+.skill-item {
+    margin-bottom: 0.8rem;
+    padding: 0.3rem 0; /* Add some vertical space */
+}
+
+.skill-name {
+    font-weight: var(--font-weight-medium);
+    font-size: 0.95rem;
+    color: var(--secondary);
+}
+
+/* Additional Skills and Tech Competencies (Simplified) */
+.additional-skills,
+.technical-skills {
+    margin-top: 4rem; /* More space between skill sections */
+    padding: var(--section-space) 0; /* Give them full section padding */
+}
+.technical-skills {
+    background-color: var(--background-alt); /* Alternate background */
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.8rem; /* Row and column gap */
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-tag {
+    background-color: var(--accent);
+    color: var(--white);
+    padding: 0.4rem 0.9rem; /* Larger tags */
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-medium);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.skill-tag:hover {
+    background-color: var(--secondary);
+    transform: scale(1.05);
+}
+
+.tech-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.tech-category { /* Reusing style from .skill-category */
+     background-color: var(--background); /* Use non-alt background */
+     padding: 1.5rem;
+     border-radius: var(--radius);
+     box-shadow: var(--shadow-sm);
+}
+
+.tech-category-title { /* Reusing style */
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+}
+
+.tech-list { /* Reusing style */
+    list-style: none;
+    padding-left: 0;
+}
+
+.tech-list li { /* Reusing style */
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: var(--secondary);
+    font-size: 0.95rem;
+}
+
+.tech-list li i { /* Reusing style */
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-top: 0.2em;
+    flex-shrink: 0;
+}
+
+
+/* === Portfolio Section === */
+.portfolio-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: -1rem auto 3rem;
+    font-size: 1.05rem;
+    color: var(--secondary);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; /* Increased gap */
+    max-width: 1000px; /* Wider grid */
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) { /* Changed breakpoint to 768px */
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* No need to force 2x2 on larger screens unless desired */
+
+
+.portfolio-item {
+    position: relative;
+    border-radius: var(--radius-md); /* Consistent radius */
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: 100%; /* Ensure items fill grid height if rows align */
+    transition: var(--transition), transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.portfolio-thumbnail {
+    margin-bottom: 0; /* Remove margin, padding handles spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--background);
+    overflow: hidden;
+    transition: transform 0.4s ease; /* Slightly slower zoom */
+}
+
+.portfolio-item:hover .portfolio-thumbnail {
+    transform: scale(1.05); /* Slightly less zoom */
+}
+
+.portfolio-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover ensures image fills space, might crop */
+    transition: transform 0.4s ease; /* Match container zoom */
+}
+/* Optional: Slight zoom out on image itself on hover */
+/* .portfolio-item:hover .portfolio-thumbnail img {
+    transform: scale(0.98);
+} */
+
+
+.portfolio-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem; /* Add padding to content */
+}
+
+.portfolio-title {
+    font-size: 1.2rem; /* Slightly larger title */
+    color: var(--primary);
+    margin-bottom: 0.6rem;
+}
+
+.portfolio-desc {
+    font-size: 0.9rem; /* Slightly larger description */
+    margin-bottom: 1.5rem; /* More space before button */
+    color: var(--secondary);
+    flex-grow: 1; /* Allow description to take available space */
+}
+
+.portfolio-content .btn {
+    align-self: flex-start; /* Align button to the left */
+    margin-top: auto; /* Push button to bottom if space allows */
+}
+
+/* Removed portfolio overlay styles as they weren't in the original request focus */
+
+
+/* === Services Section === */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Slightly wider base */
+    gap: 2rem; /* Increased gap */
+}
+
+.service-card {
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    padding: 2rem; /* Increased padding */
+    box-shadow: var(--shadow);
+    transition: var(--transition), transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid var(--accent); /* Thicker top border */
+    display: flex;
+    flex-direction: column;
+    text-align: center; /* Center align content */
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-top-color: var(--secondary); /* Change border color on hover */
+}
+
+.service-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; /* Larger icon */
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: var(--white);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem; /* Center icon horizontally */
+    font-size: 1.5rem;
+    transition: var(--transition), transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: rotate(15deg) scale(1.1); /* More pronounced rotation */
+    background: linear-gradient(135deg, var(--secondary), var(--accent)); /* Change gradient on hover */
+}
+
+.service-title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem; /* Larger title */
+    color: var(--primary);
+    /* flex-grow: 1; */ /* Removed, let content dictate height */
+}
+
+.service-desc {
+    color: var(--secondary);
+    font-size: 0.95rem;
+    line-height: 1.7; /* Better line spacing */
+    flex-grow: 1; /* Allow desc to push title up */
+}
+
+/* === Testimonials Section === */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Wider base */
+    gap: 2rem;
+    max-width: 1000px; /* Match portfolio width */
+    margin: 0 auto;
+}
+
+.testimonial {
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    border-left: 4px solid var(--accent); /* Side border instead of quote */
+    transition: var(--transition), transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial:hover {
+     transform: scale(1.03); /* Slight scale on hover */
+     box-shadow: var(--shadow-lg);
+}
+
+/* Removed quote pseudo-element */
+
+.testimonial-content {
+    position: relative;
+    margin-bottom: 1.5rem; /* More space */
+    font-style: italic;
+    z-index: 1;
+    color: var(--secondary);
+    font-size: 1rem; /* Slightly larger quote */
+    line-height: 1.7;
+}
+.testimonial-content::before { /* Subtle quote marks */
+    content: "\201C";
+    font-size: 2.5rem;
+    color: var(--accent-light);
+    opacity: 0.6;
+    position: absolute;
+    top: -0.8rem;
+    left: -1rem;
+    z-index: -1;
+}
+
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    margin-top: auto; /* Push author to bottom */
+}
+
+.author-image {
+    width: 50px; /* Larger image/initial */
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.author-info h4 {
+    margin-bottom: 0.2rem;
+    font-weight: var(--font-weight-bold); /* Bolder name */
+    font-size: 1.05rem;
+    color: var(--primary);
+}
+
+.author-position {
+    font-size: 0.85rem;
+    color: var(--secondary);
+}
+
+/* === Contact Section === */
+.contact {
+    color: var(--white);
+    padding: var(--section-space) 0;
+    background: linear-gradient(60deg, var(--primary) 0%, var(--secondary) 100%); /* Adjusted gradient */
+    background-size: 100% 100%; /* Static gradient, no animation needed unless desired */
+    /* Removed animation */
+}
+
+.contact-container {
+    max-width: 800px; /* Wider container */
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.contact .section-title {
+    color: var(--white); /* White title */
+}
+.contact .section-title::after {
+    background-color: var(--accent-light); /* Light accent for underline */
+}
+
+.contact-intro {
+    text-align: center;
+    margin-bottom: 3rem; /* Increased space */
+    font-size: 1.1rem; /* Slightly larger intro text */
+    color: rgba(255, 255, 255, 0.9); /* Ensure high contrast */
+}
+
+.contact-intro p {
+    color: inherit; /* Inherit color from parent */
+}
+
+
+.contact-options{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem; /* Increased space */
+}
+.contact-option{
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent */
+    backdrop-filter: blur(5px);
+    padding: 1.8rem; /* Increased padding */
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: none; /* Remove shadow, rely on transparency */
+    transition: var(--transition), background-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+}
+.contact-option:hover{
+    background-color: rgba(255, 255, 255, 0.2); /* More opaque on hover */
+    transform: translateY(-3px);
+}
+.contact-icon{
+    font-size: 2rem; /* Larger icon */
+    color: var(--accent-light); /* Light accent color */
+    margin-bottom: 1rem;
+}
+.contact-option-title{
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem; /* Larger title */
+    color: var(--white);
+}
+.contact-option p{
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8); /* Lighter text */
+    font-size: .9rem;
+}
+.contact-link{
+    display: inline-block;
+    color: var(--accent-light); /* Light accent */
+    font-weight: var(--font-weight-medium);
+    position: relative;
+    word-break: break-all; /* Prevent long links overflowing */
+}
+.contact-link:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.contact-form-container{
+    background-color: var(--background-alt);
+    padding: 2rem; /* Increased padding */
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg); /* Add shadow back here */
+    color: var(--text-dark); /* Reset text color inside form */
+}
+.form-title{
+    text-align: center;
+    margin-bottom: 1.5rem; /* Increased space */
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+.contact-form{
+    display: grid;
+    gap: 1rem; /* Increased gap */
+}
+.form-grid { /* Added wrapper for grid layout */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+@media (min-width: 576px) {
+    .form-grid {
+        grid-template-columns: 1fr 1fr; /* Two columns on wider screens */
+    }
+}
+
+.form-group{ width: 100%; }
+.full-width{ grid-column: 1 / -1; }
+
+.form-control{
+    width: 100%;
+    padding: 10px 15px; /* Increased padding */
+    border: 1px solid #ced4da;
+    border-radius: var(--radius);
+    font-size: .95rem;
+    transition: border-color .3s ease, box-shadow .3s ease;
+    font-family: var(--font-family-sans);
+    background-color: var(--background); /* Light background for inputs */
+}
+.form-control:focus{
+    outline: 0;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus ring */
+}
+textarea.form-control{
+    resize: vertical;
+    min-height: 120px; /* Minimum height for textarea */
+}
+.form-message{
+    margin-top: 1rem;
+    padding: 10px 15px;
+    border-radius: var(--radius);
+    display: none;
+    font-size: .9rem;
+    font-weight: 500;
+}
+.form-message.success{
+    background-color: #d4edda; /* Lighter green */
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.form-message.error{
+    background-color: #f8d7da; /* Lighter red */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.form-note{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: .85rem;
+    color: var(--secondary);
+}
+.contact-form button[type="submit"] {
+    width: 100%;
+    padding: 12px 20px; /* Larger submit button */
+    font-size: 1rem;
+}
+@media (min-width: 576px) {
+    .contact-form button[type="submit"] {
+        grid-column: 1 / -1; /* Full width even on 2-col layout */
+        max-width: 300px; /* Limit width */
+        margin: 0 auto; /* Center button */
+    }
+}
+
+
+/* === Footer === */
+.footer {
+    background-color: var(--secondary);
+    color: var(--text-light);
+    padding: 3rem 0 2rem; /* Increased top padding */
+    text-align: center;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem; /* Increased gap */
+    margin-bottom: 1.5rem;
+}
+
+.social-link {
+    color: rgba(255, 255, 255, 0.7); /* Lighter initial color */
+    font-size: 1.4rem; /* Larger icons */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--white); /* White on hover */
+    transform: scale(1.2); /* Scale up */
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem 1.5rem; /* Row and column gap */
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: var(--font-weight-medium);
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6); /* Even lighter copyright */
+    margin-top: 1rem; /* Add space above copyright */
+}
+
+
+/* === GSAP Animation Initial States === */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: opacity, transform;
+}
+.fade-in {
+    opacity: 0;
+    will-change: opacity;
+}
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    will-change: opacity, transform;
+}
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    will-change: opacity, transform;
+}
+
+/* === Optional: Basic Model Viewer Styling === */
+/* model-viewer {
+    width: 100%;
+    height: 300px;
+    border-radius: var(--radius);
+    background-color: #eee;
+    margin-bottom: 1rem;
+} */
+
+/* === Optional: Simple CSS Parallax Background === */
+/* .parallax-section {
+    background-image: url('path/to/your/parallax-bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 60vh;
+} */
