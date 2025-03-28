@@ -140,52 +140,92 @@ document.addEventListener('DOMContentLoaded', function () {
         debounce(highlightActiveSection, 100)
     );
 
-    // Animate Stats Numbers on Hero Section
+  // --- Animate Stats Numbers on Hero Section (CORRECTED) ---
     function animateStats() {
         const statCards = document.querySelectorAll('.stat-card');
         statCards.forEach(card => {
             const numberElement = card.querySelector('.stat-number');
-            const targetNumber = parseInt(numberElement.textContent.replace('%', '').replace('$', '').replace('M', '000000')); // Remove % and $ and M for parsing
-            const duration = 2000; // Updated animation duration in milliseconds
+            // *** FIX: Read from data-target attribute ***
+            const targetAttr = numberElement.getAttribute('data-target');
+
+            if (!targetAttr || !numberElement) {
+                console.warn("Stat card missing number element or data-target attribute:", card);
+                return; // Skip if no target or element
+            }
+
+            // Keep original text content ONLY as a hint for formatting
+            const formatHintText = numberElement.textContent; // e.g., "0%", "$0", "0+"
+
+            // *** FIX: Use targetAttr for parsing the target number ***
+            const targetNumber = parseInt(targetAttr.replace(/[^\d.-]/g, '')); // Parse digits/decimal/negative
+
+            if (isNaN(targetNumber)) {
+               console.warn("Could not parse target number from data-target:", targetAttr, card);
+               return; // Skip if target is not a number
+            }
+
+            const duration = 2000; // 2 seconds
             let startTimestamp = null;
+
+            // Set initial display using format hint, animating from 0
+            numberElement.textContent = formatStatNumber(0, formatHintText, targetNumber);
 
             function step(timestamp) {
                 if (!startTimestamp) startTimestamp = timestamp;
+                // Ensure progress doesn't exceed 1, especially on fast scrolls/intersections
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                numberElement.textContent = formatStatNumber(Math.floor(progress * targetNumber), numberElement.textContent); // Format and update text
+                // Use easing function for smoother animation (e.g., easeOutQuad)
+                const easedProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                let currentValue = Math.floor(easedProgress * targetNumber);
+
+                // Ensure final value matches target exactly on completion
+                if (progress === 1) {
+                    currentValue = targetNumber;
+                }
+
+                // *** FIX: Pass formatHintText for formatting guidance ***
+                numberElement.textContent = formatStatNumber(currentValue, formatHintText, targetNumber);
+
                 if (progress < 1) {
                     requestAnimationFrame(step);
                 }
             }
 
-            function formatStatNumber(number, originalText) {
-                if (originalText.includes('%')) {
+            // Updated formatting function
+            function formatStatNumber(number, hint, targetNum) {
+                if (hint.includes('%')) {
                     return number + '%';
-                } else if (originalText.includes('$')) {
-                    if (number >= 1000000) {
-                        return '$' + (number / 1000000).toFixed(1) + 'M';
+                } else if (hint.includes('$')) {
+                    // Check targetNum for large values to decide on 'M' formatting
+                    if (targetNum >= 1000000) {
+                        const millions = number / 1000000;
+                        // Show decimal only if not perfectly divisible by 1M (unless it's 0)
+                        const decimalPlaces = (number % 1000000 !== 0 && number !== 0) ? 1 : 0;
+                        // Ensure minimumFractionDigits prevents trailing ".0"
+                        return '$' + millions.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: decimalPlaces }) + 'M';
                     }
-                    return '$' + number.toLocaleString(); // Updated dollar formatting with commas
-                } else if (originalText.includes('+')) {
-                    return number + '+';
+                    return '$' + number.toLocaleString(); // Add commas
+                } else if (hint.includes('+')) {
+                     // Ensure '+' is only added when the number reaches the target
+                     return (number === targetNum ? number + '+' : number.toLocaleString());
                 }
-                return number.toString();
+                return number.toLocaleString(); // Default to locale string formatting
             }
 
-            const observer = new IntersectionObserver((entries) => {
+            const statObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
+                        startTimestamp = null; // Reset timestamp
                         requestAnimationFrame(step);
-                        observer.unobserve(card); // Animate only once
+                        statObserver.unobserve(card); // Animate only once
                     }
                 });
-            }, { threshold: 0.5 }); // Trigger when 50% of card is visible
+            }, { threshold: 0.4 }); // Trigger when 40% visible
 
-            observer.observe(card);
+            statObserver.observe(card);
         });
     }
-
-    animateStats(); // Call animateStats function after DOMContentLoaded
+    animateStats(); // Call the corrected function
 
 });
 
