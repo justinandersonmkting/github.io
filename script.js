@@ -36,6 +36,45 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Update copyright year in the footer
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.getElementById('year')) {
+    document.getElementById('year').textContent = new Date().getFullYear();
+  }
+  
+  // Smooth scroll functionality for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#') && href.length > 1) {
+        try {
+          // Attempt to find the target element
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            e.preventDefault(); // Prevent default only if target found
+            
+            // Calculate offset for fixed header (adjust value as needed)
+            const headerOffset = 70;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          } else {
+            console.warn(`Smooth scroll target not found: ${href}`);
+            // Allow default behavior if target not found
+          }
+        } catch (error) {
+          console.error(`Error during smooth scroll for ${href}:`, error);
+          // Allow default behavior on error
+        }
+      }
+    });
+  });
+});
+
     // Update Footer Year
     const yearSpan = document.getElementById('year');
     if (yearSpan) {
