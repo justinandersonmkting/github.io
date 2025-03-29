@@ -1103,51 +1103,104 @@ p {
 
 .contact-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-bottom:2rem}.contact-option{background-color:var(--background-alt);padding:1.5rem;border-radius:var(--radius);text-align:center;box-shadow:var(--shadow);transition:var(--transition)}.contact-option:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}.contact-icon{font-size:1.8rem;color:var(--accent);margin-bottom:.8rem}.contact-option-title{margin-bottom:.5rem;font-size:1.1rem}.contact-option p{margin-bottom:1rem;color:var(--secondary);font-size:.85rem}.contact-link{display:inline-block;color:var(--accent);font-weight:var(--font-weight-medium);position:relative}.contact-form-container{background-color:var(--background-alt);padding:1.5rem;border-radius:var(--radius);box-shadow:var(--shadow)}.form-title{text-align:center;margin-bottom:1rem}.contact-form{display:grid;gap:.8rem}.form-group{width:100%}.full-width{grid-column:1 / -1}.form-control{width:100%;padding:8px 12px;border:1px solid #ced4da;border-radius:var(--radius);font-size:.9rem;transition:border-color .3s ease;font-family:var(--font-family-sans)}.form-control:focus{outline:0;border-color:var(--accent)}textarea.form-control{resize:vertical}.form-message{margin-top:.8rem;padding:8px 12px;border-radius:var(--radius);display:none;font-size:.9rem}.form-message.success{background-color:#28a745;color:#fff}.form-message.error{background-color:#dc3545;color:#fff}.form-note{margin-top:.8rem;text-align:center;font-size:.8rem;color:var(--secondary)}
 
-/* === Footer === */
-.footer {
-    background-color: var(--secondary);
-    color: var(--text-light);
-    padding: 2rem 0;
-    text-align: center;
+/* Footer Colors and Styling */
+:root {
+  --footer-bg: #212529;
+  --footer-text: #e5e7eb;
+  --footer-link: #a5b4fc;
+  --footer-link-hover: #ffffff;
+  --accent: #007bff;
 }
 
-.footer .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Basic Footer Styling */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 4rem 1rem;
+  border-top: 4px solid var(--accent);
 }
 
-.social-links {
-    display: flex;
-    gap: 1.2rem;
-    margin-bottom: 1rem;
+footer .container {
+  max-width: 80rem;
+  margin: 0 auto;
 }
 
-.social-link {
-    color: var(--text-light);
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+/* Grid Layout */
+footer .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
 }
 
-.social-link:hover {
-    color: var(--accent-light);
+@media (min-width: 768px) {
+  footer .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.footer-links {
-    display: flex;
-    gap: 1.2rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+/* Footer Headings */
+.footer-brand-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
 }
 
-.footer-links a {
-    color: var(--text-light);
-    font-weight: var(--font-weight-medium);
+.footer-column-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #4b5563;
 }
 
-.footer-links a:hover {
-    color: var(--accent-light);
+/* Link Styling */
+footer a.text-footer-link {
+  color: var(--footer-link);
+  transition: all 0.3s;
+}
+
+footer a.text-footer-link:hover {
+  color: var(--footer-link-hover);
+  transform: translateY(-2px);
+}
+
+/* Social Media Icons */
+footer .flex.space-x-5 a {
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+
+footer .flex.space-x-5 a:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Footer List Styling */
+footer ul.space-y-2 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer ul.space-y-2 li {
+  margin-bottom: 0.5rem;
+}
+
+/* Copyright Section */
+footer .border-t {
+  border-top: 1px solid #374151;
+  padding-top: 2rem;
+  text-align: left;
+}
+
+footer .border-t p {
+  font-size: 0.875rem;
+  color: #6b7280;
 }
 
 .copyright {
