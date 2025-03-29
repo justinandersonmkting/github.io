@@ -14,7 +14,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="new_styles.css">
+<!-- Font Awesome for social icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (if not already included) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Basic Tailwind config
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          serif: ['DM Serif Display', 'serif'],
+        },
+        colors: {
+          // Define colors based on your original CSS variables
+          primary: '#212529',     
+          secondary: '#343a40',   
+          accent: '#007bff',       
+          'accent-light': '#b3d9ff', 
+          background: '#f8f9fa',   
+          'background-alt': '#ffffff', 
+          'footer-bg': '#212529', 
+          'footer-text': '#e5e7eb', 
+          'footer-link': '#a5b4fc',
+          'footer-link-hover': '#ffffff',
+        }
+      }
+    }
+  }
+</script>
     </head>
 <body>
     <div class="custom-cursor"></div>
