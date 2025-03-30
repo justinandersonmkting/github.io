@@ -36,45 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Update copyright year in the footer
-document.addEventListener('DOMContentLoaded', function() {
-  if (document.getElementById('year')) {
-    document.getElementById('year').textContent = new Date().getFullYear();
-  }
-  
-  // Smooth scroll functionality for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href && href.startsWith('#') && href.length > 1) {
-        try {
-          // Attempt to find the target element
-          const targetElement = document.querySelector(href);
-          if (targetElement) {
-            e.preventDefault(); // Prevent default only if target found
-            
-            // Calculate offset for fixed header (adjust value as needed)
-            const headerOffset = 70;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
-          } else {
-            console.warn(`Smooth scroll target not found: ${href}`);
-            // Allow default behavior if target not found
-          }
-        } catch (error) {
-          console.error(`Error during smooth scroll for ${href}:`, error);
-          // Allow default behavior on error
-        }
-      }
-    });
-  });
-});
-
     // Update Footer Year
     const yearSpan = document.getElementById('year');
     if (yearSpan) {
@@ -179,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
         debounce(highlightActiveSection, 100)
     );
 
-  // --- Animate Stats Numbers on Hero Section (CORRECTED) ---
+    // --- Animate Stats Numbers on Hero Section ---
     function animateStats() {
         const statCards = document.querySelectorAll('.stat-card');
         statCards.forEach(card => {
@@ -266,12 +227,214 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     animateStats(); // Call the corrected function
 
+    // ----- EXPERTISE TIMELINE FUNCTIONALITY -----
+    initExpertiseTimeline();
+
+    // --- Add GSAP animations for skills if you're using GSAP ---
+    // Uncomment if using GSAP:
+    // fadeInUp(".timeline-item", "#timeline", 0, 0.2);
 });
 
+// Debounce helper function
 function debounce(func, wait) {
     let timeout;
     return function (...args) {
         clearTimeout(timeout);
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
+}
+
+// Expertise Timeline Functionality
+function initExpertiseTimeline() {
+    // Timeline data based on your actual skills and experience
+    const timelineData = [
+        {
+            id: 1,
+            year: '2015-2016',
+            title: 'Digital Marketing Foundations',
+            description: 'Started career focusing on core marketing capabilities and content creation.',
+            skills: [
+                { name: 'SEO & Content Strategy', level: 75, description: 'Developed fundamental search optimization techniques and content strategies.' },
+                { name: 'Copywriting & Storytelling', level: 80, description: 'Created compelling narratives and marketing copy for diverse audiences.' },
+                { name: 'Social Media Marketing', level: 70, description: 'Managed brand presence across multiple social platforms.' }
+            ]
+        },
+        {
+            id: 2,
+            year: '2017-2018',
+            title: 'Marketing Technology Expansion',
+            description: 'Enhanced technical capabilities and marketing platform expertise.',
+            skills: [
+                { name: 'Google Analytics & Tag Manager', level: 80, description: 'Implemented tracking solutions and performance monitoring.' },
+                { name: 'WordPress & CMS Platforms', level: 75, description: 'Developed and maintained content management systems.' },
+                { name: 'HTML & CSS', level: 70, description: 'Created and modified web content with custom styling.' }
+            ]
+        },
+        {
+            id: 3,
+            year: '2019-2020',
+            title: 'Analytics & Performance Focus',
+            description: 'Specialized in data-driven marketing strategies and optimization.',
+            skills: [
+                { name: 'Data Analysis & Insights', level: 85, description: 'Extracted actionable intelligence from marketing performance data.' },
+                { name: 'Performance Tracking', level: 80, description: 'Developed comprehensive tracking systems for marketing initiatives.' },
+                { name: 'ROI Measurement', level: 75, description: 'Created frameworks for calculating marketing return on investment.' },
+                { name: 'A/B Testing', level: 80, description: 'Implemented systematic testing to optimize marketing elements.' }
+            ]
+        },
+        {
+            id: 4,
+            year: '2021-2022',
+            title: 'Creative Strategy & Production',
+            description: 'Led creative initiatives with enhanced production capabilities.',
+            skills: [
+                { name: 'Adobe Creative Suite', level: 85, description: 'Mastered design tools for creating professional marketing assets.' },
+                { name: 'Video Production', level: 75, description: 'Developed video content from concept to final production.' },
+                { name: 'Brand Development', level: 80, description: 'Created cohesive brand identities and guidelines.' },
+                { name: 'Content Strategy', level: 85, description: 'Developed comprehensive content plans aligned with business goals.' }
+            ]
+        },
+        {
+            id: 5,
+            year: '2023-Present',
+            title: 'Integrated Marketing Leadership',
+            description: 'Driving comprehensive marketing strategies with focus on automation and optimization.',
+            skills: [
+                { name: 'PPC & SEM Campaigns', level: 90, description: 'Managing sophisticated paid search and display campaigns.' },
+                { name: 'Conversion Optimization', level: 85, description: 'Implementing data-driven strategies to maximize conversions.' },
+                { name: 'Marketing Automation', level: 80, description: 'Developing automated workflows for marketing processes.' },
+                { name: 'HubSpot & CRM Systems', level: 85, description: 'Utilizing customer relationship management platforms for marketing.' }
+            ]
+        }
+    ];
+
+    const timeline = document.getElementById('timeline');
+    if (!timeline) return;
+    
+    let expandedId = null;
+
+    // Create timeline items
+    function createTimelineItems() {
+        timelineData.forEach((item, index) => {
+            const position = index % 2 === 0 ? 'left' : 'right';
+            
+            // Create timeline item container
+            const timelineItem = document.createElement('div');
+            timelineItem.className = `timeline-item ${position === 'left' ? 'justify-start' : 'justify-end'}`;
+            timelineItem.dataset.id = item.id;
+            
+            // Create year marker
+            const yearMarker = document.createElement('div');
+            yearMarker.className = 'year-marker';
+            yearMarker.textContent = item.year;
+            timelineItem.appendChild(yearMarker);
+            
+            // Create timeline card
+            const card = document.createElement('div');
+            card.className = 'timeline-card';
+            card.dataset.id = item.id;
+            
+            // Card content
+            const cardContent = document.createElement('div');
+            cardContent.className = 'timeline-card-content';
+            
+            cardContent.innerHTML = `
+                <h3 class="timeline-title">${item.title}</h3>
+                <p class="timeline-description">${item.description}</p>
+                
+                <div class="skills-container-timeline">
+                    ${item.skills.map(skill => `
+                        <div class="skill-item-timeline">
+                            <div class="skill-header">
+                                <span class="skill-name-timeline">${skill.name}</span>
+                                <span class="skill-level">${skill.level}%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 0%;" data-width="${skill.level}"></div>
+                            </div>
+                            <p class="skill-description">${skill.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="card-footer">
+                    <span class="details-text">Click for details</span>
+                    <div class="arrow-icon">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+            `;
+            
+            card.appendChild(cardContent);
+            timelineItem.appendChild(card);
+            timeline.appendChild(timelineItem);
+            
+            // Add click event
+            card.addEventListener('click', () => toggleExpand(item.id));
+        });
+    }
+
+    // Toggle expand/collapse
+    function toggleExpand(id) {
+        const allCards = document.querySelectorAll('.timeline-card');
+        const clickedCard = document.querySelector(`.timeline-card[data-id="${id}"]`);
+        const detailsText = clickedCard.querySelector('.details-text');
+        
+        // If clicking the already expanded card, collapse it
+        if (expandedId === id) {
+            clickedCard.classList.remove('expanded');
+            detailsText.textContent = 'Click for details';
+            expandedId = null;
+        } else {
+            // Collapse any expanded card
+            if (expandedId !== null) {
+                const expandedCard = document.querySelector(`.timeline-card[data-id="${expandedId}"]`);
+                if (expandedCard) {
+                    expandedCard.classList.remove('expanded');
+                    expandedCard.querySelector('.details-text').textContent = 'Click for details';
+                }
+            }
+            
+            // Expand the clicked card
+            clickedCard.classList.add('expanded');
+            detailsText.textContent = 'Click to collapse';
+            expandedId = id;
+            
+            // Animate skill bars
+            setTimeout(() => {
+                const progressBars = clickedCard.querySelectorAll('.skill-progress');
+                progressBars.forEach(bar => {
+                    const width = bar.dataset.width;
+                    bar.style.width = `${width}%`;
+                });
+            }, 100);
+        }
+    }
+
+    // Initialize Intersection Observer
+    function initIntersectionObserver() {
+        const options = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, options);
+        
+        // Observe all timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+    }
+
+    // Create and initialize
+    createTimelineItems();
+    initIntersectionObserver();
 }
