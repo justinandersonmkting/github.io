@@ -323,11 +323,23 @@ function initExpertiseTimeline() {
             timelineItem.className = `timeline-item ${position === 'left' ? 'justify-start' : 'justify-end'}`;
             timelineItem.dataset.id = item.id;
             
+            // Create year marker container
+            const yearMarkerContainer = document.createElement('div');
+            yearMarkerContainer.className = 'year-marker-container';
+            
             // Create year marker
             const yearMarker = document.createElement('div');
             yearMarker.className = 'year-marker';
-            yearMarker.textContent = item.year;
-            timelineItem.appendChild(yearMarker);
+            yearMarker.textContent = item.year.split('-')[0]; // Use only the starting year in the circle
+            yearMarkerContainer.appendChild(yearMarker);
+            
+            // Create year text
+            const yearText = document.createElement('div');
+            yearText.className = 'year-text';
+            yearText.textContent = item.year; // Full year range next to the circle
+            yearMarkerContainer.appendChild(yearText);
+            
+            timelineItem.appendChild(yearMarkerContainer);
             
             // Create timeline card
             const card = document.createElement('div');
@@ -438,3 +450,14 @@ function initExpertiseTimeline() {
     createTimelineItems();
     initIntersectionObserver();
 }
+
+// Add this to your document ready function
+document.addEventListener('DOMContentLoaded', function() {
+    // Your existing code...
+    
+    // Initialize the expertise timeline
+    initExpertiseTimeline();
+    
+    // If you're using GSAP for animations, you can add:
+    // fadeInUp(".timeline-item", "#timeline", 0, 0.2);
+});
