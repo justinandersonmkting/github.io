@@ -145,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const statCards = document.querySelectorAll('.stat-card');
         statCards.forEach(card => {
             const numberElement = card.querySelector('.stat-number');
-            // *** FIX: Read from data-target attribute ***
             const targetAttr = numberElement.getAttribute('data-target');
 
             if (!targetAttr || !numberElement) {
@@ -153,37 +152,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 return; // Skip if no target or element
             }
 
-            // Keep original text content ONLY as a hint for formatting
             const formatHintText = numberElement.textContent; // e.g., "0%", "$0", "0+"
-
-            // *** FIX: Use targetAttr for parsing the target number ***
             const targetNumber = parseInt(targetAttr.replace(/[^\d.-]/g, '')); // Parse digits/decimal/negative
 
             if (isNaN(targetNumber)) {
-               console.warn("Could not parse target number from data-target:", targetAttr, card);
-               return; // Skip if target is not a number
+                console.warn("Could not parse target number from data-target:", targetAttr, card);
+                return; // Skip if target is not a number
             }
 
             const duration = 2000; // 2 seconds
             let startTimestamp = null;
 
-            // Set initial display using format hint, animating from 0
             numberElement.textContent = formatStatNumber(0, formatHintText, targetNumber);
 
             function step(timestamp) {
                 if (!startTimestamp) startTimestamp = timestamp;
-                // Ensure progress doesn't exceed 1, especially on fast scrolls/intersections
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                // Use easing function for smoother animation (e.g., easeOutQuad)
                 const easedProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
                 let currentValue = Math.floor(easedProgress * targetNumber);
 
-                // Ensure final value matches target exactly on completion
                 if (progress === 1) {
                     currentValue = targetNumber;
                 }
 
-                // *** FIX: Pass formatHintText for formatting guidance ***
                 numberElement.textContent = formatStatNumber(currentValue, formatHintText, targetNumber);
 
                 if (progress < 1) {
@@ -191,23 +182,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            // Updated formatting function
             function formatStatNumber(number, hint, targetNum) {
                 if (hint.includes('%')) {
                     return number + '%';
                 } else if (hint.includes('$')) {
-                    // Check targetNum for large values to decide on 'M' formatting
                     if (targetNum >= 1000000) {
                         const millions = number / 1000000;
-                        // Show decimal only if not perfectly divisible by 1M (unless it's 0)
                         const decimalPlaces = (number % 1000000 !== 0 && number !== 0) ? 1 : 0;
-                        // Ensure minimumFractionDigits prevents trailing ".0"
                         return '$' + millions.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: decimalPlaces }) + 'M';
                     }
                     return '$' + number.toLocaleString(); // Add commas
                 } else if (hint.includes('+')) {
-                     // Ensure '+' is only added when the number reaches the target
-                     return (number === targetNum ? number + '+' : number.toLocaleString());
+                    return (number === targetNum ? number + '+' : number.toLocaleString());
                 }
                 return number.toLocaleString(); // Default to locale string formatting
             }
@@ -315,6 +301,8 @@ function initExpertiseTimeline() {
 
     // Create timeline items
     function createTimelineItems() {
+        timeline.innerHTML = ''; // Clear existing items
+        timelineData.sort((a, b) => a.id - b.id); // Sort by id to ensure correct order
         timelineData.forEach((item, index) => {
             const position = index % 2 === 0 ? 'left' : 'right';
             
@@ -330,7 +318,6 @@ function initExpertiseTimeline() {
             // Create year marker
             const yearMarker = document.createElement('div');
             yearMarker.className = 'year-marker';
-            yearMarker.textContent = item.year.split('-')[0]; // Use only the starting year in the circle
             yearMarkerContainer.appendChild(yearMarker);
             
             // Create year text
