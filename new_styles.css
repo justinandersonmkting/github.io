@@ -400,68 +400,214 @@ p {
     text-align: center;
 }
 
-/* === Core Competencies Section === */
-.section.core-competencies {
-    background-color: transparent;
-    /* Removed section background color*/
-    box-shadow: none;
+/* === Expertise Timeline Styles === */
+.expertise-timeline {
+    position: relative;
+    overflow: hidden;
 }
 
-.core-competencies {
-    margin-top: 3rem;
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    margin: 3rem 0;
 }
 
-.competencies-title {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: var(--accent-light);
+    transform: translateX(-50%);
 }
 
-.competencies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    /*  smaller base */
-    gap: 1rem;
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
 }
 
-.competency-column {
-    padding: 1rem;
-    /* Reduced padding */
-    background-color: var(--background-alt);
+.timeline-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(even) {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.timeline-card {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--background);
     border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.timeline-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.timeline-card.expanded {
+    box-shadow: 0 0 0 2px var(--accent), var(--shadow);
+}
+
+.timeline-card-content {
+    padding: 1.5rem;
+}
+
+.timeline-item:nth-child(odd) .timeline-card {
+    margin-right: 4rem;
+}
+
+.timeline-item:nth-child(even) .timeline-card {
+    margin-left: 4rem;
+}
+
+.year-marker {
+    position: absolute;
+    top: 0;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--accent);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.125rem;
+    z-index: 10;
     box-shadow: var(--shadow);
 }
 
-.competency-category {
-    font-size: 1.1rem;
-    /* Smaller category title */
-    font-weight: var(--font-weight-medium);
-    margin-bottom: 0.8rem;
-    /* Reduced margin */
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 0.4rem;
-    /* Reduced padding */
+.timeline-item:nth-child(odd) .year-marker {
+    left: 50%;
+    margin-left: 1rem;
 }
 
-.competency-list {
-    list-style: none;
-    padding-left: 0;
+.timeline-item:nth-child(even) .year-marker {
+    right: 50%;
+    margin-right: 1rem;
 }
 
-.competency-list li {
-    margin-bottom: 0.6rem;
-    /* Reduced margin */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.timeline-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-description {
     color: var(--secondary);
-    font-size: .9rem;
+    margin-bottom: 1rem;
 }
 
-.competency-list li i {
+.skills-container-timeline {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.timeline-card.expanded .skills-container-timeline {
+    max-height: 1000px;
+    margin-top: 1rem;
+}
+
+.skill-item-timeline {
+    margin-bottom: 1rem;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.skill-name-timeline {
+    font-weight: var(--font-weight-medium);
+    color: var(--secondary);
+}
+
+.skill-level {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.skill-bar {
+    width: 100%;
+    height: 0.625rem;
+    background-color: var(--background-alt);
+    border-radius: 999px;
+}
+
+.skill-progress {
+    height: 100%;
+    background-color: var(--accent);
+    border-radius: 999px;
+    transition: width 1s ease;
+}
+
+.skill-description {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    margin-top: 0.5rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.details-text {
+    font-size: 0.875rem;
     color: var(--accent);
-    font-size: 0.9rem;
-    /* Smaller icon */
+    font-weight: 500;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.timeline-card.expanded .arrow-icon {
+    transform: rotate(180deg);
+}
+
+/* Responsive Styles for Timeline */
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 2rem;
+    }
+    
+    .timeline-item {
+        margin-left: 4rem;
+    }
+    
+    .timeline-item:nth-child(even) {
+        justify-content: flex-start;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-card,
+    .timeline-item:nth-child(even) .timeline-card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .year-marker {
+        left: 2rem !important;
+        right: auto !important;
+        margin-left: -2rem !important;
+        margin-right: 0 !important;
+    }
 }
 /* === Flip Card Experience Section === */
 
