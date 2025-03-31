@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
             navMenu.setAttribute('aria-hidden', isExpanded);
         });
 
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.navbar-menu a').forEach(link => {
+        // Close mobile menu when a link is clicked (except dropdown toggles)
+        document.querySelectorAll('.navbar-menu a:not(.dropdown-toggle)').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
@@ -25,16 +25,93 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Add keyboard support for closing menu with Escape key
+        // Handle dropdown toggles - Improved for both mobile and desktop
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            // Add aria attributes for accessibility
+            const dropdownMenu = toggle.nextElementSibling;
+            if (!dropdownMenu) return; // Skip if there's no dropdown menu
+            
+            const dropdownId = dropdownMenu.id || `dropdown-${Math.random().toString(36).substring(2, 11)}`;
+            
+            dropdownMenu.id = dropdownId;
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-controls', dropdownId);
+            toggle.setAttribute('aria-haspopup', 'true');
+            
+            // Only handle click events on mobile or if specifically needed
+            toggle.addEventListener('click', (e) => {
+                // Only prevent default on mobile view
+                if (window.innerWidth <= 992) {
+                    e.preventDefault(); // Prevent navigation
+                    e.stopPropagation(); // Stop event from bubbling up
+                    
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all other dropdowns first
+                    document.querySelectorAll('.dropdown-toggle').forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                            otherToggle.classList.remove('active');
+                            const otherMenu = otherToggle.nextElementSibling;
+                            if (otherMenu) {
+                                otherMenu.classList.remove('show');
+                            }
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    toggle.setAttribute('aria-expanded', !isExpanded);
+                    toggle.classList.toggle('active');
+                    dropdownMenu.classList.toggle('show');
+                }
+            });
+        });
+
+        // Click outside to close dropdowns (mobile only)
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992 && !e.target.closest('.has-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.classList.remove('active');
+                });
+            }
+        });
+
+        // Handle Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
-                navMenu.setAttribute('aria-hidden', 'true');
-                navToggle.focus(); // Return focus to the toggle button
+            if (e.key === 'Escape') {
+                // Close mobile menu
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navMenu.setAttribute('aria-hidden', 'true');
+                    navToggle.focus(); // Return focus for accessibility
+                }
+                
+                // Close any open dropdowns
+                document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                    menu.classList.remove('show');
+                    const toggle = menu.previousElementSibling;
+                    if (toggle) {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.classList.remove('active');
+                        toggle.focus(); // Return focus for accessibility
+                    }
+                });
             }
         });
     }
+
+    // Fix header overflow on load - important for dropdown visibility
+    setTimeout(() => {
+        const header = document.querySelector('.header');
+        if (header) {
+            header.style.overflow = 'visible';
+        }
+    }, 300);
 
     // Update Footer Year
     const yearSpan = document.getElementById('year');
@@ -120,6 +197,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Smooth Scrolling for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            // Skip processing for dropdown toggles in mobile view
+            if (this.classList.contains('dropdown-toggle') && window.innerWidth <= 992) {
+                return;
+            }
+            
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
@@ -273,6 +355,14 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // ----- EXPERTISE TIMELINE FUNCTIONALITY -----
     initExpertiseTimeline();
+    
+    // Fix header overflow on load - important for dropdown visibility
+    setTimeout(() => {
+        const header = document.querySelector('.header');
+        if (header) {
+            header.style.overflow = 'visible';
+        }
+    }, 300);
 });
 
 // Debounce helper function
