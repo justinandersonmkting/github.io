@@ -42,6 +42,28 @@ document.addEventListener('DOMContentLoaded', function () {
         yearSpan.textContent = new Date().getFullYear();
     }
 
+    // Scroll Progress Indicator
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = (window.pageYOffset / totalHeight) * 100;
+            scrollProgress.style.width = `${progress}%`;
+        });
+    }
+
+    // Shrink header on scroll
+    const header = document.querySelector('.header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    }
+
     // Form Submission Handling
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -115,30 +137,64 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Highlight Active Section in Navigation
+    // Highlight Active Section in Navigation with improved accuracy
     function highlightActiveSection() {
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.navbar-menu a');
-
-        const scrollPosition = window.pageYOffset + 100;
+        
+        // Get current scroll position with offset for better accuracy
+        const scrollPosition = window.pageYOffset + 150; // Increased offset for better active state detection
+        
+        // Track if any section is active
+        let foundActive = false;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-
+            
+            // Check if we're in this section
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => link.classList.remove('active'));
+                foundActive = true;
+                
+                // First remove active class from all links
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to corresponding link
                 const activeLink = document.querySelector(`.navbar-menu a[href="#${sectionId}"]`);
-                if (activeLink) activeLink.classList.add('active');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    
+                    // Optional: Scroll active link into view in the navbar if it's overflowing
+                    if (window.innerWidth > 768) { // Only on desktop
+                        const navContainer = document.querySelector('.navbar-menu');
+                        if (navContainer) {
+                            const linkRect = activeLink.getBoundingClientRect();
+                            const containerRect = navContainer.getBoundingClientRect();
+                            
+                            if (linkRect.right > containerRect.right || linkRect.left < containerRect.left) {
+                                activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                            }
+                        }
+                    }
+                }
             }
         });
+        
+        // If we're at the top of the page, set Home as active
+        if (!foundActive && window.pageYOffset < 100) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const homeLink = document.querySelector('.navbar-menu a[href="#hero"]');
+            if (homeLink) homeLink.classList.add('active');
+        }
     }
 
-    window.addEventListener(
-        'scroll',
-        debounce(highlightActiveSection, 100)
-    );
+    window.addEventListener('scroll', debounce(highlightActiveSection, 100));
+    
+    // Call it once on load to set initial active state
+    highlightActiveSection();
 
     // --- Animate Stats Numbers on Hero Section ---
     function animateStats() {
