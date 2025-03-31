@@ -141,6 +141,104 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Enhanced Hero Animations with GSAP
+    if (typeof gsap !== 'undefined') {
+        // Hero title animation
+        gsap.from('.hero-title', { 
+            duration: 1.2, 
+            y: 30, 
+            opacity: 0, 
+            ease: 'power3.out',
+            delay: 0.2
+        });
+        
+        // Hero subtitle animation
+        gsap.from('.hero-subtitle', { 
+            duration: 1, 
+            y: 20, 
+            opacity: 0, 
+            ease: 'power3.out',
+            delay: 0.6
+        });
+        
+        // CTA buttons animation
+        gsap.from('.hero-cta .btn', { 
+            duration: 0.8, 
+            y: 20, 
+            opacity: 0, 
+            stagger: 0.2, 
+            ease: 'power2.out',
+            delay: 1
+        });
+        
+        // Hero image animation
+        gsap.from('.hero-image', { 
+            duration: 1.5, 
+            x: 50, 
+            opacity: 0, 
+            ease: 'power3.out',
+            delay: 0.4
+        });
+        
+        // Stats animation
+        gsap.from('.stat-card', { 
+            duration: 0.8, 
+            y: 30, 
+            opacity: 0, 
+            stagger: 0.15, 
+            ease: 'back.out(1.7)',
+            delay: 1.2
+        });
+        
+        // Floating shapes animation with random movement
+        gsap.to('.hero-shape', {
+            duration: 8,
+            x: 'random(-30, 30)',
+            y: 'random(-30, 30)',
+            rotation: 'random(-15, 15)',
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true,
+            stagger: {
+                each: 0.5,
+                from: 'random'
+            }
+        });
+        
+        // Create scroll animations with ScrollTrigger if available
+        if (typeof ScrollTrigger !== 'undefined') {
+            // Create animation for elements with fade-in-up class
+            gsap.utils.toArray('.fade-in-up').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                });
+            });
+            
+            // Animate section titles
+            gsap.utils.toArray('.section-title').forEach(title => {
+                gsap.from(title, {
+                    scrollTrigger: {
+                        trigger: title,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    },
+                    y: 30,
+                    opacity: 0,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+            });
+        }
+    }
+
     // Form Submission Handling
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -363,6 +461,44 @@ document.addEventListener('DOMContentLoaded', function () {
             header.style.overflow = 'visible';
         }
     }, 300);
+    
+    // Add text highlight effect to accent text
+    const accentText = document.querySelector('.accent-text');
+    if (accentText) {
+        setTimeout(() => {
+            accentText.classList.add('highlight-active');
+        }, 1500);
+    }
+    
+    // Enhanced hover effects for interactive elements
+    const enhanceHoverEffects = () => {
+        // Add hover effect to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                gsap.to(btn, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { scale: 1, duration: 0.3, ease: 'power2.out' });
+            });
+        });
+        
+        // Add hover effect to nav items
+        document.querySelectorAll('.navbar-menu li a').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                gsap.to(link, { y: -2, duration: 0.3, ease: 'power2.out' });
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                gsap.to(link, { y: 0, duration: 0.3, ease: 'power2.out' });
+            });
+        });
+    };
+    
+    // Initialize enhanced hover effects if GSAP is available
+    if (typeof gsap !== 'undefined') {
+        enhanceHoverEffects();
+    }
 });
 
 // Debounce helper function
