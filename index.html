@@ -62,6 +62,7 @@
 <body>
     <div class="custom-cursor"></div>
 
+    <!-- Navigation menu with fixed dropdown structure -->
     <header class="header">
         <!-- Scroll progress indicator -->
         <div class="scroll-progress-container">
@@ -80,8 +81,10 @@
                     <li><a href="#experience"><i class="fas fa-briefcase"></i> Work Experience</a></li>
                     <li><a href="#skills"><i class="fas fa-chart-bar"></i> Skills</a></li>
                     <li class="has-dropdown">
-                        <a href="#portfolio" class="dropdown-toggle"><i class="fas fa-project-diagram"></i> Portfolio</a>
-                        <ul class="dropdown-menu">
+                        <a href="#portfolio" class="dropdown-toggle">
+                            <i class="fas fa-project-diagram"></i> Portfolio <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu" id="portfolioDropdown">
                             <li><a href="https://drive.google.com/file/d/1agB6bh-siAW2vUtqhhnpuxDcs7e-zBFS/view?usp=drive_link" target="_blank">Texas Tamale House Research</a></li>
                             <li><a href="https://drive.google.com/file/d/1Kpy3ysGDy5Ilwz2PBkF-ZTG_bcDhyr3w/view?usp=drive_link" target="_blank">A-Town Market Rebrand</a></li>
                             <li><a href="https://drive.google.com/file/d/1Zay7NJ2V8Na60rHtUezB8MLCLS5QyZc3/view?usp=drive_link" target="_blank">DFW Tourism Initiative</a></li>
