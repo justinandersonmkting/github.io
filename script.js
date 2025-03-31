@@ -211,14 +211,12 @@ document.addEventListener('DOMContentLoaded', function () {
             statObserver.observe(card);
         });
     }
-    animateStats(); // Call the corrected function
-
+    
+    // Call animation functions
+    animateStats();
+    
     // ----- EXPERTISE TIMELINE FUNCTIONALITY -----
     initExpertiseTimeline();
-
-    // --- Add GSAP animations for skills if you're using GSAP ---
-    // Uncomment if using GSAP:
-    // fadeInUp(".timeline-item", "#timeline", 0, 0.2);
 });
 
 // Debounce helper function
@@ -299,38 +297,29 @@ function initExpertiseTimeline() {
     
     let expandedId = null;
 
-    // Create timeline items
+    // Create timeline items - improved mobile-friendly version
     function createTimelineItems() {
-        timeline.innerHTML = ''; // Clear existing items
+        timeline.innerHTML = ''; // Clear existing items except timeline-line
+        
+        // Make sure the timeline line element exists
+        let timelineLine = timeline.querySelector('.timeline-line');
+        if (!timelineLine) {
+            timelineLine = document.createElement('div');
+            timelineLine.className = 'timeline-line';
+            timeline.appendChild(timelineLine);
+        }
+        
+        // Create a grid layout container for the timeline cards
+        const timelineGrid = document.createElement('div');
+        timelineGrid.className = 'timeline-grid';
+        timeline.appendChild(timelineGrid);
+        
         timelineData.sort((a, b) => a.id - b.id); // Sort by id to ensure correct order
-        timelineData.forEach((item, index) => {
-            const position = index % 2 === 0 ? 'left' : 'right';
-            
-            // Create timeline item container
-            const timelineItem = document.createElement('div');
-            timelineItem.className = `timeline-item ${position === 'left' ? 'justify-start' : 'justify-end'}`;
-            timelineItem.dataset.id = item.id;
-            
-            // Create year marker container
-            const yearMarkerContainer = document.createElement('div');
-            yearMarkerContainer.className = 'year-marker-container';
-            
-            // Create year marker
-            const yearMarker = document.createElement('div');
-            yearMarker.className = 'year-marker';
-            yearMarkerContainer.appendChild(yearMarker);
-            
-            // Create year text
-            const yearText = document.createElement('div');
-            yearText.className = 'year-text';
-            yearText.textContent = item.year; // Full year range next to the circle
-            yearMarkerContainer.appendChild(yearText);
-            
-            timelineItem.appendChild(yearMarkerContainer);
-            
+        
+        timelineData.forEach((item) => {
             // Create timeline card
             const card = document.createElement('div');
-            card.className = 'timeline-card';
+            card.className = 'timeline-card mobile-friendly';
             card.dataset.id = item.id;
             
             // Card content
@@ -338,7 +327,10 @@ function initExpertiseTimeline() {
             cardContent.className = 'timeline-card-content';
             
             cardContent.innerHTML = `
-                <h3 class="timeline-title">${item.title}</h3>
+                <div class="timeline-header">
+                    <h3 class="timeline-title">${item.title}</h3>
+                    <span class="timeline-year">${item.year}</span>
+                </div>
                 <p class="timeline-description">${item.description}</p>
                 
                 <div class="skills-container-timeline">
@@ -367,8 +359,7 @@ function initExpertiseTimeline() {
             `;
             
             card.appendChild(cardContent);
-            timelineItem.appendChild(card);
-            timeline.appendChild(timelineItem);
+            timelineGrid.appendChild(card);
             
             // Add click event
             card.addEventListener('click', () => toggleExpand(item.id));
@@ -412,7 +403,7 @@ function initExpertiseTimeline() {
         }
     }
 
-    // Initialize Intersection Observer
+    // Initialize Intersection Observer for animation on scroll
     function initIntersectionObserver() {
         const options = {
             threshold: 0.3,
@@ -423,13 +414,23 @@ function initExpertiseTimeline() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
+                    
+                    // When a card comes into view, animate its appearance
+                    const card = entry.target;
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
                 }
             });
         }, options);
         
-        // Observe all timeline items
-        document.querySelectorAll('.timeline-item').forEach(item => {
-            observer.observe(item);
+        // Observe all timeline cards
+        document.querySelectorAll('.timeline-card').forEach(card => {
+            // Set initial state for animation
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            observer.observe(card);
         });
     }
 
@@ -437,14 +438,3 @@ function initExpertiseTimeline() {
     createTimelineItems();
     initIntersectionObserver();
 }
-
-// Add this to your document ready function
-document.addEventListener('DOMContentLoaded', function() {
-    // Your existing code...
-    
-    // Initialize the expertise timeline
-    initExpertiseTimeline();
-    
-    // If you're using GSAP for animations, you can add:
-    // fadeInUp(".timeline-item", "#timeline", 0, 0.2);
-});
