@@ -275,7 +275,7 @@ p {
     align-items: center;
     height: 100%;
     padding: 0;
-    max-width: 1200px;
+    max-width: 1300px; /* Increased from 1200px to give more space */
     margin: 0 auto;
     width: 100%;
 }
@@ -300,6 +300,7 @@ p {
     overflow: hidden;
     padding: 0.25rem 0;
     transition: transform 0.3s ease;
+    margin-right: 1rem; /* Added margin to separate from menu */
 }
 
 .navbar-brand:hover {
@@ -314,7 +315,7 @@ p {
 .navbar-menu {
     display: flex;
     list-style: none;
-    gap: 1.2rem;
+    gap: 0.8rem; /* Reduced gap from 1.2rem to make items closer together */
     margin: 0;
     padding: 0;
     height: 100%;
@@ -469,6 +470,7 @@ p {
     color: var(--primary);
     transition: var(--transition);
     z-index: 1010;
+    margin-left: auto; /* Push toggle to the right */
 }
 
 .navbar-toggle:hover {
@@ -544,6 +546,35 @@ p {
 
     .navbar-menu li.has-dropdown > a i.fa-chevron-down {
         margin-left: auto;
+    }
+
+    .navbar .container {
+        justify-content: flex-start; /* Align items at start for mobile */
+    }
+
+    .navbar-brand.mobile-only {
+        flex: 1; /* Allow brand to take up available space */
+        font-size: 1.2rem; /* Slightly smaller font on mobile */
+        max-width: 70%; /* Limit width to prevent pushing toggle off screen */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* Media query specifically for medium-sized screens like Chromebooks */
+@media (min-width: 993px) and (max-width: 1150px) {
+    .navbar-menu {
+        gap: 0.5rem; /* Reduce the gap further on medium screens */
+    }
+    
+    .navbar-menu li a {
+        font-size: 0.85rem; /* Slightly smaller font on medium screens */
+        padding: 0.25rem 0.15rem; /* Reduced horizontal padding */
+    }
+    
+    .navbar-menu li a i {
+        margin-right: 4px; /* Smaller icon margin */
+        font-size: 0.8rem; /* Smaller icons */
     }
 }
 
