@@ -63,6 +63,11 @@
     <div class="custom-cursor"></div>
 
     <header class="header">
+        <!-- Scroll progress indicator -->
+        <div class="scroll-progress-container">
+            <div class="scroll-progress-bar" id="scrollProgress"></div>
+        </div>
+        
         <nav class="navbar">
             <div class="container">
                 <a href="#hero" class="navbar-brand">Justin Anderson</a>
@@ -70,14 +75,22 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <ul class="navbar-menu" id="navMenu">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Work Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#experience"><i class="fas fa-briefcase"></i> Work Experience</a></li>
+                    <li><a href="#skills"><i class="fas fa-chart-bar"></i> Skills</a></li>
+                    <li class="has-dropdown">
+                        <a href="#portfolio" class="dropdown-toggle"><i class="fas fa-project-diagram"></i> Portfolio</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://drive.google.com/file/d/1agB6bh-siAW2vUtqhhnpuxDcs7e-zBFS/view?usp=drive_link" target="_blank">Texas Tamale House Research</a></li>
+                            <li><a href="https://drive.google.com/file/d/1Kpy3ysGDy5Ilwz2PBkF-ZTG_bcDhyr3w/view?usp=drive_link" target="_blank">A-Town Market Rebrand</a></li>
+                            <li><a href="https://drive.google.com/file/d/1Zay7NJ2V8Na60rHtUezB8MLCLS5QyZc3/view?usp=drive_link" target="_blank">DFW Tourism Initiative</a></li>
+                            <li><a href="https://drive.google.com/file/d/1VTTUnKdlk_BhKSmnepDCkkJ36RzeGZHh/view?usp=drive_link" target="_blank">Tamale House Case Study</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#testimonials"><i class="fas fa-quote-right"></i> Testimonials</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -175,13 +188,15 @@
                                         <li><strong>Spearheaded</strong> digital marketing strategies, achieving 35–45%
                                             increases in lead generation and conversion rates.</li>
                                         <li>Managed client portfolios with an annual marketing spend of
-                                            <strong>$1.2M</strong>.</li>
+                                            <strong>$1.2M</strong>.
+                                        </li>
                                         <li>Executed strategic SEO campaigns with technical improvements boosting online
                                             visibility.</li>
                                         <li>Optimized Google Business Profiles to enhance Map Pack visibility, driving
                                             significant foot traffic.</li>
                                         <li>Managed paid search campaigns with daily budgets up to
-                                            <strong>$1,200</strong>, improving CPA by 12–25%.</li>
+                                            <strong>$1,200</strong>, improving CPA by 12–25%.
+                                        </li>
                                         <li>Developed and executed multi-platform social media strategies, achieving 12%
                                             annual follower growth.</li>
                                         <li>Managed social advertising budgets totaling <strong>$36,000
