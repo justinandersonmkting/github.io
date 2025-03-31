@@ -183,7 +183,8 @@ p {
     height: 70px;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
-    overflow: hidden; /* Prevent content from overflowing */
+    /* Set overflow to visible by default to ensure dropdown menus work */
+    overflow: visible; 
 }
 
 /* Header shrink effect when scrolling */
@@ -281,9 +282,24 @@ p {
     align-items: center;
 }
 
-/* Hide icons on desktop by default */
+/* Always show icons for better visual cues */
 .navbar-menu li a i {
-    display: none;
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+/* Show dropdown chevron */
+.navbar-menu li a i.fa-chevron-down {
+    margin-left: 6px;
+    margin-right: 0;
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate chevron when dropdown is active or hovered */
+.navbar-menu li.has-dropdown:hover a i.fa-chevron-down,
+.navbar-menu li.has-dropdown a.dropdown-toggle.active i.fa-chevron-down {
+    transform: rotate(180deg);
 }
 
 /* Active/current section styling */
@@ -317,135 +333,196 @@ p {
     width: 100%;
 }
 
+/* Dropdown menu for portfolio items */
+.navbar-menu li.has-dropdown {
+    position: relative;
+}
+
+/* Hide dropdown menu by default */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--background-alt);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    width: 250px;
+    padding: 0.75rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+/* Show dropdown on hover only for desktop */
+@media (min-width: 992px) {
+    .navbar-menu li.has-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-menu li {
+    height: auto;
+    width: 100%;
+    display: block;
+}
+
+.dropdown-menu li a {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    display: block;
+    height: auto;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+    text-transform: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+/* Remove the bottom border animation for dropdown items */
+.dropdown-menu li a::after {
+    display: none;
+}
+
+/* Show dropdown menu when .show class is applied (for mobile) */
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 /* Mobile Navigation with improved transitions */
 .navbar-toggle {
     display: none;
     background: none;
     border: none;
-    color: var(--primary);
-    font-size: 1.5rem;
-    cursor: pointer;
     padding: 0.5rem;
-    z-index: 1001;
-    transition: transform 0.3s ease;
+    cursor: pointer;
+    margin-left: auto;
+    transition: all 0.3s ease;
 }
 
 .navbar-toggle:hover {
-    transform: rotate(5deg);
-    color: var(--accent);
+    transform: scale(1.1);
 }
 
-/* Subtle background animation for navbar */
-@keyframes subtleGradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.header-scrolled .navbar-menu li a.active::after {
-    animation: pulse 1.5s infinite;
-    bottom: 10px; /* Adjust position when header is scrolled */
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.6;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar-brand {
-        text-align: left;
-        width: auto;
-        margin-right: 0;
-    }
-
+@media (max-width: 992px) {
     .navbar-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
+        position: fixed;
         top: 70px;
-        left: 0;
-        width: 100%;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 70px);
         background-color: var(--background-alt);
-        box-shadow: var(--shadow);
-        padding: 0;
-        margin: 0;
-        transform: translateY(-10px);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        height: auto;
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: var(--shadow-lg);
+        overflow-y: auto;
+        transition: right 0.3s ease-in-out;
+        gap: 0;
+        z-index: 1000;
     }
 
     .navbar-menu.active {
-        display: flex;
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .navbar-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        right: 0;
     }
 
     .navbar-menu li {
-        padding: 0;
         width: 100%;
         height: auto;
-    }
-    
-    .navbar-menu li a {
-        padding: 1rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        display: flex;
-        align-items: center;
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-        height: auto;
-    }
-    
-    /* Show icons on mobile */
-    .navbar-menu li a i {
-        display: inline-block;
-        margin-right: 0.5rem;
-        font-size: 1rem;
-        opacity: 0.7;
-        transition: transform 0.3s ease;
-    }
-    
-    .navbar-menu li a:hover i {
-        transform: translateY(-2px);
-        opacity: 1;
-    }
-    
-    .navbar-menu li a::after {
-        display: none; /* Hide bottom border animation on mobile */
-    }
-    
-    /* Alternative mobile hover effect */
-    .navbar-menu li a:hover,
-    .navbar-menu li a.active {
-        background: linear-gradient(to right, rgba(0, 123, 255, 0.05), rgba(179, 217, 255, 0.1));
     }
 
-    .navbar .container {
-        padding: 0 1rem;
+    .navbar-menu li a {
+        padding: 1rem 1.5rem;
+        width: 100%;
+        justify-content: flex-start;
+        height: auto;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        opacity: 1;
+        visibility: hidden;
+        height: 0;
+        padding: 0;
+        background-color: rgba(0, 0, 0, 0.02);
+        display: none;
+        transform: none;
+        transition: none;
+        overflow: hidden;
+    }
+
+    .dropdown-menu.show {
+        visibility: visible;
+        height: auto;
+        padding: 0;
+        display: block;
+    }
+
+    .dropdown-menu li a {
+        padding-left: 2.5rem;
+    }
+
+    /* Prevent dropdown links from activating on mobile */
+    .navbar-menu li.has-dropdown > a.dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* Move chevron to the right on mobile */
+    .navbar-menu li.has-dropdown > a.dropdown-toggle i.fa-chevron-down {
+        margin-left: auto;
+    }
+
+    /* Position the dropdown indicator clearly */
+    .navbar-menu li.has-dropdown {
+        position: relative;
+    }
+}
+
+/* === Mobile Navigation Button Styles === */
+.navbar-toggle {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: var(--radius);
+}
+
+.navbar-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggle:hover i {
+    transform: scale(1.1);
+    color: var(--accent);
+}
+
+@media (max-width: 992px) {
+    .header {
+        height: 60px;
+    }
+
+    .navbar-menu {
+        top: 60px;
     }
 }
 
