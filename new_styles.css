@@ -421,6 +421,21 @@ p {
     transform: translateX(-50%);
 }
 
+/* New timeline grid styling to fix the layout */
+.timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width: 768px) {
+    .timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .timeline-item {
     position: relative;
     margin-bottom: 3rem;
@@ -434,24 +449,29 @@ p {
     transform: translateY(0);
 }
 
-.timeline-item:nth-child(even) {
-    display: flex;
-    justify-content: flex-end;
-}
-
+/* Mobile-friendly timeline card */
 .timeline-card {
     width: 100%;
-    max-width: 450px;
-    background-color: var(--background);
+    background-color: var(--background-alt);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
+    border-left: 3px solid var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.timeline-card.mobile-friendly {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .timeline-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
 }
 
@@ -463,58 +483,28 @@ p {
     padding: 1.5rem;
 }
 
-.timeline-item:nth-child(odd) .timeline-card {
-    margin-right: 4rem;
-}
-
-.timeline-item:nth-child(even) .timeline-card {
-    margin-left: 4rem;
-}
-
-.year-marker-container {
-    position: absolute;
-    top: 0;
+.timeline-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    z-index: 10;
-}
-
-.year-marker {
-    width: 4rem;
-    height: 4rem;
-    background-color: var(--accent);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.125rem;
-    box-shadow: var(--shadow);
-    margin-right: 0.5rem;
-}
-
-.year-text {
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--primary);
-}
-
-.timeline-item:nth-child(odd) .year-marker-container {
-    left: 50%;
-    margin-left: 1rem;
-}
-
-.timeline-item:nth-child(even) .year-marker-container {
-    right: 50%;
-    margin-right: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .timeline-title {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+}
+
+.timeline-year {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent);
+    padding: 0.25rem 0.5rem;
+    background-color: var(--accent-light);
+    border-radius: var(--radius);
+    opacity: 0.8;
 }
 
 .timeline-description {
@@ -550,14 +540,16 @@ p {
 
 .skill-level {
     font-size: 0.875rem;
-    color: var(--text-light);
+    color: var(--accent);
+    font-weight: 500;
 }
 
 .skill-bar {
     width: 100%;
     height: 0.625rem;
-    background-color: var(--background-alt);
+    background-color: var(--background);
     border-radius: 999px;
+    overflow: hidden;
 }
 
 .skill-progress {
@@ -594,33 +586,17 @@ p {
     transform: rotate(180deg);
 }
 
-/* Responsive Styles for Timeline */
+/* === Original Responsive Styles for Timeline === */
 @media (max-width: 768px) {
     .timeline-line {
-        left: 2rem;
+        left: 1rem;
     }
     
     .timeline-item {
-        margin-left: 4rem;
-    }
-    
-    .timeline-item:nth-child(even) {
-        justify-content: flex-start;
-    }
-    
-    .timeline-item:nth-child(odd) .timeline-card,
-    .timeline-item:nth-child(even) .timeline-card {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    
-    .year-marker-container {
-        left: 2rem !important;
-        right: auto !important;
-        margin-left: -2rem !important;
-        margin-right: 0 !important;
+        margin-left: 2rem;
     }
 }
+
 /* === Flip Card Experience Section === */
 
 .experience-container {
@@ -639,7 +615,7 @@ p {
 .experience-card-container {
     perspective: 1000px; /* 3D effect for flipping */
     width: 100%;
-    min-height: 450px; /* Minimum height to ensure enough space */
+    min-height: 500px; /* Minimum height to ensure enough space */
     margin-bottom: 1.5rem;
 }
 
@@ -648,7 +624,7 @@ p {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 450px;
+    min-height: 500px;
     transition: transform 0.6s;
     transform-style: preserve-3d;
 }
@@ -663,7 +639,7 @@ p {
     position: absolute;
     width: 100%;
     height: 100%;
-    min-height: 450px;
+    min-height: 500px;
     backface-visibility: hidden;
     border-radius: var(--radius, 4px);
     overflow: hidden;
