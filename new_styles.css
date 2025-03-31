@@ -183,6 +183,7 @@ p {
     height: 70px;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    overflow: hidden; /* Prevent content from overflowing */
 }
 
 /* Header shrink effect when scrolling */
@@ -215,6 +216,18 @@ p {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
     padding: 0 var(--container-padding);
 }
 
@@ -239,10 +252,18 @@ p {
     display: flex;
     list-style: none;
     gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    flex-wrap: wrap; /* Allow menu items to wrap if needed */
+    justify-content: flex-end;
 }
 
 .navbar-menu li {
     position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 /* Font styling improvements for navigation items */
@@ -250,11 +271,14 @@ p {
     color: var(--text-dark);
     font-weight: var(--font-weight-medium);
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     transition: all 0.3s ease;
     font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 /* Hide icons on desktop by default */
@@ -278,7 +302,7 @@ p {
 .navbar-menu li a::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 15px; /* Position the border higher up */
     left: 50%;
     width: 0;
     height: 2px;
@@ -326,6 +350,7 @@ p {
 
 .header-scrolled .navbar-menu li a.active::after {
     animation: pulse 1.5s infinite;
+    bottom: 10px; /* Adjust position when header is scrolled */
 }
 
 @keyframes pulse {
@@ -342,9 +367,9 @@ p {
 
 @media (max-width: 768px) {
     .navbar-brand {
-        text-align: center;
-        width: 100%;
-        margin-right: 2rem;
+        text-align: left;
+        width: auto;
+        margin-right: 0;
     }
 
     .navbar-menu {
@@ -362,6 +387,7 @@ p {
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
+        height: auto;
     }
 
     .navbar-menu.active {
@@ -380,6 +406,7 @@ p {
     .navbar-menu li {
         padding: 0;
         width: 100%;
+        height: auto;
     }
     
     .navbar-menu li a {
@@ -390,6 +417,7 @@ p {
         width: 100%;
         text-align: center;
         justify-content: center;
+        height: auto;
     }
     
     /* Show icons on mobile */
@@ -414,6 +442,10 @@ p {
     .navbar-menu li a:hover,
     .navbar-menu li a.active {
         background: linear-gradient(to right, rgba(0, 123, 255, 0.05), rgba(179, 217, 255, 0.1));
+    }
+
+    .navbar .container {
+        padding: 0 1rem;
     }
 }
 
@@ -492,7 +524,7 @@ p {
     font-size: 1.6rem;
     /* Smaller numbers */
     font-weight: var(--font-weight-bold);
-    color: var(--accent-light);
+    color: var (--accent-light);
     margin-bottom: 0.25rem;
 }
 
