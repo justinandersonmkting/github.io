@@ -172,7 +172,7 @@ p {
     background-color: var(--accent-light);
 }
 
-/* === Header & Navigation (Fixed & Mobile-Friendly) === */
+/* === Header & Navigation (Enhanced with Animations) === */
 .header {
     background-color: var(--background-alt);
     position: fixed;
@@ -182,6 +182,32 @@ p {
     z-index: 1000;
     height: 70px;
     box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+/* Header shrink effect when scrolling */
+.header-scrolled {
+    height: 60px;
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+}
+
+/* Scroll progress indicator */
+.scroll-progress-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    z-index: 1010;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    width: 0%;
+    transition: width 0.1s ease;
 }
 
 .navbar {
@@ -196,94 +222,198 @@ p {
     font-family: var(--font-family-serif);
     font-weight: var(--font-weight-bold);
     font-size: 1.4rem;
-    /* Adjusted size */
     color: var(--primary);
     white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.25rem 0;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
 }
 
 .navbar-menu {
     display: flex;
     list-style: none;
     gap: 1.2rem;
-    /* Reduced gap */
 }
 
+.navbar-menu li {
+    position: relative;
+}
+
+/* Font styling improvements for navigation items */
 .navbar-menu li a {
     color: var(--text-dark);
     font-weight: var(--font-weight-medium);
     position: relative;
     padding: 0.5rem 0;
-    transition: var(--transition); /* Ensure transition is defined */
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
+/* Hide icons on desktop by default */
+.navbar-menu li a i {
+    display: none;
+}
+
+/* Active/current section styling */
+.navbar-menu li a.active {
+    color: var(--accent);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Hover effect */
 .navbar-menu li a:hover {
-    color: var(--accent-light);
-    /* Scale up slightly on hover */
-    transform: scale(1.05);
+    color: var(--accent);
+    transform: translateY(-2px);
 }
 
-
+/* Animated bottom border that slides under menu items */
 .navbar-menu li a::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
     width: 0;
     height: 2px;
-    background-color: var(--accent);
-    transition: var(--transition), width 0.5s ease; /* Add width transition duration */
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
-.navbar-menu li a:hover::after {
+.navbar-menu li a:hover::after,
+.navbar-menu li a.active::after {
     width: 100%;
 }
 
-/* Mobile Navigation */
+/* Mobile Navigation with improved transitions */
 .navbar-toggle {
     display: none;
-    /* Hidden by default */
     background: none;
     border: none;
     color: var(--primary);
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 0.25rem;
+    padding: 0.5rem;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggle:hover {
+    transform: rotate(5deg);
+    color: var(--accent);
+}
+
+/* Subtle background animation for navbar */
+@keyframes subtleGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.header-scrolled .navbar-menu li a.active::after {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
 }
 
 @media (max-width: 768px) {
     .navbar-brand {
         text-align: center;
         width: 100%;
-        /* Center on mobile */
         margin-right: 2rem;
     }
 
     .navbar-menu {
         display: none;
-        /* Hide menu by default on mobile */
         flex-direction: column;
         position: absolute;
         top: 70px;
-        /* Below the header */
         left: 0;
         width: 100%;
         background-color: var(--background-alt);
         box-shadow: var(--shadow);
+        padding: 0;
+        margin: 0;
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
     }
 
     .navbar-menu.active {
         display: flex;
-        /* Show menu when active */
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
 
     .navbar-toggle {
-        display: block;
-        /* Show hamburger icon on mobile */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .navbar-menu li {
+        padding: 0;
+        width: 100%;
+    }
+    
+    .navbar-menu li a {
         padding: 1rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    /* Show icons on mobile */
+    .navbar-menu li a i {
+        display: inline-block;
+        margin-right: 0.5rem;
+        font-size: 1rem;
+        opacity: 0.7;
+        transition: transform 0.3s ease;
+    }
+    
+    .navbar-menu li a:hover i {
+        transform: translateY(-2px);
+        opacity: 1;
+    }
+    
+    .navbar-menu li a::after {
+        display: none; /* Hide bottom border animation on mobile */
+    }
+    
+    /* Alternative mobile hover effect */
+    .navbar-menu li a:hover,
+    .navbar-menu li a.active {
+        background: linear-gradient(to right, rgba(0, 123, 255, 0.05), rgba(179, 217, 255, 0.1));
     }
 }
 
@@ -1199,7 +1329,7 @@ p {
 
 .author-position {
     font-size: 0.8rem;
-    color: var(--secondary);
+    color: var (--secondary);
 }
 
 /* === Contact Section === */
