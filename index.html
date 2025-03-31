@@ -71,8 +71,9 @@
         
         <nav class="navbar">
             <div class="container">
-                <!-- Removed the brand name as per request -->
-                <div class="nav-spacer"></div>
+                <!-- Brand name added back but will only display on mobile -->
+                <a href="#hero" class="navbar-brand mobile-only">Justin Anderson</a>
+                <div class="nav-spacer desktop-only"></div>
                 <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -101,7 +102,15 @@
     </header>
 
     <main>
+        <!-- Enhanced Hero Section with animated background elements -->
         <section class="hero content-section" id="hero">
+            <!-- Background animated elements -->
+            <div class="hero-bg-elements">
+                <div class="hero-shape shape-1"></div>
+                <div class="hero-shape shape-2"></div>
+                <div class="hero-shape shape-3"></div>
+            </div>
+            
             <div class="container hero-container">
                 <div class="hero-content">
                     <h1 class="hero-title animate-text">Strategic Marketing <span class="accent-text">That Delivers Real Results</span></h1>
@@ -109,7 +118,7 @@
                         campaigns that build brand awareness and generate measurable ROI.</p>
                     <div class="hero-cta">
                         <a href="mailto:justinanderson1400@gmail.com" class="btn btn-primary btn-glow">Contact Me</a>
-                        <a href="tel:2818913117" class="btn btn-primary btn-outline">Call Me</a>
+                        <a href="tel:2818913117" class="btn btn-outline">Call Me</a>
                     </div>
                     <div class="stats-container">
                         <div class="stat-card">
@@ -127,7 +136,10 @@
                     </div>
                 </div>
                 <div class="hero-image slide-in-right">
-                    <img src="https://i.imgur.com/V1YmJiX.png" alt="Justin Anderson - Marketing Strategist">
+                    <div class="image-wrapper">
+                        <img src="https://i.imgur.com/V1YmJiX.png" alt="Justin Anderson - Marketing Strategist">
+                        <div class="image-decoration"></div>
+                    </div>
                 </div>
             </div>
         </section>
