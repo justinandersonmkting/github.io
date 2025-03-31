@@ -540,7 +540,7 @@ p {
 
 .skill-level {
     font-size: 0.875rem;
-    color: var(--accent);
+    color: var (--accent);
     font-weight: 500;
 }
 
@@ -615,7 +615,7 @@ p {
 .experience-card-container {
     perspective: 1000px; /* 3D effect for flipping */
     width: 100%;
-    min-height: 500px; /* Minimum height to ensure enough space */
+    min-height: 500px; /* Increased minimum height for all devices */
     margin-bottom: 1.5rem;
 }
 
@@ -624,7 +624,7 @@ p {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 500px;
+    min-height: 500px; /* Increased minimum height */
     transition: transform 0.6s;
     transform-style: preserve-3d;
 }
@@ -639,7 +639,7 @@ p {
     position: absolute;
     width: 100%;
     height: 100%;
-    min-height: 500px;
+    min-height: 500px; /* Increased minimum height */
     backface-visibility: hidden;
     border-radius: var(--radius, 4px);
     overflow: hidden;
@@ -653,6 +653,8 @@ p {
     border-left: 3px solid var(--accent, #007bff);
     cursor: pointer; /* Indicate it's clickable */
     z-index: 1; /* Ensure it's above when not flipped */
+    display: flex; /* Added to ensure content takes full height */
+    flex-direction: column; /* Added to ensure proper layout */
 }
 
 .card-front:hover {
@@ -666,6 +668,8 @@ p {
     transform: rotateY(180deg); /* Flip it */
     overflow-y: auto; /* Allow scrolling if content is too long */
     z-index: 0; /* Behind front face when not flipped */
+    display: flex; /* Added to ensure content takes full height */
+    flex-direction: column; /* Added to ensure proper layout */
 }
 
 /* Content within each face */
@@ -674,6 +678,7 @@ p {
     height: 100%;
     display: flex;
     flex-direction: column;
+    flex: 1; /* Add flex: 1 to take full available space */
 }
 
 /* Front face specific content */
@@ -821,11 +826,11 @@ p {
     }
     
     .experience-card-container {
-        min-height: 400px; /* Slightly taller on desktop */
+        min-height: 500px; /* Maintain consistent height on desktop */
     }
     
     .card-face, .experience-card-inner {
-        min-height: 400px;
+        min-height: 500px;
     }
 }
 
@@ -835,16 +840,24 @@ p {
     }
 }
 
+/* Chromebook specific adjustments - target common screen sizes */
+@media screen and (min-width: 1000px) and (max-width: 1440px) {
+    .experience-card-container,
+    .experience-card-inner,
+    .card-face {
+        min-height: 550px; /* Slightly taller for Chromebooks */
+    }
+}
+
 /* For very small screens, increase minimum heights for better readability */
 @media (max-width: 480px) {
     .card-back {
-        min-height: 450px; /* More space for content on small screens */
+        min-height: 500px; /* More space for content on small screens */
     }
 }
 
 /* === Skills Section === */
 
-/* Removed explicit skill bars and percentages */
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
