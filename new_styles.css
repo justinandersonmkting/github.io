@@ -377,11 +377,10 @@ p {
     height: auto;
     color: var(--text-dark);
     transition: all 0.2s ease;
-    text-transform: none;
 }
 
 .dropdown-menu li a:hover {
-    background-color: rgba(0, 123, 255, 0.1);
+    background-color: rgba(0, 123, 255, 0.08);
     color: var(--accent);
     transform: translateX(5px);
 }
@@ -401,38 +400,47 @@ p {
 /* Mobile Navigation with improved transitions */
 .navbar-toggle {
     display: none;
-    background: none;
+    background: transparent;
     border: none;
-    padding: 0.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    margin-left: auto;
-    transition: all 0.3s ease;
+    color: var(--primary);
+    transition: var(--transition);
+    z-index: 1010;
 }
 
 .navbar-toggle:hover {
-    transform: scale(1.1);
+    color: var(--accent);
 }
 
 @media (max-width: 992px) {
+    .navbar-toggle {
+        display: block;
+    }
+
     .navbar-menu {
         position: fixed;
         top: 70px;
-        right: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: calc(100vh - 70px);
-        background-color: var(--background-alt);
+        left: 0;
+        right: 0;
         flex-direction: column;
-        padding: 1rem 0;
-        box-shadow: var(--shadow-lg);
-        overflow-y: auto;
-        transition: right 0.3s ease-in-out;
+        background-color: var(--background-alt);
+        box-shadow: var(--shadow);
+        padding: 1rem;
+        height: auto;
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
         gap: 0;
-        z-index: 1000;
     }
 
     .navbar-menu.active {
-        right: 0;
+        max-height: 100vh;
+        visibility: visible;
+        opacity: 1;
+        overflow-y: auto;
     }
 
     .navbar-menu li {
@@ -441,88 +449,70 @@ p {
     }
 
     .navbar-menu li a {
-        padding: 1rem 1.5rem;
+        padding: 0.8rem 0;
         width: 100%;
-        justify-content: flex-start;
         height: auto;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .navbar-toggle {
-        display: block;
-    }
-
+    /* Dropdown in mobile */
     .dropdown-menu {
         position: static;
         width: 100%;
         box-shadow: none;
-        opacity: 1;
-        visibility: hidden;
-        height: 0;
-        padding: 0;
-        background-color: rgba(0, 0, 0, 0.02);
-        display: none;
-        transform: none;
-        transition: none;
+        border-radius: 0;
+        padding: 0 0 0 1.5rem;
+        max-height: 0;
         overflow: hidden;
+        transition: max-height 0.3s ease;
+        visibility: hidden;
+        opacity: 0;
     }
 
     .dropdown-menu.show {
+        max-height: 300px;
         visibility: visible;
-        height: auto;
-        padding: 0;
-        display: block;
+        opacity: 1;
     }
 
-    .dropdown-menu li a {
-        padding-left: 2.5rem;
-    }
-
-    /* Prevent dropdown links from activating on mobile */
-    .navbar-menu li.has-dropdown > a.dropdown-toggle {
+    .navbar-menu li.has-dropdown > a {
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
-    /* Move chevron to the right on mobile */
-    .navbar-menu li.has-dropdown > a.dropdown-toggle i.fa-chevron-down {
+    .navbar-menu li.has-dropdown > a i.fa-chevron-down {
         margin-left: auto;
-    }
-
-    /* Position the dropdown indicator clearly */
-    .navbar-menu li.has-dropdown {
-        position: relative;
     }
 }
 
 /* === Mobile Navigation Button Styles === */
 .navbar-toggle {
-    background: none;
+    display: none;
+    background: transparent;
     border: none;
-    color: var(--primary);
-    font-size: 1.3rem;
+    width: 40px;
+    height: 40px;
+    position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0.5rem;
-    border-radius: var(--radius);
+    padding: 0;
+    z-index: 1010;
 }
 
 .navbar-toggle i {
-    transition: transform 0.3s ease;
+    color: var(--primary);
+    font-size: 1.5rem;
+    transition: var(--transition);
 }
 
 .navbar-toggle:hover i {
-    transform: scale(1.1);
     color: var(--accent);
 }
 
 @media (max-width: 992px) {
-    .header {
-        height: 60px;
-    }
-
-    .navbar-menu {
-        top: 60px;
+    .navbar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
