@@ -229,7 +229,7 @@ p {
     }
 }
 
-/* === Header & Navigation (Enhanced with Animations) === */
+/* === Header & Navigation (Fixed for ALL device sizes) === */
 .header {
     background-color: var(--background-alt);
     position: fixed;
@@ -240,8 +240,7 @@ p {
     height: 70px;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
-    /* Set overflow to visible by default to ensure dropdown menus work */
-    overflow: visible; 
+    overflow: visible; /* Always visible to ensure dropdown menus work */
 }
 
 /* Header shrink effect when scrolling */
@@ -275,7 +274,7 @@ p {
     align-items: center;
     height: 100%;
     padding: 0;
-    max-width: 1300px; /* Increased from 1200px to give more space */
+    max-width: 1400px; /* Increased width to accommodate all items comfortably */
     margin: 0 auto;
     width: 100%;
 }
@@ -289,6 +288,7 @@ p {
     padding: 0 var(--container-padding);
 }
 
+/* Brand name styling */
 .navbar-brand {
     font-family: var(--font-family-serif);
     font-weight: var(--font-weight-bold);
@@ -300,7 +300,7 @@ p {
     overflow: hidden;
     padding: 0.25rem 0;
     transition: transform 0.3s ease;
-    margin-right: 1rem; /* Added margin to separate from menu */
+    margin-right: 2rem; /* Increased margin to separate from menu */
 }
 
 .navbar-brand:hover {
@@ -308,19 +308,23 @@ p {
     color: var(--accent);
 }
 
+/* Desktop spacer - replaces brand name on desktop */
 .nav-spacer {
     width: 180px; /* Approximate width of the brand name */
+    display: none; /* Hidden by default, shown only on desktop */
 }
 
+/* Main navigation menu */
 .navbar-menu {
     display: flex;
     list-style: none;
-    gap: 0.8rem; /* Reduced gap from 1.2rem to make items closer together */
+    gap: 1rem; /* Consistent spacing */
     margin: 0;
     padding: 0;
     height: 100%;
-    flex-wrap: wrap; /* Allow menu items to wrap if needed */
-    justify-content: flex-end;
+    justify-content: center; /* Center menu items */
+    flex-wrap: nowrap; /* Prevent wrapping by default */
+    flex: 1; /* Take available space */
 }
 
 .navbar-menu li {
@@ -330,30 +334,31 @@ p {
     height: 100%;
 }
 
-/* Font styling improvements for navigation items */
+/* Navigation items styling */
 .navbar-menu li a {
     color: var(--text-dark);
     font-weight: var(--font-weight-medium);
     position: relative;
-    padding: 0.25rem 0;
+    padding: 0.25rem 0.35rem; /* Added horizontal padding */
     transition: all 0.3s ease;
-    font-size: 0.95rem;
+    font-size: 0.9rem; /* Slightly smaller font */
     text-transform: uppercase;
     letter-spacing: 0.5px;
     height: 100%;
     display: flex;
     align-items: center;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
-/* Always show icons for better visual cues */
+/* Icon styling in navigation */
 .navbar-menu li a i {
-    margin-right: 8px;
-    font-size: 0.9rem;
+    margin-right: 6px; /* Smaller margin */
+    font-size: 0.85rem; /* Smaller icons */
 }
 
-/* Show dropdown chevron */
+/* Dropdown chevron icon */
 .navbar-menu li a i.fa-chevron-down {
-    margin-left: 6px;
+    margin-left: 4px;
     margin-right: 0;
     font-size: 0.7rem;
     transition: transform 0.3s ease;
@@ -377,11 +382,11 @@ p {
     transform: translateY(-2px);
 }
 
-/* Animated bottom border that slides under menu items */
+/* Animated bottom border */
 .navbar-menu li a::after {
     content: '';
     position: absolute;
-    bottom: 15px; /* Position the border higher up */
+    bottom: 15px;
     left: 50%;
     width: 0;
     height: 2px;
@@ -396,12 +401,11 @@ p {
     width: 100%;
 }
 
-/* Dropdown menu for portfolio items */
+/* Dropdown menu styling */
 .navbar-menu li.has-dropdown {
     position: relative;
 }
 
-/* Hide dropdown menu by default */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -418,15 +422,26 @@ p {
     z-index: 1001;
 }
 
-/* Show dropdown on hover only for desktop */
-@media (min-width: 992px) {
+/* Show dropdown on hover (desktop only) */
+@media (min-width: 993px) {
     .navbar-menu li.has-dropdown:hover .dropdown-menu {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
+
+    /* We also show the brand name on desktop */
+    .navbar-brand {
+        display: inline-block;
+    }
+    
+    /* Center the navbar menu */
+    .navbar-menu {
+        justify-content: center;
+    }
 }
 
+/* Dropdown menu items */
 .dropdown-menu li {
     height: auto;
     width: 100%;
@@ -460,7 +475,7 @@ p {
     transform: translateY(0);
 }
 
-/* Mobile Navigation with improved transitions */
+/* Mobile Navigation Toggle Button */
 .navbar-toggle {
     display: none;
     background: transparent;
@@ -470,14 +485,59 @@ p {
     color: var(--primary);
     transition: var(--transition);
     z-index: 1010;
-    margin-left: auto; /* Push toggle to the right */
+    margin-left: auto;
 }
 
 .navbar-toggle:hover {
     color: var(--accent);
 }
 
+/* === Media Queries for Responsive Navigation === */
+
+/* Large tablets and desktops */
+@media (min-width: 1151px) and (max-width: 1400px) {
+    .navbar-menu {
+        gap: 0.75rem; /* Slightly reduce gap on medium-large screens */
+    }
+    
+    .navbar-menu li a {
+        padding: 0.25rem 0.25rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Tablets and smaller desktops - Chromebook specific */
+@media (min-width: 993px) and (max-width: 1150px) {
+    .navbar-menu {
+        gap: 0.55rem; /* Reduced gap for medium screens */
+    }
+    
+    .navbar-menu li a {
+        font-size: 0.8rem; /* Smaller font on Chromebooks */
+        padding: 0.25rem 0.2rem; /* Minimal horizontal padding */
+    }
+    
+    .navbar-menu li a i {
+        margin-right: 3px; /* Smaller icon margin */
+        font-size: 0.75rem; /* Smaller icons */
+    }
+    
+    /* Make portfolio link more compact */
+    .navbar-menu li.has-dropdown a i.fa-chevron-down {
+        margin-left: 2px;
+        font-size: 0.65rem;
+    }
+    
+    /* Further reduce brand spacing */
+    .navbar-brand {
+        margin-right: 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile devices */
 @media (max-width: 992px) {
+    /* Mobile layout adjustments */
     .navbar-toggle {
         display: block;
     }
@@ -516,6 +576,7 @@ p {
         padding: 0.8rem 0;
         width: 100%;
         height: auto;
+        font-size: 0.95rem; /* Larger font on mobile for better touch targets */
     }
 
     /* Dropdown in mobile */
@@ -549,63 +610,19 @@ p {
     }
 
     .navbar .container {
-        justify-content: flex-start; /* Align items at start for mobile */
+        justify-content: space-between; /* Space between brand and toggle */
     }
 
     .navbar-brand.mobile-only {
-        flex: 1; /* Allow brand to take up available space */
-        font-size: 1.2rem; /* Slightly smaller font on mobile */
-        max-width: 70%; /* Limit width to prevent pushing toggle off screen */
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
-
-/* Media query specifically for medium-sized screens like Chromebooks */
-@media (min-width: 993px) and (max-width: 1150px) {
-    .navbar-menu {
-        gap: 0.5rem; /* Reduce the gap further on medium screens */
+        display: inline-block; /* Always show brand on mobile */
+        flex: 0 1 auto; /* Don't let it grow too much */
+        font-size: 1.2rem; /* Smaller font on mobile */
+        margin-right: 0; /* No right margin needed */
     }
     
-    .navbar-menu li a {
-        font-size: 0.85rem; /* Slightly smaller font on medium screens */
-        padding: 0.25rem 0.15rem; /* Reduced horizontal padding */
-    }
-    
-    .navbar-menu li a i {
-        margin-right: 4px; /* Smaller icon margin */
-        font-size: 0.8rem; /* Smaller icons */
-    }
-}
-
-/* === Mobile Navigation Button Styles === */
-.navbar-toggle {
-    display: none;
-    background: transparent;
-    border: none;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1010;
-}
-
-.navbar-toggle i {
-    color: var(--primary);
-    font-size: 1.5rem;
-    transition: var(--transition);
-}
-
-.navbar-toggle:hover i {
-    color: var(--accent);
-}
-
-@media (max-width: 992px) {
-    .navbar-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    /* Hide desktop-only elements on mobile */
+    .desktop-only {
+        display: none !important;
     }
 }
 
@@ -613,13 +630,13 @@ p {
 .hero {
     background-color: var(--primary);
     color: var(--text-light);
-    padding: calc(4rem + 70px) 0 4rem;
+    padding: calc(4rem + 70px) 0 4rem; /* Account for fixed header */
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #002147, #0a4275);
+    background: linear-gradient(135deg, #002147, #0a4275); /* Rich blue gradient */
 }
 
-/* Added animated background elements */
+/* Background animated elements */
 .hero-bg-elements {
     position: absolute;
     top: 0;
@@ -628,13 +645,13 @@ p {
     height: 100%;
     overflow: hidden;
     z-index: 1;
+    pointer-events: none; /* Don't interfere with clicks */
 }
 
 .hero-shape {
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.03);
-    animation: float 20s infinite ease-in-out;
 }
 
 .hero-shape.shape-1 {
@@ -642,7 +659,6 @@ p {
     height: 300px;
     top: -100px;
     left: -100px;
-    animation-delay: 0s;
     background: radial-gradient(circle, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
 }
 
@@ -651,7 +667,6 @@ p {
     height: 500px;
     bottom: -200px;
     right: -200px;
-    animation-delay: -5s;
     background: radial-gradient(circle, rgba(179, 217, 255, 0.1) 0%, transparent 70%);
 }
 
@@ -660,25 +675,10 @@ p {
     height: 200px;
     bottom: 30%;
     left: 10%;
-    animation-delay: -10s;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-    25% {
-        transform: translateY(-20px) scale(1.05) rotate(5deg);
-    }
-    50% {
-        transform: translateY(10px) scale(0.95) rotate(-5deg);
-    }
-    75% {
-        transform: translateY(-5px) scale(1.02) rotate(2deg);
-    }
-}
-
+/* Hero container layout */
 .hero-container {
     position: relative;
     z-index: 2;
@@ -688,6 +688,7 @@ p {
 
 .hero-content {
     order: 2;
+    text-align: center;
 }
 
 .hero-title {
@@ -718,16 +719,17 @@ p {
     transition: transform 0.5s ease-out 0.2s;
 }
 
+.accent-text.highlight-active:after, /* JS adds this class */
 .hero:hover .accent-text:after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem; /* Larger subtitle */
+    font-size: 1.2rem;
     margin-bottom: 2rem;
     color: rgba(255, 255, 255, 0.9);
-    max-width: 600px;
+    max-width: 700px; /* Increased for better readability */
     margin-left: auto;
     margin-right: auto;
     font-weight: 400;
@@ -794,7 +796,7 @@ p {
     border-color: var(--accent);
 }
 
-/* Stats within Hero */
+/* Stats cards within Hero */
 .stats-container {
     display: flex;
     flex-wrap: wrap;
